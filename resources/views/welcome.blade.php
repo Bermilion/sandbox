@@ -8,7 +8,7 @@
     </head>
     <body class="body">
 
-    <h1>Тест вьюпорта</h1>
+	<x-type::h size="1" mode="light" text="Заголовок первого уровня"/>
 
     <x-utils::icon name="bars"/>
 

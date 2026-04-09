@@ -8,7 +8,8 @@ export default defineConfig({
 		alias: {
 			'@config': path.resolve(__dirname, 'resources/scss/config'),
 			'@core': path.resolve(__dirname, 'chunker2i/base/resources/scss/core'),
-			'@blocks': path.resolve(__dirname, 'chunker2i/base/resources/scss/blocks')
+			'@blocks': path.resolve(__dirname, 'chunker2i/base/resources/scss/blocks'),
+			'@type': path.resolve(__dirname, 'chunker2i/base/resources/scss/type')
 		}
 	},
 	plugins: [
