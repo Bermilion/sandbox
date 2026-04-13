@@ -4,23 +4,23 @@
 @use "@core/colors";
 @use "@core/rem";
 @use "@core/variables";
-@use "@utils/functions/size";
+@use "@utils/functions/size" as *;
 
 @use "@blocks/utils";
 
 .body {
 	font-family: "Geologica Variable", sans-serif;
-	font-size: 2rem;
+	font-size: s(sm);
+	line-height: s(md);
 }
 
 .box {
-	width: 1rem;
-	height: 1rem;
-	margin-bottom: size(sm);
+	width: s(base);
+	height: s(base);
 	background-color: #0036cc;
 }
 .hero {
-	font-size: 8rem;
+	font-size: s(5xl);
 	font-weight: 700;
 	line-height: 9rem;
 }

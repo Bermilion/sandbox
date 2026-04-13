@@ -8,6 +8,9 @@
     </head>
     <body class="body">
 		<div class="box"></div>
+
+		<p class="hero">Hero text</p>
+
 		<div class="debug-grid"></div>
     </body>
 </html>
