@@ -3,59 +3,83 @@
 @use "@core/viewports";
 @use "@core/colors";
 @use "@core/rem";
+@use "@core/variables";
+@use "@utils/functions/size";
 
 @use "@blocks/utils";
 
 .body {
-    background-color: colors.base(colors.$content);
-	color: colors.content(colors.$content);
 	font-family: "Geologica Variable", sans-serif;
-	font-size: 16rem;
-}
-.button {
-	display: flex;
-	gap: 4rem;
-	background-color: colors.base(colors.$accent);
-	color: colors.content(colors.$accent);
-	border: none;
-	padding: 8rem 24rem;
-	font-size: 16rem;
-	line-height: 1.5;
-	border-radius: 24rem;
-	cursor: pointer;
-	transition: background-color ease-in-out 200ms;
-
-	&:hover {
-		background-color: colors.light(colors.$accent);
-	}
-
-	&:active {
-		background-color: colors.dark(colors.$accent);
-	}
+	font-size: 2rem;
 }
 
-.viewports {
-	display: flex;
-	flex-direction: column;
-	gap: 16rem;
-	padding: 40rem;
+.box {
+	width: 1rem;
+	height: 1rem;
+	margin-bottom: size(sm);
+	background-color: #0036cc;
 }
-.viewport {
-	display: none;
-	padding: 12rem 20rem;
-	background-color: colors.base(colors.$viewport);
-	color: colors.content(colors.$viewport);
-	border: 1rem solid colors.dark(colors.$viewport);
-	border-radius: 4rem;
+.hero {
+	font-size: 8rem;
+	font-weight: 700;
+	line-height: 9rem;
+}
+.supheading {
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 2rem;
+	text-transform: uppercase;
+}
+.h1 {
+	font-size: 6rem;
+	font-weight: 700;
+	line-height: 7rem;
+}
+.h2 {
+	font-size: 5rem;
+	font-weight: 700;
+	line-height: 6rem;
+}
+.h3 {
+	font-size: 4rem;
+	font-weight: 700;
+	line-height: 5rem;
+}
+.h4 {
+	font-size: 4rem;
+	font-weight: 500;
+	line-height: 5rem;
+}
+.h5 {
+	font-size: 3rem;
+	font-weight: 500;
+	line-height: 4rem;
+}
+.h6 {
+	font-size: 2rem;
+	font-weight: 500;
+	line-height: 3rem;
+}
+.p {
+	font-size: 2rem;
+	font-weight: 400;
+	line-height: 3rem;
+}
+.hint {
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 2rem;
+}
 
-	&_mobile { @include viewports.mobile { display: block; } }
-	&_phone { @include viewports.phone { display: block; } }
-	&_phone-portrait { @include viewports.phone-portrait { display: block; } }
-	&_phone-landscape { @include viewports.phone-landscape { display: block; } }
-	&_tablet { @include viewports.tablet { display: block; } }
-	&_tablet-portrait { @include viewports.tablet-portrait { display: block; } }
-	&_tablet-landscape { @include viewports.tablet-landscape { display: block; } }
-	&_desktop { @include viewports.desktop { display: block; }}
-	&_laptop { @include viewports.laptop { display: block; } }
-	&_wide { @include viewports.wide { display: block; } }
+.debug-grid {
+	background-image: linear-gradient(0deg, #0036cc17 1px, transparent 1px), linear-gradient(90deg, #0036cc17 1px, transparent 1px);
+	background-size: 1rem 1rem;
+	background-position: 0 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1000;
 }
