@@ -9,6 +9,23 @@
     <body class="body">
 		<div class="box"></div>
 
+		<div class="wrapper">
+			<div class="grid">
+				<div class="grid__item"></div>
+				<div class="grid__item"></div>
+				<div class="grid__item"></div>
+				<div class="grid__item"></div>
+				<div class="grid__item"></div>
+				<div class="grid__item"></div>
+				<div class="grid__item"></div>
+				<div class="grid__item"></div>
+				<div class="grid__item"></div>
+				<div class="grid__item"></div>
+				<div class="grid__item"></div>
+				<div class="grid__item"></div>
+			</div>
+		</div>
+
 		<p class="hero">Hero text</p>
 
 		<div class="debug-grid"></div>

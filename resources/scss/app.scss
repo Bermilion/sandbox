@@ -18,7 +18,97 @@
 	width: s(base);
 	height: s(base);
 	background-color: #0036cc;
+
+	@include viewports.tablet {
+		width: s(lg);
+		height: s(lg);
+	}
+	@include viewports.laptop {
+		width: s(5xl);
+		height: s(5xl);
+		border: s(1px) solid #000000;
+	}
+	@include viewports.wide {
+		width: s(7xl);
+		height: s(7xl);
+	}
 }
+
+$spacing: #b2c0ff;
+$col: #ff7f81;
+
+.wrapper {
+	background-color: $spacing;
+	padding: s(0) s(sm);
+
+	@include viewports.phone-landscape {
+		padding: s(0) s(sm);
+	}
+}
+
+.grid {
+	background-color: white;
+	display: grid;
+	max-width: 41rem;
+	margin: 0 auto;
+	grid-template-columns: repeat(4, 1fr);
+	gap: s(sm);
+
+	@include viewports.phone-landscape {
+		grid-template-columns: repeat(6, 1fr);
+		max-width: 92rem;
+		gap: s(lg);
+	}
+	@include viewports.tablet-portrait {
+		max-width: 88rem;
+	}
+	@include viewports.phone-landscape {
+		max-width: 120rem;
+	}
+	@include viewports.tablet {
+		grid-template-columns: repeat(6, 1fr);
+		gap: s(xl);
+	}
+	@include viewports.laptop {
+		grid-template-columns: repeat(12, 1fr);
+		max-width: 154.75rem;
+	}
+	@include viewports.wide {
+		max-width: 160rem;
+		grid-template-columns: repeat(12, 1fr);
+	}
+	@include viewports.desktop {
+		gap: s(xl);
+	}
+
+	&__item {
+		background-color: $col;
+		min-height: s(5xl);
+
+		@include viewports.phone-portrait {
+			&:nth-child(n+5) {
+				display: none;
+			}
+		}
+		@include viewports.phone-landscape {
+			&:nth-child(n+7) {
+				display: none;
+			}
+		}
+		@include viewports.tablet-portrait {
+			&:nth-child(n+7) {
+				display: none;
+			}
+		}
+		@include viewports.tablet-landscape {
+			&:nth-child(n+7) {
+				display: none;
+			}
+		}
+
+	}
+}
+
 .hero {
 	font-size: s(5xl);
 	font-weight: 700;
