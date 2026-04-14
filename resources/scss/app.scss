@@ -34,6 +34,27 @@
 	}
 }
 
+.viewport {
+	display: none;
+	padding: s(xs) s(md);
+	background-color: colors.base(colors.$viewport);
+	color: colors.content(colors.$viewport);
+	border: s(1px) solid colors.dark(colors.$viewport);
+	border-radius: s(4px);
+
+	&_mobile { @include viewports.mobile { display: block; } }
+	&_phone { @include viewports.phone { display: block; } }
+	&_phone-portrait { @include viewports.phone-portrait { display: block; } }
+	&_phone-landscape { @include viewports.phone-landscape { display: block; } }
+	&_tablet { @include viewports.tablet { display: block; } }
+	&_tablet-portrait { @include viewports.tablet-portrait { display: block; } }
+	&_tablet-landscape { @include viewports.tablet-landscape { display: block; } }
+	&_desktop { @include viewports.desktop { display: block; }}
+	&_laptop { @include viewports.laptop { display: block; } }
+	&_wide { @include viewports.wide { display: block; } }
+	&_no-phone { @include viewports.no-phone { display: block; } }
+}
+
 $spacing: #b2c0ff;
 $col: #ff7f81;
 
@@ -62,7 +83,7 @@ $col: #ff7f81;
 	@include viewports.tablet-portrait {
 		max-width: 88rem;
 	}
-	@include viewports.phone-landscape {
+	@include viewports.tablet-landscape {
 		max-width: 120rem;
 	}
 	@include viewports.tablet {
@@ -109,10 +130,34 @@ $col: #ff7f81;
 	}
 }
 
+.info {
+	font-size: s(lg);
+	line-height: s(xl);
+}
+
 .hero {
-	font-size: s(5xl);
+	font-size: s(xl);
 	font-weight: 700;
-	line-height: 9rem;
+	line-height: s(2xl);
+	word-wrap: break-word;
+	word-break: break-word;
+	overflow-wrap: break-word;
+	text-wrap: pretty;
+
+	@include viewports.no-phone {
+		font-size: s(8xl);
+		line-height: s(9xl);
+	}
+
+	&_px {
+		font-size: 32px;
+		font-weight: 700;
+		line-height: 40px;
+		word-wrap: break-word;
+		word-break: break-word;
+		overflow-wrap: break-word;
+		text-wrap: pretty;
+	}
 }
 .supheading {
 	font-size: 1.5rem;
@@ -121,9 +166,18 @@ $col: #ff7f81;
 	text-transform: uppercase;
 }
 .h1 {
-	font-size: 6rem;
+	font-size: s(lg);
 	font-weight: 700;
-	line-height: 7rem;
+	line-height: s(xl);
+	word-wrap: break-word;
+	word-break: break-word;
+	overflow-wrap: break-word;
+	text-wrap: pretty;
+
+	@include viewports.no-phone {
+		font-size: s(6xl);
+		line-height: s(7xl);
+	}
 }
 .h2 {
 	font-size: 5rem;
