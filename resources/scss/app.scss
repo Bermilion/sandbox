@@ -2,7 +2,8 @@
 @use "@core/reset";
 @use "@core/viewports";
 @use "@core/colors";
-@use "@core/rem";
+//@use "@core/rem";
+@use "@core/rem-clamp";
 @use "@core/variables";
 @use "@utils/functions/size" as *;
 
@@ -12,26 +13,6 @@
 	font-family: "Geologica Variable", sans-serif;
 	font-size: s(sm);
 	line-height: s(md);
-}
-
-.box {
-	width: s(base);
-	height: s(base);
-	background-color: #0036cc;
-
-	@include viewports.tablet {
-		width: s(lg);
-		height: s(lg);
-	}
-	@include viewports.laptop {
-		width: s(5xl);
-		height: s(5xl);
-		border: s(1px) solid #000000;
-	}
-	@include viewports.wide {
-		width: s(7xl);
-		height: s(7xl);
-	}
 }
 
 .viewport {
@@ -62,29 +43,21 @@ $col: #ff7f81;
 	background-color: $spacing;
 	padding: s(0) s(sm);
 
-	@include viewports.phone-landscape {
-		padding: s(0) s(sm);
+	@include viewports.wide {
+		padding: 0 40rem;
 	}
 }
 
 .grid {
 	background-color: white;
 	display: grid;
-	max-width: 41rem;
 	margin: 0 auto;
 	grid-template-columns: repeat(4, 1fr);
 	gap: s(sm);
 
 	@include viewports.phone-landscape {
 		grid-template-columns: repeat(6, 1fr);
-		max-width: 92rem;
 		gap: s(lg);
-	}
-	@include viewports.tablet-portrait {
-		max-width: 88rem;
-	}
-	@include viewports.tablet-landscape {
-		max-width: 120rem;
 	}
 	@include viewports.tablet {
 		grid-template-columns: repeat(6, 1fr);
@@ -92,11 +65,10 @@ $col: #ff7f81;
 	}
 	@include viewports.laptop {
 		grid-template-columns: repeat(12, 1fr);
-		max-width: 154.75rem;
 	}
 	@include viewports.wide {
-		max-width: 160rem;
 		grid-template-columns: repeat(12, 1fr);
+		//max-width: 160rem;
 	}
 	@include viewports.desktop {
 		gap: s(xl);
@@ -130,11 +102,6 @@ $col: #ff7f81;
 	}
 }
 
-.info {
-	font-size: s(lg);
-	line-height: s(xl);
-}
-
 .hero {
 	font-size: s(xl);
 	font-weight: 700;
@@ -147,16 +114,6 @@ $col: #ff7f81;
 	@include viewports.no-phone {
 		font-size: s(8xl);
 		line-height: s(9xl);
-	}
-
-	&_px {
-		font-size: 32px;
-		font-weight: 700;
-		line-height: 40px;
-		word-wrap: break-word;
-		word-break: break-word;
-		overflow-wrap: break-word;
-		text-wrap: pretty;
 	}
 }
 .supheading {

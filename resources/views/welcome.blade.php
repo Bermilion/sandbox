@@ -7,8 +7,6 @@
         @vite(['resources/scss/app.scss', 'resources/js/app.js'])
     </head>
     <body class="body">
-		<div class="box"></div>
-
 		<div class="viewports">
 			<p class="viewport viewport_mobile">Мобильное устройство</p>
 			<p class="viewport viewport_phone">Смартфон</p>
@@ -39,10 +37,8 @@
 				<div class="grid__item"></div>
 			</div>
 		</div>
-		<div class="info"></div>
 
 		<div class="wrapper">
-			<p class="hero_px">Достопримечательности</p>
 			<p class="hero">Достопримечательности</p>
 			<p class="supheading">Таблица с ценами на модели минипланет</p>
 			<h1 class="h1">Достопримечательности</h1>
