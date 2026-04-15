@@ -1,0 +1,10 @@
+@use "@core/viewports" as viewports;
+@use "@utils/functions/size" as *;
+
+.wrapper {
+	padding: s(0, 16);
+
+	@include viewports.wide {
+		padding: s(0, 320);
+	}
+}

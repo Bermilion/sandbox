@@ -1,5 +1,6 @@
 <x-layouts.base-layout title="Документация">
-	<a href="/pages/base-block">Концепрция</a>
+	<a href="/pages/base-block">Концепция</a>
+	<a href="/pages/typography">Типографика</a>
 
 	<x-utils::icon name="bars"/>
 	<x-type::h size="1" text="Заголовок 1"/>
