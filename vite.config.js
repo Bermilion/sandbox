@@ -2,6 +2,7 @@ import {defineConfig} from 'vite';
 import laravel from 'laravel-vite-plugin';
 import {createSvgIconsPlugin} from "vite-plugin-svg-icons";
 import path from 'path';
+import purge from '@erbelion/vite-plugin-laravel-purgecss';
 
 export default defineConfig({
 	resolve: {
@@ -37,6 +38,15 @@ export default defineConfig({
 					},
 				],
 			},
+		}),
+		purge({
+			paths: [
+				'resources/views/**/*.blade.php',
+				'resources/js/**/*.js',
+			],
+			// safelist: {
+			// 	standard: [/^bg-/, /^text-/, /^flex/, /^grid/, /^p-/, /^m-/, /^w-/, /^h-/],
+			// },
 		}),
 	],
 });

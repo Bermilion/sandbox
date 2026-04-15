@@ -6,9 +6,15 @@
 @use "@core/variables";
 @use "@utils/functions/size" as *;
 @use "@utils/mixins/font" as *;
+@use "@utils/classes/margin";
+@use "@utils/classes/padding";
 @use "@type/classes";
 
 @use "@blocks/utils";
+
+
+// Стили из самого sandbox
+@use "layout/wrapper";
 
 .body {
 	font-family: "Geologica Variable", sans-serif;
@@ -38,15 +44,6 @@
 
 $spacing: #b2c0ff;
 $col: #ff7f81;
-
-.wrapper {
-	background-color: $spacing;
-	padding: s(0, 16);
-
-	@include viewports.wide {
-		padding: s(0, 320);
-	}
-}
 
 .grid {
 	background-color: white;
@@ -100,61 +97,6 @@ $col: #ff7f81;
 		}
 
 	}
-}
-
-.hero {
-	font-size: s(32);
-	font-weight: 700;
-	line-height: s(40);
-	word-wrap: break-word;
-	word-break: break-word;
-	overflow-wrap: break-word;
-	text-wrap: pretty;
-
-	@include viewports.no-phone {
-		font-size: s(88);
-		line-height: s(96);
-	}
-}
-.supheading {
-	font-size: 1.5rem;
-	font-weight: 400;
-	line-height: 2rem;
-	text-transform: uppercase;
-}
-
-.h2 {
-	font-size: 5rem;
-	font-weight: 700;
-	line-height: 6rem;
-}
-.h3 {
-	font-size: 4rem;
-	font-weight: 700;
-	line-height: 5rem;
-}
-.h4 {
-	font-size: 4rem;
-	font-weight: 500;
-	line-height: 5rem;
-}
-.h5 {
-	font-size: 3rem;
-	font-weight: 500;
-	line-height: 4rem;
-}
-.h6 {
-	font-size: 2rem;
-	font-weight: 500;
-	line-height: 3rem;
-}
-.p {
-	@include font(16, 24, 'regular');
-}
-.hint {
-	font-size: 1.5rem;
-	font-weight: 400;
-	line-height: 2rem;
 }
 
 .debug-grid {
