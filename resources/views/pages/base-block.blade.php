@@ -71,24 +71,5 @@
 				приоритет, и она на ломает вертикальный ритм.
 			</x-type::p>
 		</x-layouts.wrapper>
-
-{{--		<div class="wrapper">--}}
-{{--			<div class="grid">--}}
-{{--				<div class="grid__item"></div>--}}
-{{--				<div class="grid__item"></div>--}}
-{{--				<div class="grid__item"></div>--}}
-{{--				<div class="grid__item"></div>--}}
-{{--				<div class="grid__item"></div>--}}
-{{--				<div class="grid__item"></div>--}}
-{{--				<div class="grid__item"></div>--}}
-{{--				<div class="grid__item"></div>--}}
-{{--				<div class="grid__item"></div>--}}
-{{--				<div class="grid__item"></div>--}}
-{{--				<div class="grid__item"></div>--}}
-{{--				<div class="grid__item"></div>--}}
-{{--			</div>--}}
-{{--		</div>--}}
-
-{{--		<div class="debug-grid"></div>--}}
 	</x-layouts.documentation>
 </x-layouts.base-layout>

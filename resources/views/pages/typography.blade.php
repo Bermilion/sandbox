@@ -1,7 +1,7 @@
 <x-layouts.base-layout title="Типографика">
 	<x-layouts.documentation>
 		<x-layouts.wrapper class="wrapper_800">
-			<x-type::hero lang="ru" class="mt-32 mb-40 np-mt-80 np-mb-72">Каждому человеку нужна собственная планета</x-type::hero>
+			<x-type::hero lang="ru" class="mt-32 mb-40 np-mt-64 np-mb-72">Каждому человеку нужна собственная планета</x-type::hero>
 			<x-type::supheading>Таблица с ценами на модели минипланет</x-type::supheading>
 			<x-type::h size="1" lang="ru" class="mb-32 np-mb-56">Каждому человеку нужна собственная планета</x-type::h>
 			<x-type::p>Первый раз минипланеты были упомянуты французским лётчиком в книге для взрослых детей. Тогда читатели

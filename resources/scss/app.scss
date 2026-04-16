@@ -20,6 +20,7 @@
 
 @use "components/main";
 @use "components/sidebar";
+@use "components/viewport";
 
 html, body {
 	min-height: 100vh;
@@ -29,27 +30,6 @@ html, body {
 	//font-family: "Geologica Variable", sans-serif;
 	font-family: "Inter Variable", sans-serif;
 	@include font(16, 24, 'regular');
-}
-
-.viewport {
-	display: none;
-	padding: s(8) s(20);
-	background-color: colors.base(colors.$viewport);
-	color: colors.content(colors.$viewport);
-	border: s(1) solid colors.dark(colors.$viewport);
-	border-radius: s(4);
-
-	&_mobile { @include viewports.mobile { display: block; } }
-	&_phone { @include viewports.phone { display: block; } }
-	&_phone-portrait { @include viewports.phone-portrait { display: block; } }
-	&_phone-landscape { @include viewports.phone-landscape { display: block; } }
-	&_tablet { @include viewports.tablet { display: block; } }
-	&_tablet-portrait { @include viewports.tablet-portrait { display: block; } }
-	&_tablet-landscape { @include viewports.tablet-landscape { display: block; } }
-	&_desktop { @include viewports.desktop { display: block; }}
-	&_laptop { @include viewports.laptop { display: block; } }
-	&_wide { @include viewports.wide { display: block; } }
-	&_no-phone { @include viewports.no-phone { display: block; } }
 }
 
 $spacing: #b2c0ff;
@@ -119,71 +99,4 @@ $col: #ff7f81;
 			background-position: 0 0;
 		}
 	}
-}
-
-.grid {
-	background-color: white;
-	display: grid;
-	margin: 0 auto;
-	grid-template-columns: repeat(4, 1fr);
-	gap: s(16);
-
-	@include viewports.phone-landscape {
-		grid-template-columns: repeat(6, 1fr);
-		gap: s(24);
-	}
-	@include viewports.tablet {
-		grid-template-columns: repeat(6, 1fr);
-		gap: s(32);
-	}
-	@include viewports.laptop {
-		grid-template-columns: repeat(12, 1fr);
-	}
-	@include viewports.wide {
-		grid-template-columns: repeat(12, 1fr);
-		//max-width: 160rem;
-	}
-	@include viewports.desktop {
-		gap: s(32);
-	}
-
-	&__item {
-		background-color: $col;
-		min-height: s(64);
-
-		@include viewports.phone-portrait {
-			&:nth-child(n+5) {
-				display: none;
-			}
-		}
-		@include viewports.phone-landscape {
-			&:nth-child(n+7) {
-				display: none;
-			}
-		}
-		@include viewports.tablet-portrait {
-			&:nth-child(n+7) {
-				display: none;
-			}
-		}
-		@include viewports.tablet-landscape {
-			&:nth-child(n+7) {
-				display: none;
-			}
-		}
-
-	}
-}
-
-.debug-grid {
-	background-image: linear-gradient(0deg, #0036cc17 1px, transparent 1px), linear-gradient(90deg, #0036cc17 1px, transparent 1px);
-	background-size: 1rem 1rem;
-	background-position: 0 0;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	pointer-events: none;
-	z-index: 1000;
 }
