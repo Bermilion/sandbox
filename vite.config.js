@@ -51,7 +51,7 @@ export default defineConfig({
 					'html', 'body', 'div', 'span', 'object', 'iframe', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
 					'p', 'blockquote', 'pre', 'abbr', 'address', 'cite', 'code', 'del', 'dfn', 'em', 'img',
 					'ins', 'kbd', 'q', 'samp', 'var', 'small', 'strong', 'sub', 'sup', 'b', 'i', 'dl', 'dt',
-					'dd', 'ol', 'ul', 'li', 'fieldset', 'form', 'label', 'legend', 'table', 'caption',
+					'dd', 'ol', 'ul', 'li', 'a', 'fieldset', 'form', 'label', 'legend', 'table', 'caption',
 					'tbody', 'tfoot', 'thead', 'tr', 'th', 'td', 'article', 'aside', 'figure', 'footer',
 					'header', 'menu', 'nav', 'section', 'time', 'mark', 'audio', 'video', 'details', 'summary',
 					'main', 'hr', 'input', 'select', 'textarea', 'button'
