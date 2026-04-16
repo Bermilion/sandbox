@@ -35,9 +35,13 @@ html, body {
 $spacing: #b2c0ff;
 $col: #ff7f81;
 
-.hightlight {
+.highlight {
 	padding: s(16, 20);
 	border-radius: s(4);
+
+	&_info {
+		background-color: rgb(230, 241, 255);
+	}
 
 	&_warning {
 		background-color: rgb(254, 254, 231);
@@ -58,7 +62,28 @@ $col: #ff7f81;
 	position: relative;
 	border: s(1) solid #b2c0ff;
 	overflow: hidden;
+	border-radius: s(4);
 
+	.box_blue {
+		background-color: rgb(4 67 248 / 69%);
+		width: s(8);
+		height: s(8);
+		position: absolute;
+		top: 13rem;
+		left: 40rem;
+
+		&:before {
+			content: "";
+			position: absolute;
+			width: 100vw;
+			height: 300vw;
+			top: -40rem;
+			left: -40rem;
+			background-image: linear-gradient(0deg, #a1baff78 1px, transparent 1px), linear-gradient(90deg, #a1baff78 1px, transparent 1px);
+			background-size: 1rem 1rem;
+			background-position: 0 0;
+		}
+	}
 	.box_green {
 		background-color: #00dd33b0;
 		width: s(64);

@@ -7,13 +7,17 @@
 				это условность и абстракция.
 			</x-type::p>
 
+			<div class="example-block">
+				<div class="box_blue"></div>
+			</div>
+
 			<x-type::p class="mb-24">Размеры остальных элементов в интерфейсе, которые задаются вручную, кратны размеру микромодуля.</x-type::p>
 
-			<div class="hightlight hightlight_succses mb-24">Микромодуль в «Чанкере» — квадрат размером 8×8.</div>
+			<div class="highlight highlight_info mb-24">Микромодуль в «Чанкере» — квадрат размером 8×8.</div>
 
 			<x-type::p class="mb-24">То есть размеры остальных элементов в интерфейсе кратны 8.</x-type::p>
 
-			<div class="hightlight hightlight_succses mb-24">
+			<div class="highlight highlight_succses mb-24">
 				Корректный размер: 8, 16, 24, 32, 40 и т.д. — они делятся на 8 без остатка.
 			</div>
 
@@ -21,7 +25,7 @@
 				<div class="box_green"></div>
 			</div>
 
-			<div class="hightlight hightlight_danger mb-24">
+			<div class="highlight highlight_danger mb-24">
 				Некорректный размер: 6, 10, 12, 17, 19.93 и т.д. — они делятся на 8 с остатком.
 			</div>
 
@@ -34,7 +38,7 @@
 				И при пробеле в 8 они кажутся оторванными друг от друга. Тогда допустимо использовать значение меньше 8:
 			</x-type::p>
 
-			<div class="hightlight hightlight_warning mb-24">
+			<div class="highlight highlight_warning mb-24">
 				Допустимые размеры меньше микромодуля: 4, 2, 1, 0.
 			</div>
 
