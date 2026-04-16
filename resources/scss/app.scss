@@ -1,5 +1,6 @@
-@use "@fontsource-variable/geologica";
-@use "@core/reset";
+//@use "@fontsource-variable/geologica";
+@use "@fontsource-variable/inter";
+@use "@core/preflight";
 @use "@core/viewports";
 @use "@core/colors";
 @use "@core/rem-clamp";
@@ -14,10 +15,19 @@
 
 
 // Стили из самого sandbox
+@use "layout/layout";
 @use "layout/wrapper";
 
+@use "components/main";
+@use "components/sidebar";
+
+html, body {
+	min-height: 100vh;
+}
+
 .body {
-	font-family: "Geologica Variable", sans-serif;
+	//font-family: "Geologica Variable", sans-serif;
+	font-family: "Inter Variable", sans-serif;
 	@include font(16, 24, 'regular');
 }
 

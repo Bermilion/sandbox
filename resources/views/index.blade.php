@@ -1,8 +1,5 @@
 <x-layouts.base-layout title="Документация">
-	<a href="/pages/base-block">Концепция</a>
-	<a href="/pages/typography">Типографика</a>
-
-	<x-utils::icon name="bars"/>
-	<x-type::h size="1" text="Заголовок 1"/>
-	<x-type::p mod="large">Первый раз минипланеты были упомянут французским лётчиком в книге для взрослых детей. Тогда читатели углубились в философский аспект произведения, не придав значения идее частных планет-астероидов. Но с середины прошлого века технологии развились достаточно, чтобы предложить людям особенную замену классичискому решению жилищного вопроса.</x-type::p>
+	<x-layouts.documentation>
+		<x-type::h size="1">Main</x-type::h>
+	</x-layouts.documentation>
 </x-layouts.base-layout>

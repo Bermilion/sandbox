@@ -1,0 +1,13 @@
+@use "@utils/functions/size" as *;
+
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	gap: s(8);
+	padding: s(24);
+	background-color: white;
+	border-radius: s(8);
+	align-self: start;
+	position: sticky;
+	top: s(4);
+}

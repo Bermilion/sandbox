@@ -1,0 +1,10 @@
+@use "@utils/functions/size" as *;
+
+.layout {
+	display: grid;
+	grid-template-columns: s(240) 1fr;
+	gap: s(4);
+	background-color: #eeeeee;
+	padding: s(4);
+	min-height: 100vh;
+}
