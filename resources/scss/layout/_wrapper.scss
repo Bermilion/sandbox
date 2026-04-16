@@ -4,7 +4,8 @@
 .wrapper {
 	padding: s(0, 16);
 
-	@include viewports.wide {
-		padding: s(0, 320);
+	&_800 {
+		max-width: s(800);
+		margin: 0 auto;
 	}
 }
