@@ -1,35 +1,93 @@
 <x-layouts.base-layout title="Концепция">
 	<x-layouts.documentation>
-		<div class="viewports">
-			<p class="viewport viewport_mobile">Мобильное устройство</p>
-			<p class="viewport viewport_phone">Смартфон</p>
-			<p class="viewport viewport_phone-portrait">Смартфон вертикальный</p>
-			<p class="viewport viewport_phone-landscape">Смартфон горизонтальный</p>
-			<p class="viewport viewport_tablet">Планшет</p>
-			<p class="viewport viewport_tablet-portrait">Планшет вертикальный</p>
-			<p class="viewport viewport_tablet-landscape">Планшет горизонтальный</p>
-			<p class="viewport viewport_desktop">Десктоп</p>
-			<p class="viewport viewport_laptop">Ноутбук</p>
-			<p class="viewport viewport_wide">Широкоэкранник</p>
-			<p class="viewport viewport_no-phone">Все кроме телефонов</p>
-		</div>
+		<x-layouts.wrapper>
+			<x-type::h size="1" class="mt-64 mb-48">Микромодуль</x-type::h>
+			<x-type::p class="mb-16">
+				Микромодуль — это самая малая и неделимая часть сетки интерфейса. Микромодуль в интерфейсе не изображается,
+				это условность и абстракция.
+			</x-type::p>
 
-		<div class="wrapper">
-			<div class="grid">
-				<div class="grid__item"></div>
-				<div class="grid__item"></div>
-				<div class="grid__item"></div>
-				<div class="grid__item"></div>
-				<div class="grid__item"></div>
-				<div class="grid__item"></div>
-				<div class="grid__item"></div>
-				<div class="grid__item"></div>
-				<div class="grid__item"></div>
-				<div class="grid__item"></div>
-				<div class="grid__item"></div>
-				<div class="grid__item"></div>
+			<x-type::p class="mb-24">Размеры остальных элементов в интерфейсе, которые задаются вручную, кратны размеру микромодуля.</x-type::p>
+
+			<div class="hightlight hightlight_succses mb-24">Микромодуль в «Чанкере» — квадрат размером 8×8.</div>
+
+			<x-type::p class="mb-24">То есть размеры остальных элементов в интерфейсе кратны 8.</x-type::p>
+
+			<div class="hightlight hightlight_succses mb-24">
+				Корректный размер: 8, 16, 24, 32, 40 и т.д. — они делятся на 8 без остатка.
 			</div>
-		</div>
+
+			<div class="example-block">
+				<div class="box_green"></div>
+			</div>
+
+			<div class="hightlight hightlight_danger mb-24">
+				Некорректный размер: 6, 10, 12, 17, 19.93 и т.д. — они делятся на 8 с остатком.
+			</div>
+
+			<div class="example-block">
+				<div class="box_red"></div>
+			</div>
+
+			<x-type::p class="mb-24">
+				Однако, случаются ситуации, когда 8 — слишком много. Например, в кнопке могут располагаться иконка и текст.
+				И при пробеле в 8 они кажутся оторванными друг от друга. Тогда допустимо использовать значение меньше 8:
+			</x-type::p>
+
+			<div class="hightlight hightlight_warning mb-24">
+				Допустимые размеры меньше микромодуля: 4, 2, 1, 0.
+			</div>
+
+			<x-type::h size="2" class="mt-64 mb-32">Польза микромодуля</x-type::h>
+
+			<x-type::p class="mb-16">Использование микромодуля даёт несколько преимуществ.</x-type::p>
+
+			<x-type::p class="mb-16">
+				Дизайн выглядит более упорядоченным и гармоничным, а сетка подчиняется шаблону. В том числе формируется
+				вертикальный ритм. Всё это снижает когнитивную нагрузку на пользователя, так как интерфейс и контент
+				становится более простым для восприятия.
+			</x-type::p>
+
+			<x-type::p>
+				Упрощаются процессы дизайна и вёрстки, так как решение о выборе размера становится шаблонным. Дизайнер и
+				верстальщик справляются с работой быстрее и допускают меньше ошибок, что экономит время и бюджет.
+			</x-type::p>
+
+			<x-type::h size="2" class="mt-64 mb-32">Допустимые несоответствия</x-type::h>
+
+			<x-type::p class="mb-16">Есть ситуации, в которых размер элемента определяется автоматически, а не вручную.</x-type::p>
+
+			<x-type::p class="mb-16">
+				Например: кнопка с текстом. Даже если размер текста и высота строки в кнопке кратны микромодулю, ширина букв
+				и всего текста зависит от используемого шрифта, поэтому нормально, если ширина кнопки (или подобного
+				элемента) не кратна 8 пикселям.
+			</x-type::p>
+
+			<x-type::p class="mb-64">
+				Другой такой ситуацией может быть применение колонок. Допустим, ширина страницы на смартфоне — 360. Боковые
+				поля контента — 16. То есть ширина контента: 360 - 16 х 2 = 328. И дизайнер решает построить контент в 4
+				колонки с гаттером в 8: (328 - 8 * 3) / 4 = 74. Такая ширина колонки не кратна 8: 74 / 8 = 9,25, то есть она
+				не подчиняется микромодулю. Такая ситуация допустима, так как в таком случае у четырехколоночной сетки есть
+				приоритет, и она на ломает вертикальный ритм.
+			</x-type::p>
+		</x-layouts.wrapper>
+
+{{--		<div class="wrapper">--}}
+{{--			<div class="grid">--}}
+{{--				<div class="grid__item"></div>--}}
+{{--				<div class="grid__item"></div>--}}
+{{--				<div class="grid__item"></div>--}}
+{{--				<div class="grid__item"></div>--}}
+{{--				<div class="grid__item"></div>--}}
+{{--				<div class="grid__item"></div>--}}
+{{--				<div class="grid__item"></div>--}}
+{{--				<div class="grid__item"></div>--}}
+{{--				<div class="grid__item"></div>--}}
+{{--				<div class="grid__item"></div>--}}
+{{--				<div class="grid__item"></div>--}}
+{{--				<div class="grid__item"></div>--}}
+{{--			</div>--}}
+{{--		</div>--}}
 
 {{--		<div class="debug-grid"></div>--}}
 	</x-layouts.documentation>

@@ -55,6 +55,72 @@ html, body {
 $spacing: #b2c0ff;
 $col: #ff7f81;
 
+.hightlight {
+	padding: s(16, 20);
+	border-radius: s(4);
+
+	&_warning {
+		background-color: rgb(254, 254, 231);
+	}
+
+	&_succses {
+		background-color: rgb(236, 249, 238);
+	}
+	&_danger {
+		background-color: rgb(252, 232, 232);
+	}
+}
+
+.example-block {
+	max-width: 100%;
+	height: s(320);
+	margin-bottom: s(24);
+	position: relative;
+	border: s(1) solid #b2c0ff;
+	overflow: hidden;
+
+	.box_green {
+		background-color: #00dd33b0;
+		width: s(64);
+		height: s(32);
+		position: absolute;
+		top: 13rem;
+		left: 40rem;
+
+		&:before {
+			content: "";
+			position: absolute;
+			width: 100vw;
+			height: 300vw;
+			top: -40rem;
+			left: -40rem;
+			background-image: linear-gradient(0deg, #a1baff78 1px, transparent 1px), linear-gradient(90deg, #a1baff78 1px, transparent 1px);
+			background-size: 1rem 1rem;
+			background-position: 0 0;
+		}
+	}
+	.box_red {
+		background-color: #dd0000b0;
+		width: 68px;
+		height: 36px;
+		position: absolute;
+		top: 13rem;
+		left: 40rem;
+
+		&:before {
+			content: "";
+			position: absolute;
+			width: 100vw;
+			height: 300vw;
+			top: -40rem;
+			left: -40rem;
+			background-image: linear-gradient(0deg, #a1baff78 1px, transparent 1px), linear-gradient(90deg, #a1baff78 1px, transparent 1px);
+			background-size: 1rem 1rem;
+			background-position: 0 0;
+		}
+	}
+}
+
 .grid {
 	background-color: white;
 	display: grid;
