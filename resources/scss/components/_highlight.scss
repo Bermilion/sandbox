@@ -1,0 +1,21 @@
+@use "@utils/functions/size" as *;
+
+.highlight {
+	padding: s(16, 20);
+	border-radius: s(4);
+
+	&_info {
+		background-color: rgb(230, 241, 255);
+	}
+
+	&_warning {
+		background-color: rgb(254, 254, 231);
+	}
+
+	&_succses {
+		background-color: rgb(236, 249, 238);
+	}
+	&_danger {
+		background-color: rgb(252, 232, 232);
+	}
+}

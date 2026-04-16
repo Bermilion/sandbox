@@ -46,7 +46,7 @@ export default defineConfig({
 			],
 			safelist: {
 				standard: [
-					// /^bg-/, /^text-/, /^flex/, /^grid/, /^p-/, /^m-/, /^w-/, /^h-/,
+					/^highlight/, /^highlight_/, /^highlight_*/,
 					// Сохранять HTML элементы из _reset.scss
 					'html', 'body', 'div', 'span', 'object', 'iframe', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
 					'p', 'blockquote', 'pre', 'abbr', 'address', 'cite', 'code', 'del', 'dfn', 'em', 'img',
