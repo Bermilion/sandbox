@@ -18,29 +18,29 @@
 
 			<x-type::p class="mb-16">Система рассчитывает размер шрифта для каждого типа устройства:</x-type::p>
 
-			<div class="highlight highlight_info mb-24">
+			<x-highlight mod="info" class="mb-24">
 				Телефон портрет (360px-767px): 8px → 9px
-			</div>
+			</x-highlight>
 
-			<div class="highlight highlight_info mb-24">
+			<x-highlight mod="info" class="mb-24">
 				Телефон ландшафт (800px-1023px): 8px → 10px
-			</div>
+			</x-highlight>
 
-			<div class="highlight highlight_info mb-24">
+			<x-highlight mod="info" class="mb-24">
 				Планшет портрет (768px-1023px): 8px → 10px
-			</div>
+			</x-highlight>
 
-			<div class="highlight highlight_info mb-24">
+			<x-highlight mod="info" class="mb-24">
 				Планшет ландшафт (1024px-1279px): 8px → 11px
-			</div>
+			</x-highlight>
 
-			<div class="highlight highlight_info mb-24">
+			<x-highlight mod="info" class="mb-24">
 				Ноутбук (1280px-1599px): 8px → 11px
-			</div>
+			</x-highlight>
 
-			<div class="highlight highlight_info mb-24">
+			<x-highlight mod="info" class="mb-24">
 				Широкий экран (1600px+): 8px → 12px
-			</div>
+			</x-highlight>
 
 			<x-type::h size="2" class="mt-64 mb-32">Математический расчёт</x-type::h>
 
@@ -49,21 +49,21 @@
 				и точки пересечения (intercept):
 			</x-type::p>
 
-			<div class="highlight highlight_succses mb-24">
+			<x-highlight mod="succses" class="mb-24">
 				slope = (maxSize - minSize) / (rangeMax - rangeMin) × 100vw
-			</div>
+			</x-highlight>
 
-			<div class="highlight highlight_succses mb-24">
+			<x-highlight mod="succses" class="mb-24">
 				intercept = minSize - slope × rangeMin
-			</div>
+			</x-highlight>
 
 			<x-type::p class="mb-24">
 				Итоговый clamp() формируется как:
 			</x-type::p>
 
-			<div class="highlight highlight_succses mb-64">
+			<x-highlight mod="succses" class="mb-64">
 				font-size: clamp(minSize, intercept + slope, maxSize)
-			</div>
+			</x-highlight>
 
 			<x-type::h size="2" class="mt-64 mb-32">Преимущества подхода</x-type::h>
 

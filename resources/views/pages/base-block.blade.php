@@ -13,21 +13,21 @@
 
 			<x-type::p class="mb-24">Размеры остальных элементов в интерфейсе, которые задаются вручную, кратны размеру микромодуля.</x-type::p>
 
-			<div class="highlight highlight_info mb-24">Микромодуль в «Чанкере» — квадрат размером 8×8.</div>
+			<x-highlight mod="info" class="mb-24">Микромодуль в «Чанкере» — квадрат размером 8×8.</x-highlight>
 
 			<x-type::p class="mb-24">То есть размеры остальных элементов в интерфейсе кратны 8.</x-type::p>
 
-			<div class="highlight highlight_succses mb-24">
+			<x-highlight mod="succses" class="mb-24">
 				Корректный размер: 8, 16, 24, 32, 40 и т.д. — они делятся на 8 без остатка.
-			</div>
+			</x-highlight>
 
 			<div class="example-block">
 				<div class="box_green"></div>
 			</div>
 
-			<div class="highlight highlight_danger mb-24">
+			<x-highlight mod="danger" class="mb-24">
 				Некорректный размер: 6, 10, 12, 17, 19.93 и т.д. — они делятся на 8 с остатком.
-			</div>
+			</x-highlight>
 
 			<div class="example-block">
 				<div class="box_red"></div>
@@ -38,9 +38,9 @@
 				И при пробеле в 8 они кажутся оторванными друг от друга. Тогда допустимо использовать значение меньше 8:
 			</x-type::p>
 
-			<div class="highlight highlight_warning mb-24">
+			<x-highlight mod="warning" class="mb-24">
 				Допустимые размеры меньше микромодуля: 4, 2, 1, 0.
-			</div>
+			</x-highlight>
 
 			<x-type::h size="2" class="mt-64 mb-32">Польза микромодуля</x-type::h>
 
