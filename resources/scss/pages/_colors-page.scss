@@ -1,0 +1,41 @@
+@use "@core/colors";
+@use "@utils/functions/size" as *;
+
+.color-modules {
+	display: flex;
+	flex-direction: column;
+	gap: s(32);
+
+	&__module {
+		display: flex;
+		flex-direction: column;
+		gap: s(16);
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: s(16);
+	}
+
+	&__color {
+		display: flex;
+		column-gap: s(8);
+	}
+}
+
+
+.box {
+	width: s(32);
+	height: s(32);
+	border-radius: s(4);
+	outline: s(1) solid rgba(black, 0.1);
+
+	@each $modifier, $shades in colors.get-colors-map() {
+		@each $shade, $color-value in $shades {
+			&_#{$modifier}-#{$shade} {
+				background-color: colors.get-var-color($modifier, $shade);
+			}
+		}
+	}
+}
