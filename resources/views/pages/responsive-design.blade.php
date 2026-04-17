@@ -1,7 +1,7 @@
-<x-layouts.base-layout title="Адаптивный дизайн" xmlns:x-type="http://www.w3.org/1999/xlink">
+<x-layouts.base-layout title="Адаптивный дизайн">
 	<x-layouts.documentation>
-		<x-layouts.wrapper mod="py-64">
-			<x-type::h size="1" class="mb-40">Вьюпорты и сетки</x-type::h>
+		<x-layouts.wrapper>
+			<x-type::h size="1" class="mt-64 mb-40">Вьюпорты и сетки</x-type::h>
 			<x-type::p class="mb-16">
 				Вьюпорт — это область просмотра страницы сайта. Размер вьюпорта обычно зависит от устройства, с которого
 				смотрят сайт.
@@ -42,7 +42,7 @@
 				<x-type::li>поля — margin</x-type::li>
 			</x-type::ul>
 
-			<div class="viewport">
+			<div class="viewport mb-64">
 				<p class="viewport__item viewport_mobile">Мобильное устройство</p>
 				<p class="viewport__item viewport_phone">Смартфон</p>
 				<p class="viewport__item viewport_phone-portrait">Смартфон вертикальный</p>
