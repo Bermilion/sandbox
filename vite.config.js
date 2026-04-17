@@ -3,37 +3,13 @@ import laravel from 'laravel-vite-plugin';
 import {createSvgIconsPlugin} from "vite-plugin-svg-icons";
 import path from 'path';
 import purge from '@erbelion/vite-plugin-laravel-purgecss';
-import fs from 'fs';
-import { globSync } from 'glob';
+import { generateDynamicSafelist } from './vite-pugins/vite-plugin-dynamic-safelist.js';
+import { generateColorsSafelist } from './vite-pugins/vite-plugin-colors-safelist.js';
+import { colorsJsonPlugin } from './vite-pugins/vite-plugin-colors-json.js';
 
-// Функция для динамической генерации safelist
-function generateDynamicSafelist() {
-	const bladeFiles = globSync('resources/views/**/*.blade.php');
-	const usedClasses = new Set();
-
-	// console.log('Found blade files:', bladeFiles.length);
-
-	bladeFiles.forEach(file => {
-		const content = fs.readFileSync(file, 'utf8');
-		// Ищем все class="..." атрибуты
-		const classMatches = content.match(/class="([^"]*)"/g) || [];
-		classMatches.forEach(match => {
-			const classString = match.match(/="([^"]*)"/)[1];
-			const classes = classString.split(/\s+/);
-			classes.forEach(cls => {
-				// Ищем классы с префиксами устройств
-				if (/^(pp|pl|p|tp|tl|t|m|l|w|d|np):[mp][trblxy]*-\d+$/.test(cls)) {
-					usedClasses.add(cls);
-				}
-			});
-		});
-	});
-
-	// console.log('Found device-prefixed classes:', Array.from(usedClasses));
-	return Array.from(usedClasses);
-}
 
 const dynamicSafelist = generateDynamicSafelist();
+const colorsSafelist = generateColorsSafelist();
 // console.log('Dynamic safelist patterns:', dynamicSafelist.map(cls => ({
 // 	original: new RegExp(`^${cls}$`),
 // 	escaped: new RegExp(`^${cls.replace(':', '\\\\:')}$`)
@@ -50,6 +26,11 @@ export default defineConfig({
 		}
 	},
 	plugins: [
+		colorsJsonPlugin({
+			scssPath: 'chunker2i/base/resources/scss/core/_variables.scss',
+			outputPath: 'public/colors.json',
+			watch: true
+		}),
 		laravel({
 			input: ['resources/scss/app.scss', 'resources/js/app.js'],
 			refresh: true,
@@ -89,7 +70,8 @@ export default defineConfig({
 					'main', 'hr', 'input', 'select', 'textarea', 'button',
 					// Динамически добавленные классы
 					...dynamicSafelist,
-					...dynamicSafelist.map(cls => cls.replace(':', '\\:'))
+					...dynamicSafelist.map(cls => cls.replace(':', '\\:')),
+					...colorsSafelist
 				],
 				// Сохранять псевдоэлементы и псевдоклассы
 				deep: [/^:/, /^::/],

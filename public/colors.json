@@ -1,0 +1,56 @@
+{
+  "darkest-blue": {
+    "base": "#222233",
+    "light": "rgb(54.4, 54.4, 81.6)",
+    "dark": "rgb(13.6, 13.6, 20.4)",
+    "content": "#fff"
+  },
+  "content": {
+    "base": "#fff",
+    "light": "hsl(0, 0%, 110%)",
+    "dark": "rgb(229.5, 229.5, 229.5)",
+    "content": "#222"
+  },
+  "accent": {
+    "base": "#0088ff",
+    "light": "rgb(51, 159.8, 255)",
+    "dark": "rgb(0, 108.8, 204)",
+    "content": "#fff"
+  },
+  "viewport": {
+    "base": "#eee",
+    "light": "hsl(0, 0%, 103.3333333333%)",
+    "dark": "rgb(212.5, 212.5, 212.5)",
+    "content": "#222"
+  },
+  "dark-grey": {
+    "base": "#888888",
+    "light": "rgb(161.5, 161.5, 161.5)",
+    "dark": "rgb(110.5, 110.5, 110.5)",
+    "content": "#222"
+  },
+  "grey": {
+    "base": "#eeeeee",
+    "light": "hsl(0, 0%, 103.3333333333%)",
+    "dark": "rgb(212.5, 212.5, 212.5)",
+    "content": "#222"
+  },
+  "light-blue": {
+    "base": "#d3e7ff",
+    "light": "hsl(212.7272727273, 100%, 101.3725490196%)",
+    "dark": "rgb(160, 203.1818181818, 255)",
+    "content": "#222"
+  },
+  "success": {
+    "base": "#33cc00",
+    "light": "rgb(63.75, 255, 0)",
+    "dark": "rgb(38.25, 153, 0)",
+    "content": "#222"
+  },
+  "danger": {
+    "base": "#dd0000",
+    "light": "#ff1111",
+    "dark": "#aa0000",
+    "content": "#fff"
+  }
+}
