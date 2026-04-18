@@ -5,7 +5,7 @@
 		<x-base::link href="/pages/responsive-design" text="Адаптивный дизайн"/>
 		<x-base::link href="/pages/typography" text="Типографика" />
 		<x-base::link href="/pages/colors" text="Цвет" />
-		<x-base::link href="/pages/sizes" text="Величины и отступы" />
+		<x-base::link href="/pages/sizes" text="Интервалы" />
 	</x-sidebar>
 	<x-main>
 		{{ $slot }}

@@ -22,19 +22,18 @@
 		display: flex;
 		column-gap: s(8);
 	}
-}
 
+	&__box {
+		width: s(32);
+		height: s(32);
+		border-radius: s(4);
+		outline: s(1) solid rgba(black, 0.1);
 
-.box {
-	width: s(32);
-	height: s(32);
-	border-radius: s(4);
-	outline: s(1) solid rgba(black, 0.1);
-
-	@each $modifier, $shades in colors.get-colors-map() {
-		@each $shade, $color-value in $shades {
-			&_#{$modifier}-#{$shade} {
-				background-color: colors.get-var-color($modifier, $shade);
+		@each $modifier, $shades in colors.get-colors-map() {
+			@each $shade, $color-value in $shades {
+				&_#{$modifier}-#{$shade} {
+					background-color: colors.get-var-color($modifier, $shade);
+				}
 			}
 		}
 	}

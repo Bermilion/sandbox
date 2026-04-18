@@ -20,7 +20,7 @@ export function generateColorsSafelist() {
 			// Паттерны для box_{color-name}_{variant} (base, light, dark, content)
 			const variants = ['base', 'light', 'dark', 'content'];
 			variants.forEach(variant => {
-				safelistPatterns.push(new RegExp(`^box_${colorName}_${variant}$`));
+				safelistPatterns.push(new RegExp(`^color-modules__box_${colorName}_${variant}$`));
 			});
 		});
 

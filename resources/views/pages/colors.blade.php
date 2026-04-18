@@ -58,7 +58,7 @@
 						<div class="color-modules__grid">
 							@foreach($shades as $shadeName => $colorValue)
 								<div class="color-modules__color">
-									<div class="box box_{{ $colorName }}-{{ $shadeName }}"></div>
+									<div class="color-modules__box color-modules__box_{{ $colorName }}-{{ $shadeName }}"></div>
 									<x-type::p>{{ $shadeName }}</x-type::p>
 								</div>
 							@endforeach
