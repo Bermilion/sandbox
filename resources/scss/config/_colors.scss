@@ -1,10 +1,4 @@
-/**
- * Перечень базовых цветов проекта
- *
- * Из каждого базового цвета генерируются
- * светлый и тёмный оттенок, а также
- * контрастный цвет для контента
- */
+// Временно оставил чтобы при сборке scss не вываливался в ошибку
 $accent: #0088ff;
 $grey: #eeeeee;
 $light-blue: #d3e7ff;
@@ -14,49 +8,59 @@ $success: #33cc00;
 $danger: #dd0000;
 $warning: #FEFEE7;
 
-// Цвета из макета
-//$accent-base: #0088ff;
-//$accent-contrast: #ffffff;
-//$accent-light: #00aaff;
-//$accent-light-50: #00aaff80;
-//$accent-dark: #0066ff;
-//$accent-pale: #d1d9e0;
+/**
+ * Цветовая система проекта
+ *
+ * Структура:
+ * 1. Neutrals — нейтральная шкала для фонов, границ, текста
+ * 2. Brand — акцентные цвета бренда
+ * 3. Semantic — семантические цвета (статусы, состояния)
+ * 4. Usage — токены использования (элементы интерфейса)
+ */
 
-//$brand-accent: #0088ff;
-//$brand-light: #ffffff;
+// ========================================
+// Neutrals — нейтральная шкала
+// ========================================
+$gray-50: #f9fafb;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-300: #d1d5db;
+$gray-400: #9ca3af;
+$gray-500: #6b7280;
+$gray-600: #4b5563;
+$gray-700: #374151;
+$gray-800: #1f2937;
+$gray-900: #111827;
 
-//$content-base: #f5f5f5;
-//$content-light: #ffffff;
-//$content-dark: #dddddd;
-//$content-contrast: #222222;
+// ========================================
+// Brand — акцентные цвета бренда
+// ========================================
+$brand-primary: #0088ff;
+$brand-secondary: #6366f1;
 
-//$dark-grey-base: #888888;
-//$dark-grey-light: #999999;
-//$dark-grey-dark: #555555;
+// ========================================
+// Semantic — семантические цвета
+// ========================================
+$semantic-success: #33cc00;
+$semantic-warning: #FC783B;
+$semantic-danger: #dd0000;
+$semantic-info: #0088ff;
 
-//$darkest-blue: #222233;
-//$darkest-blue-90: #222233e5;
+// ========================================
+// Usage — токены использования
+// ========================================
+// Кнопки и акценты
+$color-primary: $brand-primary;
+$color-secondary: $brand-secondary;
 
-//$grey-base: #eeeeee;
-//$grey-light: #ffffff;
-//$grey-light-50: #ffffff80;
-//$grey-dark: #dddddd;
-//$grey-contrast: #222233;
+// Фоны
+$color-background: $gray-50;
+$color-surface: #ffffff;
 
-//$light-blue-base: #d3e7ff;
-//$light-blue-light: #ebf4ff;
-//$light-blue-dark: #9ecaff;
+// Границы
+$color-border: $gray-200;
 
-//$success-base: #33cc00;
-//$success-contrast: #ffffff;
-//$success-light: #55ee00;
-//$success-light-50: #55ee0080;
-//$success-dark: #11bb00;
-//$success-pale: #d5e0d1;
-
-//$danger-base: #dd0000;
-//$danger-contrast: #ffffff;
-//$danger-light: #ff0000;
-//$danger-light-50: #ff000080;
-//$danger-dark: #bb0000;
-//$danger-pale: #dccbcb;
+// Текст
+$text-primary: $gray-900;
+$text-secondary: $gray-500;
+$text-muted: $gray-400;
