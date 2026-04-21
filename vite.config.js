@@ -22,7 +22,8 @@ export default defineConfig({
 			'@core': path.resolve(__dirname, 'chunker2i/base/resources/scss/core'),
 			'@blocks': path.resolve(__dirname, 'chunker2i/base/resources/scss/blocks'),
 			'@type': path.resolve(__dirname, 'chunker2i/base/resources/scss/type'),
-			'@utils': path.resolve(__dirname, 'chunker2i/base/resources/scss/utils')
+			'@utils': path.resolve(__dirname, 'chunker2i/base/resources/scss/utils'),
+			'@components': path.resolve(__dirname, 'chunker2i/base/resources/scss/components'),
 		}
 	},
 	plugins: [
