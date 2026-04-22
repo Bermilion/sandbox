@@ -7,25 +7,6 @@
 @use "@core/colors" as colors;
 @use "@utils/mixins/font" as *;
 
-$red-950: map.get(palette.$red, 950);
-$red-100: map.get(palette.$red, 100);
-$red-100-50: color.change($red-100, $alpha: 0.5);
-$red-950-50: color.change($red-950, $alpha: 0.5);
-$oklch-red-950: colors.hex-to-oklch($red-950);
-$oklch-red-950-50: colors.rgba-to-oklch($red-950-50);
-$oklch-red-100-50: colors.rgba-to-oklch($red-100-50);
-
-@debug $oklch-red-950;
-@debug $oklch-red-950-50;
-
-.pfpf {
-	background-color: $oklch-red-950;
-	color: $oklch-red-100-50;
-	width: 100%;
-	height: 20rem;
-	@include  font(32, 40, 'bold');
-}
-
 .grid {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -42,6 +23,8 @@ $oklch-red-100-50: colors.rgba-to-oklch($red-100-50);
 		justify-content: center;
 		align-items: center;
 		white-space: pre;
+		//color: colors.shade(darkest-blue, 500, 0.5);
+		color: colors.$darkest-blue;
 	}
 
 	@each $key, $value in palette.$red {
@@ -50,6 +33,29 @@ $oklch-red-100-50: colors.rgba-to-oklch($red-100-50);
 
 			&:before {
 				content: 'red-#{$key} \A #{$value} \A #{colors.hex-to-oklch($value)}';
+			}
+		}
+	}
+
+	@each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950) {
+		&_gray-#{$key} {
+			background-color: colors.shade(colors.$grey, $key);
+			$hex-string-color: colors.rgb-to-hex-string(colors.shade(colors.$grey, $key));
+			$oklch-color: colors.rgba-to-oklch(colors.shade(colors.$grey, $key));
+
+			&:before {
+				content: 'gray-#{$key} \A #{$hex-string-color} \A #{$oklch-color}';
+			}
+		}
+	}
+	@each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950) {
+		&_accent-#{$key} {
+			background-color: colors.shade(colors.$accent, $key);
+			$hex-string-color: colors.rgb-to-hex-string(colors.shade(colors.$accent, $key));
+			$oklch-color: colors.rgba-to-oklch(colors.shade(colors.$accent, $key));
+
+			&:before {
+				content: 'accent-#{$key} \A #{$hex-string-color} \A #{$oklch-color}';
 			}
 		}
 	}

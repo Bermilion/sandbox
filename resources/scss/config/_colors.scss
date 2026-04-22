@@ -1,6 +1,7 @@
 // Временно оставил чтобы при сборке scss не вываливался в ошибку
 $accent: #0088ff;
 $grey: #eeeeee;
+$gray: #eeeeee;
 $light-blue: #d3e7ff;
 $dark-grey: #888888;
 $darkest-blue: #222233;
@@ -17,50 +18,3 @@ $warning: #FEFEE7;
  * 3. Semantic — семантические цвета (статусы, состояния)
  * 4. Usage — токены использования (элементы интерфейса)
  */
-
-// ========================================
-// Neutrals — нейтральная шкала
-// ========================================
-$gray-50: #f9fafb;
-$gray-100: #f3f4f6;
-$gray-200: #e5e7eb;
-$gray-300: #d1d5db;
-$gray-400: #9ca3af;
-$gray-500: #6b7280;
-$gray-600: #4b5563;
-$gray-700: #374151;
-$gray-800: #1f2937;
-$gray-900: #111827;
-
-// ========================================
-// Brand — акцентные цвета бренда
-// ========================================
-$brand-primary: #0088ff;
-$brand-secondary: #6366f1;
-
-// ========================================
-// Semantic — семантические цвета
-// ========================================
-$semantic-success: #33cc00;
-$semantic-warning: #FC783B;
-$semantic-danger: #dd0000;
-$semantic-info: #0088ff;
-
-// ========================================
-// Usage — токены использования
-// ========================================
-// Кнопки и акценты
-$color-primary: $brand-primary;
-$color-secondary: $brand-secondary;
-
-// Фоны
-$color-background: $gray-50;
-$color-surface: #ffffff;
-
-// Границы
-$color-border: $gray-200;
-
-// Текст
-$text-primary: $gray-900;
-$text-secondary: $gray-500;
-$text-muted: $gray-400;
