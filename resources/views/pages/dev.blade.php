@@ -6,4 +6,6 @@
 		@endforeach
 	</div>
 
+	<div class="pfpf">Text</div>
+
 </x-layouts.base-layout>

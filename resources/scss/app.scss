@@ -26,9 +26,10 @@
 @use "components/viewport";
 @use "components/highlight";
 @use "components/example-block";
-@use "components/dev";
 
 @use "pages/colors-page";
+
+@use "components/dev";
 
 html, body {
 	min-height: 100vh;
