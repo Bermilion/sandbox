@@ -5,15 +5,16 @@
 <x-layouts.base-layout title="Страница отладки">
 
 	<div class="grid">
-		@foreach ($colors as $color)
-			<div class="box box_red-{{ $color }}"></div>
-		@endforeach
-		@foreach ($colors as $color)
-			<div class="box box_accent-{{ $color }}"></div>
-		@endforeach
-		@foreach ($colors as $color)
-			<div class="box box_gray-{{ $color }}"></div>
-		@endforeach
+{{--		@foreach ($colors as $color)--}}
+{{--			<div class="box box_red-{{ $color }}"></div>--}}
+{{--		@endforeach--}}
+{{--		@foreach ($colors as $color)--}}
+{{--			<div class="box box_accent-{{ $color }}"></div>--}}
+{{--		@endforeach--}}
+{{--		@foreach ($colors as $color)--}}
+{{--			<div class="box box_gray-{{ $color }}"></div>--}}
+{{--		@endforeach--}}
+		<div class="box box_color"></div>
 	</div>
 
 </x-layouts.base-layout>

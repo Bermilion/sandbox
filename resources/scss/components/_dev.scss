@@ -9,53 +9,73 @@
 
 .grid {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 }
 
 .box {
 	position: relative;
 	height: 25rem;
+	overflow: hidden;
 
 	&:before {
 		width: 100%;
 		height: 100%;
 		display: flex;
-		justify-content: center;
+		justify-content: flex-start;
+		padding-left: 1rem;
 		align-items: center;
 		white-space: pre;
 		//color: colors.shade(darkest-blue, 500, 0.5);
 		color: colors.$darkest-blue;
 	}
 
-	@each $key, $value in palette.$red {
-		&_red-#{$key} {
-			background-color: $value;
+	//@each $key, $value in palette.$red {
+	//	&_red-#{$key} {
+	//		background-color: $value;
+	//
+	//		&:before {
+	//			content: 'red-#{$key} \A #{$value} \A #{colors.hex-to-oklch($value)}';
+	//		}
+	//	}
+	//}
 
-			&:before {
-				content: 'red-#{$key} \A #{$value} \A #{colors.hex-to-oklch($value)}';
-			}
-		}
-	}
+	//@each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950) {
+	//	&_gray-#{$key} {
+	//		background-color: colors.shade(colors.$grey, $key);
+	//		$hex-string-color: colors.rgb-to-hex-string(colors.shade(colors.$grey, $key));
+	//		$oklch-color: colors.rgba-to-oklch(colors.shade(colors.$grey, $key));
+	//
+	//		&:before {
+	//			content: 'gray-#{$key} \A #{$hex-string-color} \A #{$oklch-color}';
+	//		}
+	//	}
+	//}
+	//@each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950) {
+	//	&_accent-#{$key} {
+	//		$_color: colors.shade(palette.$yellow-600, $key);
+	//		background-color: $_color;
+	//		$hex-string-color: colors.rgb-to-hex-string($_color);
+	//		$oklch-color: colors.rgba-to-oklch($_color);
+	//
+	//		&:before {
+	//			content: 'accent-#{$key} \A #{$hex-string-color} \A #{$oklch-color}';
+	//			@if $key == 950 {
+	//				color: wheat;
+	//			}
+	//		}
+	//	}
+	//}
+	&_color {
+		$key: 600;
+		$_color: colors.shade(palette.$yellow-100, $key);
+		background-color: $_color;
+		$hex-string-color: colors.rgb-to-hex-string($_color);
+		$oklch-color: colors.rgba-to-oklch($_color);
 
-	@each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950) {
-		&_gray-#{$key} {
-			background-color: colors.shade(colors.$grey, $key);
-			$hex-string-color: colors.rgb-to-hex-string(colors.shade(colors.$grey, $key));
-			$oklch-color: colors.rgba-to-oklch(colors.shade(colors.$grey, $key));
-
-			&:before {
-				content: 'gray-#{$key} \A #{$hex-string-color} \A #{$oklch-color}';
-			}
-		}
-	}
-	@each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950) {
-		&_accent-#{$key} {
-			background-color: colors.shade(colors.$accent, $key);
-			$hex-string-color: colors.rgb-to-hex-string(colors.shade(colors.$accent, $key));
-			$oklch-color: colors.rgba-to-oklch(colors.shade(colors.$accent, $key));
-
-			&:before {
-				content: 'accent-#{$key} \A #{$hex-string-color} \A #{$oklch-color}';
+		&:before {
+			content: 'shade-#{$key} \A #{$hex-string-color} \A #{$oklch-color}  \A #{$_color}';
+			@if $key == 950 or $key == 800 or $key == 700 {
+				color: wheat;
 			}
 		}
 	}
