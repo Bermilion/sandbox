@@ -62,22 +62,3 @@
 
 
 }
-
-
-$base: colors.hex-to-oklch(palette.$amber-500);
-$base_lightness: color.channel($base, "lightness");
-$base_chroma: color.channel($base, "chroma");
-$base_hue: color.channel($base, "hue");
-
-@each $key, $color in palette.$amber {
-	$_my: colors.hex-to-oklch($color);
-	$_my_lightness: color.channel($_my, "lightness");
-	$_my_chroma: color.channel($_my, "chroma");
-	$_my_hue: color.channel($_my, "hue");
-
-	$_div_lightness: $base_lightness - $_my_lightness;
-	$_div_chroma: $base_chroma - $_my_chroma;
-	$_div_hue: $base_hue - $_my_hue;
-
-	@debug 'KEY-#{$key}  lightness: #{$_div_lightness} chroma: #{$_div_chroma} hue: #{$_div_hue}';
-}
