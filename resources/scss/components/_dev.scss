@@ -3,8 +3,8 @@
 @use "sass:math";
 @use "sass:string";
 @use "sass:meta";
-//@use "@core/palette" as palette;
-//@use "@core/colors" as colors;
+@use "@core/palette" as palette;
+@use "@core/colors" as co;
 @use "@core/new-colors" as colors;
 @use "@utils/mixins/font" as *;
 
@@ -26,90 +26,58 @@
 		padding-left: 1rem;
 		align-items: center;
 		white-space: pre;
-		//color: colors.shade(darkest-blue, 500, 0.5);
-		color: colors.$darkest-blue;
+		//color: colors.$darkest-blue;
 	}
 
-	&_1 {
-		background-color: colors.light(colors.$orange-500, 10%, .9);
-	}
-	&_2 {
-		background-color: colors.light(colors.$orange-500, 10%, .1);
+	&_red-origin-50 {
+		$_base-color: palette.$red-600;
+		$_color: colors.hex-to-oklch($_base-color);
+		$_lightness: color.channel($_color, "lightness");
+		$_chroma: color.channel($_color, "chroma");
+		$_hue: color.channel($_color, "hue");
+		//@debug 'origin-100: #{$_lightness} #{$_chroma} #{$_hue}';
+
+		background-color: $_color;
+
+		&:before {
+			content: 'Origint-100 \A color: #{$_base-color} \A lightness: #{$_lightness}';
+		}
 	}
 
-	//@each $key, $value in palette.$red {
-	//	&_red-#{$key} {
-	//		background-color: $value;
-	//
-	//		&:before {
-	//			content: 'red-#{$key} \A #{$value} \A #{colors.hex-to-oklch($value)}';
-	//		}
-	//	}
-	//}
+	&_red-my-50 {
+		$_color: colors.hex-to-oklch(colors.$red-500);
+		$_change-lightness: color.adjust($_color, $lightness: 0%, $chroma: 0, $hue: 0deg);
+		$_lightness: color.channel($_change-lightness, "lightness");
+		$_chroma: color.channel($_change-lightness, "chroma");
+		$_hue: color.channel($_change-lightness, "hue");
+		$_hex: co.oklch-to-hex($_change-lightness);
+		//@debug 'my-100: #{$_lightness} #{$_chroma} #{$_hue}';
 
-	//@each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950) {
-	//	&_gray-#{$key} {
-	//		$_color: colors.shade(palette.$stone-50, $key);
-	//		background-color: $_color;
-	//		$hex-string-color: colors.rgb-to-hex-string($_color);
-	//		$oklch-color: colors.rgba-to-oklch($_color);
-	//
-	//		&:before {
-	//			content: 'gray-#{$key} \A #{$hex-string-color} \A #{$oklch-color}';
-	//			@if $key == 950 {
-	//				color: wheat;
-	//			}
-	//		}
-	//	}
-	//}
-	//@each $key, $value in (palette.$red) {
-	//	@each $step in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950) {
-	//		$_color: colors.shade($value, $step);
-	//		$_base-lightness: color.channel(colors.hex-to-oklch($value), "lightness");
-	//		$_hex-color: colors.rgb-to-hex-string($_color);
-	//		$_oklch-color: colors.hex-to-oklch($_color);
-	//		//$_current-lightness: color.change(colors.rgba-to-oklch($_oklch-color), "lightness");
-	//		$_current-lightness: 0;
-	//
-	//		&_red-#{$key}-#{$step} {
-	//			background-color: $_color;
-	//
-	//			&:before {
-	//				content: 'red-#{$key}-#{$step} \A #{$_hex-color} \A #{$_oklch-color} \A Base lightness: #{$_base-lightness} \A Current lightness: #{$_current-lightness}';
-	//				@if $step >= 800 or $key >= 800 {
-	//					color: wheat;
-	//				}
-	//			}
-	//		}
-	//	}
-	//}
-	//@each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950) {
-	//	&_accent-#{$key} {
-	//		$_color: colors.shade(palette.$yellow-600, $key);
-	//		background-color: $_color;
-	//		$hex-string-color: colors.rgb-to-hex-string($_color);
-	//		$oklch-color: colors.rgba-to-oklch($_color);
-	//
-	//		&:before {
-	//			content: 'accent-#{$key} \A #{$hex-string-color} \A #{$oklch-color}';
-	//			@if $key == 950 {
-	//				color: wheat;
-	//			}
-	//		}
-	//	}
-	//}
-	//&_color {
-	//	$key: 400;
-	//	$_color: colors.shade(colors.$grey, $key);
-	//	background-color: $_color;
-	//	$hex-string-color: colors.rgb-to-hex-string($_color);
-	//	$oklch-color: colors.rgba-to-oklch($_color);
-	//
-	//	&:before {
-	//		content: 'shade-#{$key} \A #{$hex-string-color} \A #{$oklch-color}  \A #{$_color}';
-	//		@if $key == 950 or $key == 800 or $key == 700 {
-	//			color: wheat;
-	//		}
-	//	}
-	//}
+		background-color: $_change-lightness;
+
+		&:before {
+			content: 'my-100 \A color: #{$_hex} \A lightness: #{$_lightness}';
+		}
+	}
+
+
+}
+
+
+$base: colors.hex-to-oklch(palette.$amber-500);
+$base_lightness: color.channel($base, "lightness");
+$base_chroma: color.channel($base, "chroma");
+$base_hue: color.channel($base, "hue");
+
+@each $key, $color in palette.$amber {
+	$_my: colors.hex-to-oklch($color);
+	$_my_lightness: color.channel($_my, "lightness");
+	$_my_chroma: color.channel($_my, "chroma");
+	$_my_hue: color.channel($_my, "hue");
+
+	$_div_lightness: $base_lightness - $_my_lightness;
+	$_div_chroma: $base_chroma - $_my_chroma;
+	$_div_hue: $base_hue - $_my_hue;
+
+	@debug 'KEY-#{$key}  lightness: #{$_div_lightness} chroma: #{$_div_chroma} hue: #{$_div_hue}';
 }

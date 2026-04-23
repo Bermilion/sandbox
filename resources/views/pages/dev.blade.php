@@ -14,12 +14,13 @@
 {{--		@foreach ($colors as $color)--}}
 {{--			<div class="box box_accent-{{ $color }}"></div>--}}
 {{--		@endforeach--}}
-{{--		@foreach ($colors as $color)--}}
-{{--			<div class="box box_gray-{{ $color }}"></div>--}}
-{{--		@endforeach--}}
+		<div class="box box_red-origin-50"></div>
+		@foreach ($steps as $step)
+			<div class="box box_red-my-{{ $step }}"></div>
+		@endforeach
 {{--		<div class="box box_color"></div>--}}
-		<div class="box box_1"></div>
-		<div class="box box_2"></div>
+{{--		<div class="box box_1"></div>--}}
+{{--		<div class="box box_2"></div>--}}
 	</div>
 
 </x-layouts.base-layout>
