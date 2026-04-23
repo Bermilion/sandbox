@@ -3,8 +3,9 @@
 @use "sass:math";
 @use "sass:string";
 @use "sass:meta";
-@use "@core/palette" as palette;
-@use "@core/colors" as colors;
+//@use "@core/palette" as palette;
+//@use "@core/colors" as colors;
+@use "@core/new-colors" as colors;
 @use "@utils/mixins/font" as *;
 
 .grid {
@@ -29,6 +30,13 @@
 		color: colors.$darkest-blue;
 	}
 
+	&_1 {
+		background-color: colors.light(colors.$orange-500, 10%, .9);
+	}
+	&_2 {
+		background-color: colors.light(colors.$orange-500, 10%, .1);
+	}
+
 	//@each $key, $value in palette.$red {
 	//	&_red-#{$key} {
 	//		background-color: $value;
@@ -41,12 +49,37 @@
 
 	//@each $key in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950) {
 	//	&_gray-#{$key} {
-	//		background-color: colors.shade(colors.$grey, $key);
-	//		$hex-string-color: colors.rgb-to-hex-string(colors.shade(colors.$grey, $key));
-	//		$oklch-color: colors.rgba-to-oklch(colors.shade(colors.$grey, $key));
+	//		$_color: colors.shade(palette.$stone-50, $key);
+	//		background-color: $_color;
+	//		$hex-string-color: colors.rgb-to-hex-string($_color);
+	//		$oklch-color: colors.rgba-to-oklch($_color);
 	//
 	//		&:before {
 	//			content: 'gray-#{$key} \A #{$hex-string-color} \A #{$oklch-color}';
+	//			@if $key == 950 {
+	//				color: wheat;
+	//			}
+	//		}
+	//	}
+	//}
+	//@each $key, $value in (palette.$red) {
+	//	@each $step in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950) {
+	//		$_color: colors.shade($value, $step);
+	//		$_base-lightness: color.channel(colors.hex-to-oklch($value), "lightness");
+	//		$_hex-color: colors.rgb-to-hex-string($_color);
+	//		$_oklch-color: colors.hex-to-oklch($_color);
+	//		//$_current-lightness: color.change(colors.rgba-to-oklch($_oklch-color), "lightness");
+	//		$_current-lightness: 0;
+	//
+	//		&_red-#{$key}-#{$step} {
+	//			background-color: $_color;
+	//
+	//			&:before {
+	//				content: 'red-#{$key}-#{$step} \A #{$_hex-color} \A #{$_oklch-color} \A Base lightness: #{$_base-lightness} \A Current lightness: #{$_current-lightness}';
+	//				@if $step >= 800 or $key >= 800 {
+	//					color: wheat;
+	//				}
+	//			}
 	//		}
 	//	}
 	//}
@@ -65,18 +98,18 @@
 	//		}
 	//	}
 	//}
-	&_color {
-		$key: 600;
-		$_color: colors.shade(palette.$yellow-100, $key);
-		background-color: $_color;
-		$hex-string-color: colors.rgb-to-hex-string($_color);
-		$oklch-color: colors.rgba-to-oklch($_color);
-
-		&:before {
-			content: 'shade-#{$key} \A #{$hex-string-color} \A #{$oklch-color}  \A #{$_color}';
-			@if $key == 950 or $key == 800 or $key == 700 {
-				color: wheat;
-			}
-		}
-	}
+	//&_color {
+	//	$key: 400;
+	//	$_color: colors.shade(colors.$grey, $key);
+	//	background-color: $_color;
+	//	$hex-string-color: colors.rgb-to-hex-string($_color);
+	//	$oklch-color: colors.rgba-to-oklch($_color);
+	//
+	//	&:before {
+	//		content: 'shade-#{$key} \A #{$hex-string-color} \A #{$oklch-color}  \A #{$_color}';
+	//		@if $key == 950 or $key == 800 or $key == 700 {
+	//			color: wheat;
+	//		}
+	//	}
+	//}
 }
