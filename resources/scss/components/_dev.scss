@@ -3,11 +3,8 @@
 @use "sass:math";
 @use "sass:string";
 @use "sass:meta";
-@use "@core/palette" as palette;
-@use "@core/colors" as co;
-@use "@core/new-colors" as colors;
 @use "@utils/mixins/font" as *;
-@use "@config/colors" as con;
+@use "@core/new-colors" as colors;
 
 .grid {
 	display: grid;
@@ -27,73 +24,41 @@
 		padding-left: 1rem;
 		align-items: center;
 		white-space: pre;
-		//color: colors.$darkest-blue;
 	}
 
-	&_red-origin-50 {
-		$_base-color: palette.$red-600;
-		$_color: colors.hex-to-oklch($_base-color);
-		$_lightness: color.channel($_color, "lightness");
-		$_chroma: color.channel($_color, "chroma");
-		$_hue: color.channel($_color, "hue");
-		//@debug 'origin-100: #{$_lightness} #{$_chroma} #{$_hue}';
-
-		background-color: $_color;
-
-		&:before {
-			content: 'Origint-100 \A color: #{$_base-color} \A lightness: #{$_lightness}';
-		}
-	}
-
-	&_red-my-50 {
-		$_color: colors.hex-to-oklch(colors.$red-500);
-		$_change-lightness: color.adjust($_color, $lightness: 0%, $chroma: 0, $hue: 0deg);
-		$_lightness: color.channel($_change-lightness, "lightness");
-		$_chroma: color.channel($_change-lightness, "chroma");
-		$_hue: color.channel($_change-lightness, "hue");
-		$_hex: co.oklch-to-hex($_change-lightness);
-		//@debug 'my-100: #{$_lightness} #{$_chroma} #{$_hue}';
-
-		background-color: $_change-lightness;
-
-		&:before {
-			content: 'my-100 \A color: #{$_hex} \A lightness: #{$_lightness}';
-		}
-	}
-
+	$example-color: colors.$accent;
 	&_color-1 {
-		background-color: co.$accent;
+		background-color: $example-color;
 	}
 	&_color-2 {
-		background-color: colors.light-10(co.$accent);
+		background-color: colors.light-10($example-color);
 	}
 	&_color-3 {
-		background-color: colors.light-20(co.$accent);
+		background-color: colors.light-20($example-color);
 	}
 	&_color-4 {
-		background-color: colors.light-40(co.$accent);
+		background-color: colors.light-30($example-color);
 	}
 	&_color-5 {
-		background-color: colors.light-50(co.$accent);
+		background-color: colors.light-40($example-color);
 	}
-	//	$base-color: colors.get-map-by-shade(co.$accent);
-	//
-	//	@each $key, $color in $base-color {
-	//		&-#{$key} {
-	//			background-color: $color;
-	//		}
-	//	}
-	//	&-base {
-	//		background-color: colors.hex-to-oklch(palette.$sky-100);
-	//	}
-	//}
-
+	&_color-6 {
+		background-color: colors.light-50($example-color);
+	}
+	&_color-7 {
+		background-color: colors.dark-10($example-color);
+	}
+	&_color-8 {
+		background-color: colors.dark-20($example-color);
+	}
+	&_color-9 {
+		background-color: colors.dark-30($example-color);
+	}
+	&_color-10 {
+		background-color: colors.dark-40($example-color);
+	}
+	&_color-11 {
+		background-color: colors.dark-50($example-color);
+	}
 
 }
-
-//@debug colors.light-10(co.$accent);
-
-//@debug colors.map-compare-palette(colors.compare-colors(palette.$neutral-500));
-//@debug colors.get-map-by-shade(palette.$sky-200);
-
-//@debug colors.light-10(co.$grey);
