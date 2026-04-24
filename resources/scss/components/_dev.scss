@@ -7,6 +7,7 @@
 @use "@core/colors" as co;
 @use "@core/new-colors" as colors;
 @use "@utils/mixins/font" as *;
+@use "@config/colors" as con;
 
 .grid {
 	display: grid;
@@ -60,5 +61,39 @@
 		}
 	}
 
+	&_color-1 {
+		background-color: co.$accent;
+	}
+	&_color-2 {
+		background-color: colors.light-10(co.$accent);
+	}
+	&_color-3 {
+		background-color: colors.light-20(co.$accent);
+	}
+	&_color-4 {
+		background-color: colors.light-40(co.$accent);
+	}
+	&_color-5 {
+		background-color: colors.light-50(co.$accent);
+	}
+	//	$base-color: colors.get-map-by-shade(co.$accent);
+	//
+	//	@each $key, $color in $base-color {
+	//		&-#{$key} {
+	//			background-color: $color;
+	//		}
+	//	}
+	//	&-base {
+	//		background-color: colors.hex-to-oklch(palette.$sky-100);
+	//	}
+	//}
+
 
 }
+
+//@debug colors.light-10(co.$accent);
+
+//@debug colors.map-compare-palette(colors.compare-colors(palette.$neutral-500));
+//@debug colors.get-map-by-shade(palette.$sky-200);
+
+//@debug colors.light-10(co.$grey);
