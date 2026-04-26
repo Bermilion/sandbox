@@ -4,7 +4,6 @@
 @use "@core/viewports";
 @use "@core/colors";
 @use "@core/rem-clamp";
-@use "@core/variables";
 @use "@utils/functions/size" as *;
 @use "@utils/mixins/font" as *;
 @use "@utils/classes/margin";
@@ -30,6 +29,8 @@
 @use "pages/colors-page";
 
 @use "components/dev";
+
+@use "@core/variables";
 
 html, body {
 	min-height: 100vh;
