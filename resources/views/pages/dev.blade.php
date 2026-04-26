@@ -14,11 +14,11 @@
 {{--		@foreach ($steps as $step)--}}
 {{--			<div class="box box_color-{{ $step }}">{{ $step }}</div>--}}
 {{--		@endforeach--}}
-		<div class="box box_color-6">light-50 50</div>
-		<div class="box box_color-5">light-40 100</div>
-		<div class="box box_color-4">light-30 200</div>
-		<div class="box box_color-3">light-20 300</div>
-		<div class="box box_color-2">light-10 400</div>
+		<div class="box box_color-6">accent base</div>
+		<div class="box box_color-5">light-10 400</div>
+		<div class="box box_color-4">dark-10 600</div>
+		<div class="box box_color-3">hex dark-10 600</div>
+		<div class="box box_color-2">hex light-10 400</div>
 		<div class="box box_color-1">base 500</div>
 		<div class="box box_color-7">dark-10 600</div>
 		<div class="box box_color-8">dark-20 700</div>

@@ -28,26 +28,27 @@
 
 	$example-color: colors.$accent;
 	&_color-1 {
-		//background-color: colors.base($example-color);
+		background-color: colors.base(colors.$sky-700);
+		color: colors.content(colors.$sky-700, .3);
 	}
 	&_color-2 {
-		//background-color: colors.base(colors.$accent, .8);
-		//background-color: colors.light-10($example-color);
+		//background-color: colors.dark-10(colors.$accent);
+		//color: colors.content($example-color, .3);
 	}
 	&_color-3 {
-		//background-color: colors.base(colors.$accent);
 		//background-color: colors.light-20($example-color);
 	}
 	&_color-4 {
-		background-color: colors.base($example-color);
-		color: colors.content($example-color);
+		//background-color: colors.dark-10(colors.$accent);
+		//color: colors.content($example-color);
 	}
 	&_color-5 {
-		background-color: colors.light-50(colors.$red);
+		//background-color: colors.light-10(colors.$accent);
+		//color: colors.content(colors.$red);
 	}
-	//&_color-6 {
-	//	background-color: colors.light-50($example-color);
-	//}
+	&_color-6 {
+		//background-color: colors.base(colors.$accent);
+	}
 	//&_color-7 {
 	//	background-color: colors.dark-10($example-color);
 	//}
