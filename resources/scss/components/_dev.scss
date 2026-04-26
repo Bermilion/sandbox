@@ -26,7 +26,7 @@
 		white-space: pre;
 	}
 
-	$example-color: colors.$darkest-blue;
+	$example-color: colors.$accent;
 	&_color-1 {
 		//background-color: colors.base($example-color);
 	}
@@ -39,7 +39,8 @@
 		//background-color: colors.light-20($example-color);
 	}
 	&_color-4 {
-		background-color: colors.base(colors.$red-50);
+		background-color: colors.base($example-color);
+		color: colors.content($example-color);
 	}
 	&_color-5 {
 		background-color: colors.light-50(colors.$red);
