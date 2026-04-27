@@ -5,64 +5,167 @@
 @use "sass:meta";
 @use "@utils/mixins/font" as *;
 @use "@core/colors" as colors;
+@use "@functions/size" as *;
 
 .grid {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	align-items: center;
+	display: inline-grid;
+	grid-template-columns: repeat(11, auto);
+	gap: s(16);
+	margin: s(16);
 }
 
 .box {
-	position: relative;
-	height: 25rem;
-	overflow: hidden;
+	width: s(48);
+	height: s(48);
+	border-radius: s(8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-	&:before {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		justify-content: flex-start;
-		padding-left: 1rem;
-		align-items: center;
-		white-space: pre;
+	$accent: colors.$green-500;
+	$hsl-accent: color.to-space($accent, hsl);
+	$oklch-accent: color.to-space($accent, oklch);
+
+	&_50 {
+		background-color: colors.light-50($accent);
+		color: colors.content(colors.light-50($accent));
+	}
+	&_100 {
+		background-color: colors.light-40($accent);
+		color: colors.content(colors.light-40($accent));
+	}
+	&_200 {
+		background-color: colors.light-30($accent);
+		color: colors.content(colors.light-30($accent));
+	}
+	&_300 {
+		background-color: colors.light-20($accent);
+		color: colors.content(colors.light-20($accent));
+	}
+	&_400 {
+		background-color: colors.light-10($accent);
+		color: colors.content(colors.light-10($accent));
+	}
+	&_500 {
+		background-color: colors.base($accent);
+		color: colors.content(colors.base($accent));
+	}
+	&_600 {
+		background-color: colors.dark-10($accent);
+		color: colors.content(colors.dark-10($accent));
+	}
+	&_700 {
+		background-color: colors.dark-20($accent);
+		color: colors.content(colors.dark-20($accent));
+	}
+	&_800 {
+		background-color: colors.dark-30($accent);
+		color: colors.content(colors.dark-30($accent));
+	}
+	&_900 {
+		background-color: colors.dark-40($accent);
+		color: colors.content(colors.dark-40($accent));
+	}
+	&_950 {
+		background-color: colors.dark-50($accent);
+		color: colors.content(colors.dark-50($accent));
+	}
+	&_oklch-50 {
+		background-color: color.adjust($oklch-accent, $lightness: 50%);
+		color: colors.content(color.adjust($oklch-accent, $lightness: 50%));
+	}
+	&_oklch-100 {
+		background-color: color.adjust($oklch-accent, $lightness: 40%);
+		color: colors.content(color.adjust($oklch-accent, $lightness: 40%));
+	}
+	&_oklch-200 {
+		background-color: color.adjust($oklch-accent, $lightness: 30%);
+		color: colors.content(color.adjust($oklch-accent, $lightness: 30%));
+	}
+	&_oklch-300 {
+		background-color: color.adjust($oklch-accent, $lightness: 20%);
+		color: colors.content(color.adjust($oklch-accent, $lightness: 20%));
+	}
+	&_oklch-400 {
+		background-color: color.adjust($oklch-accent, $lightness: 10%);
+		color: colors.content(color.adjust($oklch-accent, $lightness: 10%));
+	}
+	&_oklch-400 {
+		background-color: color.adjust($oklch-accent, $lightness: 10%);
+		color: colors.content(color.adjust($oklch-accent, $lightness: 10%));
+	}
+	&_oklch-500 {
+		background-color: $oklch-accent;
+		color: colors.content($oklch-accent);
+	}
+	&_oklch-600 {
+		background-color: color.adjust($oklch-accent, $lightness: -10%);
+		color: colors.content(color.adjust($oklch-accent, $lightness: -10%));
+	}
+	&_oklch-700 {
+		background-color: color.adjust($oklch-accent, $lightness: -20%);
+		color: colors.content(color.adjust($oklch-accent, $lightness: -20%));
+	}
+	&_oklch-800 {
+		background-color: color.adjust($oklch-accent, $lightness: -30%);
+		color: colors.content(color.adjust($oklch-accent, $lightness: -30%));
+	}
+	&_oklch-900 {
+		background-color: color.adjust($oklch-accent, $lightness: -40%);
+		color: colors.content(color.adjust($oklch-accent, $lightness: -40%));
+	}
+	&_oklch-950 {
+		background-color: color.adjust($oklch-accent, $lightness: -50%);
+		color: colors.content(color.adjust($oklch-accent, $lightness: -50%));
 	}
 
-	$example-color: colors.$accent;
-	&_color-1 {
-		background-color: colors.base(colors.$sky-700);
-		color: colors.content(colors.$sky-700, .3);
+	&_oklch-50 {
+		background-color: color.adjust($hsl-accent, $lightness: 50%);
+		color: colors.content(color.adjust($hsl-accent, $lightness: 50%));
 	}
-	&_color-2 {
-		//background-color: colors.dark-10(colors.$accent);
-		//color: colors.content($example-color, .3);
+	&_hsl-100 {
+		background-color: color.adjust($hsl-accent, $lightness: 40%);
+		color: colors.content(color.adjust($hsl-accent, $lightness: 40%));
 	}
-	&_color-3 {
-		//background-color: colors.light-20($example-color);
+	&_hsl-200 {
+		background-color: color.adjust($hsl-accent, $lightness: 30%);
+		color: colors.content(color.adjust($hsl-accent, $lightness: 30%));
 	}
-	&_color-4 {
-		//background-color: colors.dark-10(colors.$accent);
-		//color: colors.content($example-color);
+	&_hsl-300 {
+		background-color: color.adjust($hsl-accent, $lightness: 20%);
+		color: colors.content(color.adjust($hsl-accent, $lightness: 20%));
 	}
-	&_color-5 {
-		//background-color: colors.light-10(colors.$accent);
-		//color: colors.content(colors.$red);
+	&_hsl-400 {
+		background-color: color.adjust($hsl-accent, $lightness: 10%);
+		color: colors.content(color.adjust($hsl-accent, $lightness: 10%));
 	}
-	&_color-6 {
-		//background-color: colors.base(colors.$accent);
+	&_hsl-400 {
+		background-color: color.adjust($hsl-accent, $lightness: 10%);
+		color: colors.content(color.adjust($hsl-accent, $lightness: 10%));
 	}
-	//&_color-7 {
-	//	background-color: colors.dark-10($example-color);
-	//}
-	//&_color-8 {
-	//	background-color: colors.dark-20($example-color);
-	//}
-	//&_color-9 {
-	//	background-color: colors.dark-30($example-color);
-	//}
-	//&_color-10 {
-	//	background-color: colors.dark-40($example-color);
-	//}
-	//&_color-11 {
-	//	background-color: colors.dark-50($example-color);
-	//}
-
+	&_hsl-500 {
+		background-color: $hsl-accent;
+		color: colors.content($hsl-accent);
+	}
+	&_hsl-600 {
+		background-color: color.adjust($hsl-accent, $lightness: -10%);
+		color: colors.content(color.adjust($hsl-accent, $lightness: -10%));
+	}
+	&_hsl-700 {
+		background-color: color.adjust($hsl-accent, $lightness: -20%);
+		color: colors.content(color.adjust($hsl-accent, $lightness: -20%));
+	}
+	&_hsl-800 {
+		background-color: color.adjust($hsl-accent, $lightness: -30%);
+		color: colors.content(color.adjust($hsl-accent, $lightness: -30%));
+	}
+	&_hsl-900 {
+		background-color: color.adjust($hsl-accent, $lightness: -40%);
+		color: colors.content(color.adjust($hsl-accent, $lightness: -40%));
+	}
+	&_hsl-950 {
+		background-color: color.adjust($hsl-accent, $lightness: -50%);
+		color: colors.content(color.adjust($hsl-accent, $lightness: -50%));
+	}
 }
