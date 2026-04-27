@@ -9,7 +9,7 @@
 		align-items: center;
 		display: inline-grid;
 		grid-template-columns: repeat(11, auto);
-		gap: s(16);
+		gap: s(8);
 		margin: s(16);
 	}
 
@@ -24,6 +24,22 @@
 		$accent: colors.$green-500;
 		$hsl-accent: color.to-space($accent, hsl);
 		$oklch-accent: color.to-space($accent, oklch);
+
+		$shades: (50: 50%, 100: 40%, 200: 30%, 300: 20%, 400: 10%, 500: 0%, 600: -10%, 700: -20%, 800: -30%, 900: -40%, 950: -50%);
+
+		@each $shade, $value in $shades {
+			&_oklch-#{$shade} {
+				$color: color.adjust($oklch-accent, $lightness: $value);
+				background-color: $color;
+				color: colors.content($color);
+			}
+			//&_hsl-#{$shade} {
+			//	$color: color.adjust($hsl-accent, $lightness: $value);
+			//	//@debug color.to-space($color, oklch);
+			//	background-color: $color;
+			//	color: colors.content($color);
+			//}
+		}
 
 		&_50 {
 			background-color: colors.light-50($accent);
@@ -68,54 +84,6 @@
 		&_950 {
 			background-color: colors.dark-50($accent);
 			color: colors.content(colors.dark-50($accent));
-		}
-		&_oklch-50 {
-			background-color: color.adjust($oklch-accent, $lightness: 50%);
-			color: colors.content(color.adjust($oklch-accent, $lightness: 50%));
-		}
-		&_oklch-100 {
-			background-color: color.adjust($oklch-accent, $lightness: 40%);
-			color: colors.content(color.adjust($oklch-accent, $lightness: 40%));
-		}
-		&_oklch-200 {
-			background-color: color.adjust($oklch-accent, $lightness: 30%);
-			color: colors.content(color.adjust($oklch-accent, $lightness: 30%));
-		}
-		&_oklch-300 {
-			background-color: color.adjust($oklch-accent, $lightness: 20%);
-			color: colors.content(color.adjust($oklch-accent, $lightness: 20%));
-		}
-		&_oklch-400 {
-			background-color: color.adjust($oklch-accent, $lightness: 10%);
-			color: colors.content(color.adjust($oklch-accent, $lightness: 10%));
-		}
-		&_oklch-400 {
-			background-color: color.adjust($oklch-accent, $lightness: 10%);
-			color: colors.content(color.adjust($oklch-accent, $lightness: 10%));
-		}
-		&_oklch-500 {
-			background-color: $oklch-accent;
-			color: colors.content($oklch-accent);
-		}
-		&_oklch-600 {
-			background-color: color.adjust($oklch-accent, $lightness: -10%);
-			color: colors.content(color.adjust($oklch-accent, $lightness: -10%));
-		}
-		&_oklch-700 {
-			background-color: color.adjust($oklch-accent, $lightness: -20%);
-			color: colors.content(color.adjust($oklch-accent, $lightness: -20%));
-		}
-		&_oklch-800 {
-			background-color: color.adjust($oklch-accent, $lightness: -30%);
-			color: colors.content(color.adjust($oklch-accent, $lightness: -30%));
-		}
-		&_oklch-900 {
-			background-color: color.adjust($oklch-accent, $lightness: -40%);
-			color: colors.content(color.adjust($oklch-accent, $lightness: -40%));
-		}
-		&_oklch-950 {
-			background-color: color.adjust($oklch-accent, $lightness: -50%);
-			color: colors.content(color.adjust($oklch-accent, $lightness: -50%));
 		}
 
 		&_oklch-50 {
