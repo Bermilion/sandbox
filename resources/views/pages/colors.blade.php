@@ -1,5 +1,6 @@
 @php
 	$colors = json_decode(file_get_contents(public_path('colors.json')), true);
+	$steps = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "950"];
 @endphp
 
 <x-layouts.base-layout title="Цвет">
@@ -7,49 +8,84 @@
 		<x-layouts.wrapper class="my-64">
 			<div class="description mb-40">
 				<x-type::h size="2" class="mb-24">Функции для работы с цветами</x-type::h>
-				<x-type::p class="mb-16">Модуль цветов предоставляет набор SCSS-функций для автоматической генерации оттенков и работы с цветовой палитрой проекта.</x-type::p>
+				<x-type::p class="mb-16">Модуль цветов предоставляет набор SCSS-функций для автоматической генерации оттенков в пространстве OKLCH и работы с цветовой палитрой проекта.</x-type::p>
 				<x-type::h size="3" class="mb-16">Логика генерации оттенков</x-type::h>
-				<x-type::p class="mb-16">Система автоматически генерирует дополнительные оттенки для каждого базового цвета из конфигурации. Процесс проходит в несколько этапов:</x-type::p>
+				<x-type::p class="mb-16">Система использует цветовое пространство OKLCH для более точного восприятия цветов человеком. Процесс генерации оттенков:</x-type::p>
+
+				<div class="colors">
+					<x-type::h size="5">OKLCH:</x-type::h>
+					<x-type::hint>С подстройкой интерполяции через систему цветов tailwind</x-type::hint>
+					<div class="grid">
+						@foreach($steps as $step)
+							<div class="box box_{{ $step }}">
+								{{ $step }}
+							</div>
+						@endforeach
+					</div>
+
+					<x-type::h size="5">OKLCH:</x-type::h>
+					<x-type::hint>Линейная интерполяция</x-type::hint>
+					<div class="grid">
+						@foreach($steps as $step)
+							<div class="box box_oklch-{{ $step }}">
+								{{ $step }}
+							</div>
+						@endforeach
+					</div>
+
+					<x-type::h size="5">HSL:</x-type::h>
+					<x-type::hint>Линейная интерполяция</x-type::hint>
+					<div class="grid">
+						@foreach($steps as $step)
+							<div class="box box_hsl-{{ $step }}">
+								{{ $step }}
+							</div>
+						@endforeach
+					</div>
+				</div>
+
+				<x-type::p class="mb-24">Палитра наглядно показывает что обычное линейное изменение параметра lightness не подходит для серьёзных манипуляций с цветом.</x-type::p>
+
 				<x-type::ul mod="disc" class="mb-32">
-					<x-type::li class="mb-4"><x-type::code>Сканирование конфига</x-type::code> — модуль считывает все переменные из конфигурационного файла цветов и отбирает только те, что являются цветами</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>Создание оттенков</x-type::code> — для каждого базового цвета формируется массив из 4 вариантов:
+					<x-type::li class="mb-4"><x-type::code>Пространство OKLCH</x-type::code> — все операции выполняются в пространстве OKLCH (Lightness, Chroma, Hue), которое обеспечивает более естественное восприятие цветов по сравнению с RGB/HSL</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>Интерполяция оттенков</x-type::code> — для каждого базового цвета формируется 11 вариантов:
 						<x-type::ul mod="disc" class="mb-4">
-							<x-type::li class="mb-4"><x-type::code>base</x-type::code> — исходный цвет без изменений</x-type::li>
-							<x-type::li class="mb-4"><x-type::code>light</x-type::code> — светлый оттенок (яркость +10%)</x-type::li>
-							<x-type::li class="mb-4"><x-type::code>dark</x-type::code> — тёмный оттенок (яркость -10%)</x-type::li>
-							<x-type::li class="mb-4"><x-type::code>content</x-type::code> — цвет текста для этого фона (определяется автоматически)</x-type::li>
+							<x-type::li class="mb-4"><x-type::code>base</x-type::code> — исходный цвет (оттенок 500)</x-type::li>
+							<x-type::li class="mb-4"><x-type::code>light-10…light-50</x-type::code> — светлые оттенки (уровни 400, 300, 200, 100, 50)</x-type::li>
+							<x-type::li class="mb-4"><x-type::code>dark-10…dark-50</x-type::code> — тёмные оттенки (уровни 600, 700, 800, 900, 950)</x-type::li>
+							<x-type::li class="mb-4"><x-type::code>content</x-type::code> — контрастный цвет текста (определяется автоматически)</x-type::li>
 						</x-type::ul>
 					</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>Расчёт яркости</x-type::code> — для определения подходящего цвета контента используется формула с весовыми коэффициентами для каждого канала:
-						<x-type::code>яркость = (0.299 × R + 0.587 × G + 0.114 × B) / 255 × 100%</x-type::code>
-						Коэффициенты учитывают различное восприятие человеком красного, зелёного и синего каналов
-					</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>Определение контента</x-type::code> — если яркость базового цвета превышает 50%, для текста используется тёмно-серый (#222); если меньше — белый (#fff)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>Сохранение результата</x-type::code> — все сгенерированные оттенки сохраняются в двумерную карту, где ключ — название цвета, а значение — массив с оттенками</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>Поиск ближайшей палитры</x-type::code> — система находит ближайший оттенок в палитре с использованием взвешенного евклидова расстояния в OKLCH (веса: lightness 1.0, hue 1.5, chroma 2.0)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>Интерполяция</x-type::code> — оттенки вычисляются через параметры интерполяции (lightness, chroma, hue) из карты интерполяции для каждой палитры</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>Определение контента</x-type::code> — если lightness > 50%, используется тёмный цвет текста; иначе — светлый</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>Поддержка прозрачности</x-type::code> — все функции принимают параметр $alpha для создания полупрозрачных цветов</x-type::li>
 				</x-type::ul>
 				<x-type::h size="3" class="mb-16">Основные функции</x-type::h>
 				<x-type::ul mod="disc" class="mb-32">
-					<x-type::li class="mb-4"><x-type::code>get($color, $shade: "base")</x-type::code> — получить оттенок из массива цветов</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>base($color)</x-type::code> — получить базовый цвет</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>light($color)</x-type::code> — получить светлый оттенок (+10% яркости)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>dark($color)</x-type::code> — получить тёмный оттенок (-10% яркости)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>content($color)</x-type::code> — получить цвет контента (определяется автоматически по яркости)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>base($color, $alpha: 1)</x-type::code> — получить базовый цвет (оттенок 500)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>light-10($color, $alpha: 1)</x-type::code> — светлый оттенок (уровень 400)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>light-20($color, $alpha: 1)</x-type::code> — светлый оттенок (уровень 300)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>light-30($color, $alpha: 1)</x-type::code> — светлый оттенок (уровень 200)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>light-40($color, $alpha: 1)</x-type::code> — светлый оттенок (уровень 100)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>light-50($color, $alpha: 1)</x-type::code> — светлый оттенок (уровень 50)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>dark-10($color, $alpha: 1)</x-type::code> — тёмный оттенок (уровень 600)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>dark-20($color, $alpha: 1)</x-type::code> — тёмный оттенок (уровень 700)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>dark-30($color, $alpha: 1)</x-type::code> — тёмный оттенок (уровень 800)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>dark-40($color, $alpha: 1)</x-type::code> — тёмный оттенок (уровень 900)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>dark-50($color, $alpha: 1)</x-type::code> — тёмный оттенок (уровень 950)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>content($color, $alpha: 1)</x-type::code> — контрастный цвет текста (определяется по lightness)</x-type::li>
 				</x-type::ul>
 				<x-type::h size="3" class="mb-16">CSS-переменные</x-type::h>
+				<x-type::p class="mb-16">Все функции возвращают CSS-переменные в формате <x-type::code>var(--color-{name})</x-type::code>. Имена переменных генерируются автоматически:</x-type::p>
 				<x-type::ul mod="disc" class="mb-32">
-					<x-type::li class="mb-4"><x-type::code>var-base($color)</x-type::code> — получить CSS-переменную базового цвета</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>var-light($color)</x-type::code> — получить CSS-переменную светлого оттенка</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>var-dark($color)</x-type::code> — получить CSS-переменную тёмного оттенка</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>var-content($color)</x-type::code> — получить CSS-переменную цвета контента</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>get-var-color($color-name, $shade-name)</x-type::code> — получить CSS-переменную по названию цвета и оттенка</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>base</x-type::code> → <x-type::code>var(--color-{color-name})</x-type::code></x-type::li>
+					<x-type::li class="mb-4"><x-type::code>light-10</x-type::code> → <x-type::code>var(--color-{color-name}-light-10)</x-type::code></x-type::li>
+					<x-type::li class="mb-4"><x-type::code>dark-20</x-type::code> → <x-type::code>var(--color-{color-name}-dark-20)</x-type::code></x-type::li>
+					<x-type::li class="mb-4"><x-type::code>content</x-type::code> → <x-type::code>var(--color-content-dark)</x-type::code> или <x-type::code>var(--color-content-light)</x-type::code></x-type::li>
+					<x-type::li class="mb-4">С alpha < 1: <x-type::code>var(--color-{color-name}-light-10-alpha-50)</x-type::code></x-type::li>
 				</x-type::ul>
-				<x-type::h size="3" class="mb-16">Вспомогательные функции</x-type::h>
-				<x-type::ul mod="disc" class="mb-32">
-					<x-type::li class="mb-4"><x-type::code>get-base-colors-map()</x-type::code> — получить карту базовых цветов из конфига</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>get-colors-map()</x-type::code> — получить двумерную карту цветов с вариациями</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>get-colors-map-flat()</x-type::code> — получить плоскую карту цветов (ключ: цвет-оттенок)</x-type::li>
-				</x-type::ul>
-				<x-type::hint class="mb-16">Все оттенки генерируются автоматически на основе базовых цветов из конфигурации. Цвет контента определяется по яркости базового цвета: для тёмных фонов — белый текст, для светлых — тёмно-серый.</x-type::hint>
+				<x-type::hint class="mb-16">Все оттенки генерируются автоматически в пространстве OKLCH на основе базовых цветов из конфигурации. Цвет контента определяется по lightness: для тёмных фонов — светлый текст, для светлых — тёмный. Все функции поддерживают параметр прозрачности $alpha.</x-type::hint>
 			</div>
 			<div class="color-modules">
 				@foreach($colors as $colorName => $shades)

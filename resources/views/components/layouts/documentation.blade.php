@@ -1,5 +1,6 @@
 <div class="layout">
 	<x-sidebar>
+		<x-type::supheading>Основные концепции</x-type::supheading>
 		<x-base::link href="/" text="Адаптивная система шрифтов"/>
 		<x-base::link href="/pages/base-block" text="Базовый блок"/>
 		<x-base::link href="/pages/responsive-design" text="Адаптивный дизайн"/>
