@@ -7,7 +7,7 @@
 	<x-layouts.documentation>
 		<x-layouts.wrapper class="my-64">
 			<div class="description mb-40">
-				<x-type::h size="2" class="mb-24">Функции для работы с цветами</x-type::h>
+				<x-type::h size="2" class="mb-24">Функции для работы с цветом</x-type::h>
 				<x-type::p class="mb-16">Модуль цветов предоставляет набор SCSS-функций для автоматической генерации оттенков в пространстве OKLCH и работы с цветовой палитрой проекта.</x-type::p>
 				<x-type::h size="3" class="mb-16">Логика генерации оттенков</x-type::h>
 				<x-type::p class="mb-16">Система использует цветовое пространство OKLCH для более точного восприятия цветов человеком. Процесс генерации оттенков:</x-type::p>
@@ -17,7 +17,7 @@
 					<x-type::hint>С подстройкой интерполяции через систему цветов tailwind</x-type::hint>
 					<div class="grid">
 						@foreach($steps as $step)
-							<div class="box box_{{ $step }}">
+							<div class="box box_accent-{{ $step }}">
 								{{ $step }}
 							</div>
 						@endforeach
@@ -27,7 +27,7 @@
 					<x-type::hint>Линейная интерполяция</x-type::hint>
 					<div class="grid">
 						@foreach($steps as $step)
-							<div class="box box_oklch-{{ $step }}">
+							<div class="box box_oklch-accent-{{ $step }}">
 								{{ $step }}
 							</div>
 						@endforeach
@@ -37,7 +37,7 @@
 					<x-type::hint>Линейная интерполяция</x-type::hint>
 					<div class="grid">
 						@foreach($steps as $step)
-							<div class="box box_hsl-{{ $step }}">
+							<div class="box box_hsl-accent-{{ $step }}">
 								{{ $step }}
 							</div>
 						@endforeach
@@ -46,19 +46,19 @@
 
 				<x-type::p class="mb-24">Палитра наглядно показывает что обычное линейное изменение параметра lightness не подходит для серьёзных манипуляций с цветом.</x-type::p>
 
+				<x-type::p class="mb-4"><x-type::code class="code_inline">Пространство OKLCH</x-type::code> — все операции выполняются в пространстве OKLCH (Lightness, Chroma, Hue), которое обеспечивает более естественное восприятие цветов по сравнению с RGB/HSL.</x-type::p>
+				<x-type::p class="mb-4"><x-type::code class="code_inline">Интерполяция оттенков</x-type::code> — для каждого базового цвета формируется 11 вариантов:</x-type::p>
+				<x-type::ul class="mb-32 ml-24">
+					<x-type::li class="mb-4"><x-type::code class="code_inline">base</x-type::code> — исходный цвет (оттенок 500)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code class="code_inline">light-10…light-50</x-type::code> — светлые оттенки (уровни 400, 300, 200, 100, 50)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code class="code_inline">dark-10…dark-50</x-type::code> — тёмные оттенки (уровни 600, 700, 800, 900, 950)</x-type::li>
+					<x-type::li class="mb-4"><x-type::code class="code_inline">content</x-type::code> — контрастный цвет текста (определяется автоматически)</x-type::li>
+				</x-type::ul>
+
 				<x-type::ul mod="disc" class="mb-32">
-					<x-type::li class="mb-4"><x-type::code>Пространство OKLCH</x-type::code> — все операции выполняются в пространстве OKLCH (Lightness, Chroma, Hue), которое обеспечивает более естественное восприятие цветов по сравнению с RGB/HSL</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>Интерполяция оттенков</x-type::code> — для каждого базового цвета формируется 11 вариантов:
-						<x-type::ul mod="disc" class="mb-4">
-							<x-type::li class="mb-4"><x-type::code>base</x-type::code> — исходный цвет (оттенок 500)</x-type::li>
-							<x-type::li class="mb-4"><x-type::code>light-10…light-50</x-type::code> — светлые оттенки (уровни 400, 300, 200, 100, 50)</x-type::li>
-							<x-type::li class="mb-4"><x-type::code>dark-10…dark-50</x-type::code> — тёмные оттенки (уровни 600, 700, 800, 900, 950)</x-type::li>
-							<x-type::li class="mb-4"><x-type::code>content</x-type::code> — контрастный цвет текста (определяется автоматически)</x-type::li>
-						</x-type::ul>
-					</x-type::li>
 					<x-type::li class="mb-4"><x-type::code>Поиск ближайшей палитры</x-type::code> — система находит ближайший оттенок в палитре с использованием взвешенного евклидова расстояния в OKLCH (веса: lightness 1.0, hue 1.5, chroma 2.0)</x-type::li>
 					<x-type::li class="mb-4"><x-type::code>Интерполяция</x-type::code> — оттенки вычисляются через параметры интерполяции (lightness, chroma, hue) из карты интерполяции для каждой палитры</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>Определение контента</x-type::code> — если lightness > 50%, используется тёмный цвет текста; иначе — светлый</x-type::li>
+					<x-type::li class="mb-4"><x-type::code>Определение контента</x-type::code> — если lightness > 56%, используется тёмный цвет текста; иначе — светлый</x-type::li>
 					<x-type::li class="mb-4"><x-type::code>Поддержка прозрачности</x-type::code> — все функции принимают параметр $alpha для создания полупрозрачных цветов</x-type::li>
 				</x-type::ul>
 				<x-type::h size="3" class="mb-16">Основные функции</x-type::h>
