@@ -1,5 +1,6 @@
 //@use "@fontsource-variable/geologica";
 @use "@fontsource-variable/inter";
+@use "@fontsource-variable/jetbrains-mono";
 @use "@core/preflight";
 @use "@core/viewports";
 @use "@core/colors";
@@ -10,6 +11,7 @@
 @use "@utils/classes/padding";
 @use "@type/classes";
 @use "sass:map";
+@use "@config/fonts" as font-config;
 
 @use "@blocks/utils";
 
@@ -27,8 +29,11 @@
 @use "components/example-block";
 
 @use "pages/colors-page";
+@use "pages/dev";
 
-@use "components/dev";
+@use "components/code";
+@use "components/figure";
+@use "components/menu";
 
 @use "@core/variables";
 
@@ -37,8 +42,7 @@ html, body {
 }
 
 .body {
-	//font-family: "Geologica Variable", sans-serif;
-	font-family: "Inter Variable", sans-serif;
+	font-family: font-config.$primary-font;
 	@include font(16, 24, 'regular');
 }
 

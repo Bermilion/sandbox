@@ -4,9 +4,9 @@
 			<x-type::h size="1" class="mb-24">Интервалы</x-type::h>
 			<x-type::p class="mb-16">Все размеры представлены в карте `$sizes` в файле `scss/config/_sizes.scss`. Они
 				служат базой для микромодулей. И доступны как css переменные через функцию
-				<x-type::code>s($keys...)</x-type::code> где $keys - это ключи из карты `$sizes`.
+				<x-ui.code>s($keys...)</x-ui.code> где $keys - это ключи из карты `$sizes`.
 			</x-type::p>
-			<x-type::code mod="block" class="mb-32">
+			<x-ui.code mod="block" class="mb-32">
 				```scss
 		$sizes: (
 			'0': 	0,      	// 0px
@@ -33,11 +33,11 @@
 			'800':  100rem,   	// 800px
 		);
 	```
-			</x-type::code>
+			</x-ui.code>
 			<x-type::p class="mb-16">Так как микромодуль 8px и равен 1rem для удобства все ключи отсылают нас к пиксельным значениям.</x-type::p>
 			<x-type::p class="mb-16">Функция
-				<x-type::code>s($keys...)</x-type::code>
-				принимать в себя от одного до четырех значений перечисленных через запятую. Вернёт `null` если ключ не
+				<x-ui.code>s($keys...)</x-ui.code>
+				принимает в себя от одного до четырех значений перечисленных через запятую. Вернёт `null` если ключ не
 				найден (нет в карте `$sizes`).
 			</x-type::p>
 
@@ -45,9 +45,9 @@
 			<x-type::p class="mb-16">На основе карты `$sizes` генерируются утилитарные классы для `padding` и `margin`. Классы поддерживают все направления и адаптивные модификаторы для различных устройств.</x-type::p>
 
 			<x-type::h size="3" class="mt-48 mb-24">Padding (внутренние отступы)</x-type::h>
-			<x-type::p class="mb-16">Префикс <x-type::code>p</x-type::code> — для padding. Формат: <x-type::code>p{направление}-{размер}</x-type::code></x-type::p>
+			<x-type::p class="mb-16">Префикс <x-ui.code>p</x-ui.code> — для padding. Формат: <x-ui.code>p{направление}-{размер}</x-ui.code></x-type::p>
 
-			<x-type::code mod="block" class="mb-32">
+			<x-ui.code mod="block" class="mb-32">
 				```scss
 p-{size}        // Все стороны
 pt-{size}       // Только top
@@ -57,7 +57,7 @@ pl-{size}       // Только left
 px-{size}       // left + right
 py-{size}       // top + bottom
 ```
-			</x-type::code>
+			</x-ui.code>
 
 			<x-type::h size="4" class="mt-48 mb-24">Примеры использования padding</x-type::h>
 			<x-type::p class="mb-16">p-16 — отступ 16px со всех сторон</x-type::p>
@@ -65,9 +65,9 @@ py-{size}       // top + bottom
 			<x-type::p>pt-32 pb-16 — top 32px, bottom 16px</x-type::p>
 
 			<x-type::h size="3" class="mt-48 mb-24">Margin (внешние отступы)</x-type::h>
-			<x-type::p class="mb-16">Префикс <x-type::code>m</x-type::code> — для margin. Формат: <x-type::code>m{направление}-{размер}</x-type::code></x-type::p>
+			<x-type::p class="mb-16">Префикс <x-ui.code>m</x-ui.code> — для margin. Формат: <x-ui.code>m{направление}-{размер}</x-ui.code></x-type::p>
 
-			<x-type::code mod="block" class="mb-32">
+			<x-ui.code mod="block" class="mb-32">
 				```scss
 m-{size}        // Все стороны
 mt-{size}       // Только top
@@ -77,7 +77,7 @@ ml-{size}       // Только left
 mx-{size}       // left + right
 my-{size}       // top + bottom
 ```
-			</x-type::code>
+			</x-ui.code>
 
 			<x-type::h size="4" class="mt-48 mb-24">Примеры использования margin</x-type::h>
 			<x-type::p class="mb-16">m-16 — отступ 16px со всех сторон</x-type::p>
@@ -87,7 +87,7 @@ my-{size}       // top + bottom
 			<x-type::h size="3" class="mt-48 mb-24">Адаптивные модификаторы</x-type::h>
 			<x-type::p class="mb-16">Классы поддерживают адаптивные префиксы для разных устройств:</x-type::p>
 
-			<x-type::code mod="block" class="mb-32">
+			<x-ui.code mod="block" class="mb-32">
 				```scss
 pp  // phone-portrait   (портретный телефон)
 pl  // phone-landscape   (альбомный телефон)
@@ -101,17 +101,17 @@ w   // wide              (широкие экраны)
 d   // desktop           (десктоп)
 np  // no-phone          (не телефон)
 ```
-			</x-type::code>
+			</x-ui.code>
 
-			<x-type::p class="mb-16">Формат адаптивного класса: <x-type::code>{устройство}:{класс}</x-type::code></x-type::p>
+			<x-type::p class="mb-16">Формат адаптивного класса: <x-ui.code>{устройство}:{класс}</x-ui.code></x-type::p>
 
-			<x-type::code mod="block" class="mb-32">
+			<x-ui.code mod="block" class="mb-32">
 				```scss
 p:pt-16     // padding-top: 16px на телефоне
 np:px-24    // padding-x: 24px не на телефоне
 d:mb-48     // margin-bottom: 48px на десктопе
 ```
-			</x-type::code>
+			</x-ui.code>
 
 			<x-type::h size="4" class="mt-48 mb-24">Пример адаптивных отступов</x-type::h>
 			<x-type::p>p-16 tp:px-24 np:px-48 — базовый 16px, на планшете портретной ориентации 24px, не на телефоне 48px по горизонтали</x-type::p>

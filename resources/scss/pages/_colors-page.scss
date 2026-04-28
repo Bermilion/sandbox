@@ -21,118 +21,67 @@
 		justify-content: center;
 		align-items: center;
 
-		$accent: colors.$green-500;
+		$accent: colors.$accent;
 		$hsl-accent: color.to-space($accent, hsl);
 		$oklch-accent: color.to-space($accent, oklch);
 
 		$shades: (50: 50%, 100: 40%, 200: 30%, 300: 20%, 400: 10%, 500: 0%, 600: -10%, 700: -20%, 800: -30%, 900: -40%, 950: -50%);
-
 		@each $shade, $value in $shades {
-			&_oklch-#{$shade} {
+			&_oklch-accent-#{$shade} {
 				$color: color.adjust($oklch-accent, $lightness: $value);
 				background-color: $color;
 				color: colors.content($color);
 			}
-			//&_hsl-#{$shade} {
-			//	$color: color.adjust($hsl-accent, $lightness: $value);
-			//	//@debug color.to-space($color, oklch);
-			//	background-color: $color;
-			//	color: colors.content($color);
-			//}
+			&_hsl-accent-#{$shade} {
+				$color: color.adjust($hsl-accent, $lightness: $value);
+				background-color: $color;
+				color: colors.content($color);
+			}
 		}
 
-		&_50 {
+		&_accent-50 {
 			background-color: colors.light-50($accent);
 			color: colors.content(colors.light-50($accent));
 		}
-		&_100 {
+		&_accent-100 {
 			background-color: colors.light-40($accent);
 			color: colors.content(colors.light-40($accent));
 		}
-		&_200 {
+		&_accent-200 {
 			background-color: colors.light-30($accent);
 			color: colors.content(colors.light-30($accent));
 		}
-		&_300 {
+		&_accent-300 {
 			background-color: colors.light-20($accent);
 			color: colors.content(colors.light-20($accent));
 		}
-		&_400 {
+		&_accent-400 {
 			background-color: colors.light-10($accent);
 			color: colors.content(colors.light-10($accent));
 		}
-		&_500 {
+		&_accent-500 {
 			background-color: colors.base($accent);
 			color: colors.content(colors.base($accent));
 		}
-		&_600 {
+		&_accent-600 {
 			background-color: colors.dark-10($accent);
 			color: colors.content(colors.dark-10($accent));
 		}
-		&_700 {
+		&_accent-700 {
 			background-color: colors.dark-20($accent);
 			color: colors.content(colors.dark-20($accent));
 		}
-		&_800 {
+		&_accent-800 {
 			background-color: colors.dark-30($accent);
 			color: colors.content(colors.dark-30($accent));
 		}
-		&_900 {
+		&_accent-900 {
 			background-color: colors.dark-40($accent);
 			color: colors.content(colors.dark-40($accent));
 		}
-		&_950 {
+		&_accent-950 {
 			background-color: colors.dark-50($accent);
 			color: colors.content(colors.dark-50($accent));
-		}
-
-		&_oklch-50 {
-			background-color: color.adjust($hsl-accent, $lightness: 50%);
-			color: colors.content(color.adjust($hsl-accent, $lightness: 50%));
-		}
-		&_hsl-100 {
-			background-color: color.adjust($hsl-accent, $lightness: 40%);
-			color: colors.content(color.adjust($hsl-accent, $lightness: 40%));
-		}
-		&_hsl-200 {
-			background-color: color.adjust($hsl-accent, $lightness: 30%);
-			color: colors.content(color.adjust($hsl-accent, $lightness: 30%));
-		}
-		&_hsl-300 {
-			background-color: color.adjust($hsl-accent, $lightness: 20%);
-			color: colors.content(color.adjust($hsl-accent, $lightness: 20%));
-		}
-		&_hsl-400 {
-			background-color: color.adjust($hsl-accent, $lightness: 10%);
-			color: colors.content(color.adjust($hsl-accent, $lightness: 10%));
-		}
-		&_hsl-400 {
-			background-color: color.adjust($hsl-accent, $lightness: 10%);
-			color: colors.content(color.adjust($hsl-accent, $lightness: 10%));
-		}
-		&_hsl-500 {
-			background-color: $hsl-accent;
-			color: colors.content($hsl-accent);
-		}
-		&_hsl-600 {
-			background-color: color.adjust($hsl-accent, $lightness: -10%);
-			color: colors.content(color.adjust($hsl-accent, $lightness: -10%));
-		}
-		&_hsl-700 {
-			background-color: color.adjust($hsl-accent, $lightness: -20%);
-			color: colors.content(color.adjust($hsl-accent, $lightness: -20%));
-		}
-		&_hsl-800 {
-			background-color: color.adjust($hsl-accent, $lightness: -30%);
-			color: colors.content(color.adjust($hsl-accent, $lightness: -30%));
-		}
-		&_hsl-900 {
-			background-color: color.adjust($hsl-accent, $lightness: -40%);
-			color: colors.content(color.adjust($hsl-accent, $lightness: -40%));
-		}
-		&_hsl-950 {
-			background-color: color.adjust($hsl-accent, $lightness: -50%);
-			color: colors.content(color.adjust($hsl-accent, $lightness: -50%));
 		}
 	}
 }

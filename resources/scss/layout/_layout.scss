@@ -1,10 +1,11 @@
 @use "@utils/functions/size" as *;
+@use "@core/colors" as colors;
 
 .layout {
 	display: grid;
-	grid-template-columns: s(240) 1fr;
+	grid-template-columns: s(240) minmax(auto, s(800));
 	gap: s(4);
-	background-color: #eeeeee;
+	background-color: colors.base(colors.$grey);
 	padding: s(4);
 	min-height: 100vh;
 }

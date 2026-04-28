@@ -3,6 +3,7 @@
 @use "sass:math";
 @use "sass:string";
 @use "sass:meta";
-@use "@utils/mixins/font" as *;
+@use "@mixins/font" as *;
 @use "@core/colors" as colors;
 @use "@functions/size" as *;
+

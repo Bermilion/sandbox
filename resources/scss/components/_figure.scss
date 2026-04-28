@@ -1,0 +1,51 @@
+@use "@core/colors" as colors;
+@use "@functions/size" as *;
+
+.figure {
+	background-color: colors.base(colors.$grey);
+	border-radius: s(12);
+	display: flex;
+	flex-direction: column;
+	gap: s(4);
+	box-shadow: inset 0 0 s(2) colors.base(colors.$gray-950, .2);
+
+	&__content {
+		background-color: colors.base(colors.$content-light);
+		border-radius: s(12, 12, 8, 8);
+		padding: s(32);
+		margin: s(4, 4, 0, 4);
+	}
+
+	&__code {
+		padding: s(4);
+		border-radius: s(12);
+		margin-right: 0;
+		display: flex;
+		flex-direction: column;
+		white-space: pre;
+		background-color: colors.base(colors.$gray-950);
+		overflow-y: auto;
+	}
+}
+
+.line {
+	display: flex;
+	text-wrap-mode: nowrap;
+	white-space-collapse: preserve;
+
+	.color-slate-400 {
+		color: colors.$slate-400;
+	}
+	.color-slate-300 {
+		color: colors.$slate-300;
+	}
+	.color-slate-50 {
+		color: colors.$slate-50;
+	}
+	.color-pink-400 {
+		color: colors.$pink-400;
+	}
+	.color-sky-300 {
+		color: colors.$sky-300;
+	}
+}
