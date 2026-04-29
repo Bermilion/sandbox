@@ -6,4 +6,29 @@
 @use "@mixins/font" as *;
 @use "@core/colors" as colors;
 @use "@functions/size" as *;
+@use "@core/scale" as scale;
 
+.block-scales {
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	.box-scale {
+		height: 1rem;
+		background-color: colors.$accent;
+		flex-shrink: 0;
+
+		@each $scale in (1, 2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 240, 320, 800) {
+			&_#{$scale} {
+				width: scale.base($scale);
+			}
+		}
+
+		&_dark-blue {
+			background-color: colors.$content-dark;
+			width: scale.base(scale.$scale-8);
+		}
+	}
+
+}
