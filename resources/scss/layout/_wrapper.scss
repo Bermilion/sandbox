@@ -1,6 +1,6 @@
 @use "@core/viewports" as viewports;
-@use "@utils/functions/size" as *;
+@use "@core/scale" as scale;
 
 .wrapper {
-	padding: s(0, 16);
+	padding: scale.scale(4, 16);
 }

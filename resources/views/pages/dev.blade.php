@@ -9,5 +9,6 @@
 		@endforeach
 
 		<div class="box-scale box-scale_dark-blue"></div>
+		<div class="box"></div>
 	</div>
 </x-layouts.base-layout>

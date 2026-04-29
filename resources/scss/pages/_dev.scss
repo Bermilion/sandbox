@@ -1,34 +1,33 @@
-@use "sass:map";
-@use "sass:color";
-@use "sass:math";
-@use "sass:string";
-@use "sass:meta";
-@use "@mixins/font" as *;
-@use "@core/colors" as colors;
-@use "@functions/size" as *;
-@use "@core/scale" as scale;
+@use "@core/tokens" as tokens;
 
 .block-scales {
-	padding: 2rem;
+	padding: tokens.scale(16);
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
 
 	.box-scale {
 		height: 1rem;
-		background-color: colors.$accent;
+		background-color: tokens.color-base(tokens.$accent);
 		flex-shrink: 0;
 
 		@each $scale in (1, 2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 240, 320, 800) {
 			&_#{$scale} {
-				width: scale.base($scale);
+				width: tokens.scale($scale);
 			}
 		}
 
 		&_dark-blue {
-			background-color: colors.$content-dark;
-			width: scale.base(scale.$scale-8);
+			background-color: tokens.color-base(tokens.$content-dark);
+			width: tokens.scale(24);
 		}
+	}
+
+	.box {
+		height: tokens.scale(24);
+		width: tokens.scale(24);
+		background-color: tokens.color-base(tokens.$success);
+		padding: tokens.scale(tokens.$scale-24, tokens.$scale-56);
 	}
 
 }

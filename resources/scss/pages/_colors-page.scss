@@ -1,22 +1,23 @@
 @use "sass:color";
 @use "@core/colors";
 @use "@utils/functions/size" as *;
+@use "@core/scale" as scale;
 
 .colors {
-	margin-bottom: s(24);
+	margin-bottom: scale.scale(scale.$scale-24);
 
 	.grid {
 		align-items: center;
 		display: inline-grid;
 		grid-template-columns: repeat(11, auto);
-		gap: s(8);
-		margin: s(16);
+		gap: scale.scale(scale.$scale-8);
+		margin: scale.scale(scale.$scale-24);
 	}
 
 	.box {
-		width: s(48);
-		height: s(48);
-		border-radius: s(8);
+		width: scale.scale(scale.$scale-48);
+		height: scale.scale(scale.$scale-48);
+		border-radius: scale.scale(scale.$scale-8);
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -89,30 +90,30 @@
 .color-modules {
 	display: flex;
 	flex-direction: column;
-	gap: s(32);
+	gap: scale.scale(scale.$scale-32);
 
 	&__module {
 		display: flex;
 		flex-direction: column;
-		gap: s(16);
+		gap: scale.scale(scale.$scale-16);
 	}
 
 	&__grid {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		gap: s(16);
+		gap: scale.scale(scale.$scale-16);
 	}
 
 	&__color {
 		display: flex;
-		column-gap: s(8);
+		column-gap: scale.scale(scale.$scale-8);
 	}
 
 	&__box {
-		width: s(32);
-		height: s(32);
-		border-radius: s(4);
-		outline: s(1) solid rgba(black, 0.1);
+		width: scale.scale(scale.$scale-32);
+		height: scale.scale(scale.$scale-32);
+		border-radius: scale.scale(scale.$scale-4);
+		outline: scale.scale(scale.$scale-1) solid rgba(black, 0.1);
 
 		//@each $modifier, $shades in colors.get-colors-map() {
 		//	@each $shade, $color-value in $shades {

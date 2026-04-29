@@ -46,44 +46,44 @@
 
 				<x-type::p class="mb-24">Палитра наглядно показывает что обычное линейное изменение параметра lightness не подходит для серьёзных манипуляций с цветом.</x-type::p>
 
-				<x-type::p class="mb-4"><x-type::code class="code_inline">Пространство OKLCH</x-type::code> — все операции выполняются в пространстве OKLCH (Lightness, Chroma, Hue), которое обеспечивает более естественное восприятие цветов по сравнению с RGB/HSL.</x-type::p>
-				<x-type::p class="mb-4"><x-type::code class="code_inline">Интерполяция оттенков</x-type::code> — для каждого базового цвета формируется 11 вариантов:</x-type::p>
+				<x-type::p class="mb-4"><x-ui.code class="code_inline">Пространство OKLCH</x-ui.code> — все операции выполняются в пространстве OKLCH (Lightness, Chroma, Hue), которое обеспечивает более естественное восприятие цветов по сравнению с RGB/HSL.</x-type::p>
+				<x-type::p class="mb-4"><x-ui.code class="code_inline">Интерполяция оттенков</x-ui.code> — для каждого базового цвета формируется 11 вариантов:</x-type::p>
 				<x-type::ul class="mb-32 ml-24">
-					<x-type::li class="mb-4"><x-type::code class="code_inline">base</x-type::code> — исходный цвет (оттенок 500)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code class="code_inline">light-10…light-50</x-type::code> — светлые оттенки (уровни 400, 300, 200, 100, 50)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code class="code_inline">dark-10…dark-50</x-type::code> — тёмные оттенки (уровни 600, 700, 800, 900, 950)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code class="code_inline">content</x-type::code> — контрастный цвет текста (определяется автоматически)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code class="code_inline">base</x-ui.code> — исходный цвет (оттенок 500)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code class="code_inline">light-10…light-50</x-ui.code> — светлые оттенки (уровни 400, 300, 200, 100, 50)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code class="code_inline">dark-10…dark-50</x-ui.code> — тёмные оттенки (уровни 600, 700, 800, 900, 950)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code class="code_inline">content</x-ui.code> — контрастный цвет текста (определяется автоматически)</x-type::li>
 				</x-type::ul>
 
 				<x-type::ul mod="disc" class="mb-32">
-					<x-type::li class="mb-4"><x-type::code>Поиск ближайшей палитры</x-type::code> — система находит ближайший оттенок в палитре с использованием взвешенного евклидова расстояния в OKLCH (веса: lightness 1.0, hue 1.5, chroma 2.0)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>Интерполяция</x-type::code> — оттенки вычисляются через параметры интерполяции (lightness, chroma, hue) из карты интерполяции для каждой палитры</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>Определение контента</x-type::code> — если lightness > 56%, используется тёмный цвет текста; иначе — светлый</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>Поддержка прозрачности</x-type::code> — все функции принимают параметр $alpha для создания полупрозрачных цветов</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>Поиск ближайшей палитры</x-ui.code> — система находит ближайший оттенок в палитре с использованием взвешенного евклидова расстояния в OKLCH (веса: lightness 1.0, hue 1.5, chroma 2.0)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>Интерполяция</x-ui.code> — оттенки вычисляются через параметры интерполяции (lightness, chroma, hue) из карты интерполяции для каждой палитры</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>Определение контента</x-ui.code> — если lightness > 56%, используется тёмный цвет текста; иначе — светлый</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>Поддержка прозрачности</x-ui.code> — все функции принимают параметр $alpha для создания полупрозрачных цветов</x-type::li>
 				</x-type::ul>
 				<x-type::h size="3" class="mb-16">Основные функции</x-type::h>
 				<x-type::ul mod="disc" class="mb-32">
-					<x-type::li class="mb-4"><x-type::code>base($color, $alpha: 1)</x-type::code> — получить базовый цвет (оттенок 500)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>light-10($color, $alpha: 1)</x-type::code> — светлый оттенок (уровень 400)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>light-20($color, $alpha: 1)</x-type::code> — светлый оттенок (уровень 300)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>light-30($color, $alpha: 1)</x-type::code> — светлый оттенок (уровень 200)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>light-40($color, $alpha: 1)</x-type::code> — светлый оттенок (уровень 100)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>light-50($color, $alpha: 1)</x-type::code> — светлый оттенок (уровень 50)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>dark-10($color, $alpha: 1)</x-type::code> — тёмный оттенок (уровень 600)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>dark-20($color, $alpha: 1)</x-type::code> — тёмный оттенок (уровень 700)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>dark-30($color, $alpha: 1)</x-type::code> — тёмный оттенок (уровень 800)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>dark-40($color, $alpha: 1)</x-type::code> — тёмный оттенок (уровень 900)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>dark-50($color, $alpha: 1)</x-type::code> — тёмный оттенок (уровень 950)</x-type::li>
-					<x-type::li class="mb-4"><x-type::code>content($color, $alpha: 1)</x-type::code> — контрастный цвет текста (определяется по lightness)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>base($color, $alpha: 1)</x-ui.code> — получить базовый цвет (оттенок 500)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>light-10($color, $alpha: 1)</x-ui.code> — светлый оттенок (уровень 400)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>light-20($color, $alpha: 1)</x-ui.code> — светлый оттенок (уровень 300)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>light-30($color, $alpha: 1)</x-ui.code> — светлый оттенок (уровень 200)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>light-40($color, $alpha: 1)</x-ui.code> — светлый оттенок (уровень 100)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>light-50($color, $alpha: 1)</x-ui.code> — светлый оттенок (уровень 50)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>dark-10($color, $alpha: 1)</x-ui.code> — тёмный оттенок (уровень 600)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>dark-20($color, $alpha: 1)</x-ui.code> — тёмный оттенок (уровень 700)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>dark-30($color, $alpha: 1)</x-ui.code> — тёмный оттенок (уровень 800)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>dark-40($color, $alpha: 1)</x-ui.code> — тёмный оттенок (уровень 900)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>dark-50($color, $alpha: 1)</x-ui.code> — тёмный оттенок (уровень 950)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>content($color, $alpha: 1)</x-ui.code> — контрастный цвет текста (определяется по lightness)</x-type::li>
 				</x-type::ul>
 				<x-type::h size="3" class="mb-16">CSS-переменные</x-type::h>
-				<x-type::p class="mb-16">Все функции возвращают CSS-переменные в формате <x-type::code>var(--color-{name})</x-type::code>. Имена переменных генерируются автоматически:</x-type::p>
+				<x-type::p class="mb-16">Все функции возвращают CSS-переменные в формате <x-ui.code>var(--color-{name})</x-ui.code>. Имена переменных генерируются автоматически:</x-type::p>
 				<x-type::ul mod="disc" class="mb-32">
-					<x-type::li class="mb-4"><x-type::code>base</x-type::code> → <x-type::code>var(--color-{color-name})</x-type::code></x-type::li>
-					<x-type::li class="mb-4"><x-type::code>light-10</x-type::code> → <x-type::code>var(--color-{color-name}-light-10)</x-type::code></x-type::li>
-					<x-type::li class="mb-4"><x-type::code>dark-20</x-type::code> → <x-type::code>var(--color-{color-name}-dark-20)</x-type::code></x-type::li>
-					<x-type::li class="mb-4"><x-type::code>content</x-type::code> → <x-type::code>var(--color-content-dark)</x-type::code> или <x-type::code>var(--color-content-light)</x-type::code></x-type::li>
-					<x-type::li class="mb-4">С alpha < 1: <x-type::code>var(--color-{color-name}-light-10-alpha-50)</x-type::code></x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>base</x-ui.code> → <x-ui.code>var(--color-{color-name})</x-ui.code></x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>light-10</x-ui.code> → <x-ui.code>var(--color-{color-name}-light-10)</x-ui.code></x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>dark-20</x-ui.code> → <x-ui.code>var(--color-{color-name}-dark-20)</x-ui.code></x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>content</x-ui.code> → <x-ui.code>var(--color-content-dark)</x-ui.code> или <x-ui.code>var(--color-content-light)</x-ui.code></x-type::li>
+					<x-type::li class="mb-4">С alpha < 1: <x-ui.code>var(--color-{color-name}-light-10-alpha-50)</x-ui.code></x-type::li>
 				</x-type::ul>
 				<x-type::hint class="mb-16">Все оттенки генерируются автоматически в пространстве OKLCH на основе базовых цветов из конфигурации. Цвет контента определяется по lightness: для тёмных фонов — светлый текст, для светлых — тёмный. Все функции поддерживают параметр прозрачности $alpha.</x-type::hint>
 			</div>
