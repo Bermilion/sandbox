@@ -6,7 +6,10 @@
 	gap: token.scale(8);
 	padding: token.scale(24);
 	background-color: white;
-	position: sticky;
-	top: token.scale(0);
 	border-right: token.scale(1) solid token.color-dark-50(token.$gray, .05);
+
+	&__sticky {
+		position: sticky;
+		top: token.scale(8);
+	}
 }

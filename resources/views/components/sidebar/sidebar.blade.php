@@ -1,3 +1,5 @@
 <nav class="sidebar">
-	{{ $slot }}
+	<div class="sidebar__sticky">
+		{{ $slot }}
+	</div>
 </nav>

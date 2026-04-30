@@ -1,5 +1,13 @@
 @use "@core/tokens" as token;
 
+.doc {
+	&__section {
+		margin-bottom: token.scale(64);
+	}
+}
+
+
+$liner-gradient: linear-gradient(0deg, token.color-base(token.$grid, .47) 1px, transparent 1px), linear-gradient(90deg, token.color-base(token.$grid, .47) 1px, transparent 1px);
 
 .micromodule {
 	max-width: 100%;
@@ -9,11 +17,10 @@
 	overflow: hidden;
 	border-radius: token.scale(4);
 
-	.box_blue {
-		background-color: rgb(4 67 248 / 69%);
+	.box {
+		position: absolute;
 		width: token.scale(8);
 		height: token.scale(8);
-		position: absolute;
 		top: token.scale(104);
 		left: token.scale(320);
 
@@ -24,51 +31,23 @@
 			height: 300vw;
 			top: token.scale(-320);
 			left: token.scale(-320);
-			background-image:
-				linear-gradient(0deg, token.color-base(token.$grid, .47) 1px, transparent 1px),
-				linear-gradient(90deg, token.color-base(token.$grid, .47) 1px, transparent 1px);
+			background-image: $liner-gradient;
 			background-size: token.scale(8, 8);
 			background-position: 0 0;
 		}
-	}
-	.box_green {
-		background-color: #00dd33b0;
-		width: token.scale(64);
-		height: token.scale(32);
-		position: absolute;
-		top: 13rem;
-		left: 40rem;
 
-		&:before {
-			content: "";
-			position: absolute;
-			width: 100vw;
-			height: 300vw;
-			top: -40rem;
-			left: -40rem;
-			background-image: linear-gradient(0deg, #a1baff78 1px, transparent 1px), linear-gradient(90deg, #a1baff78 1px, transparent 1px);
-			background-size: 1rem 1rem;
-			background-position: 0 0;
+		&_blue {
+			background-color: token.color-base(token.$blue, .8);
 		}
-	}
-	.box_red {
-		background-color: #dd0000b0;
-		width: 68px;
-		height: 36px;
-		position: absolute;
-		top: 13rem;
-		left: 40rem;
-
-		&:before {
-			content: "";
-			position: absolute;
-			width: 100vw;
-			height: 300vw;
-			top: -40rem;
-			left: -40rem;
-			background-image: linear-gradient(0deg, #a1baff78 1px, transparent 1px), linear-gradient(90deg, #a1baff78 1px, transparent 1px);
-			background-size: 1rem 1rem;
-			background-position: 0 0;
+		&_green {
+			background-color: token.color-base(token.$green, .8);
+			width: token.scale(64);
+			height: token.scale(32);
+		}
+		&_red {
+			background-color: token.color-base(token.$red, .8);
+			width: 68px;
+			height: 36px;
 		}
 	}
 }
