@@ -1,4 +1,4 @@
-@use "@core/tokens" as tokens;
+@use "tokens" as tokens;
 
 .block-scales {
 	padding: tokens.scale(16);
@@ -24,8 +24,8 @@
 	}
 
 	.box {
-		height: tokens.scale(24);
-		width: tokens.scale(24);
+		width: tokens.scale(tokens.$scale-24);
+		height: tokens.scale(tokens.$scale-24);
 		background-color: tokens.color-base(tokens.$success);
 		padding: tokens.scale(tokens.$scale-24, tokens.$scale-56);
 	}

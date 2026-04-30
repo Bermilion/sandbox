@@ -1,6 +1,8 @@
-@use "@utils/functions/size" as *;
+@use "@core/tokens" as token;
 
 .main {
-	background-color: white;
-	border-radius: s(8);
+	background-color: token.color-base(token.$content-light);
+	border-left: token.scale(1) solid token.color-dark-50(token.$gray, .05);
+	border-right: token.scale(1) solid token.color-dark-50(token.$gray, .05);
+	padding: token.scale(40, 24);
 }

@@ -1,16 +1,28 @@
 // Временно оставил чтобы при сборке scss не вываливался в ошибку
-$accent: #0088ff;
-$grey: #eeeeee;
-$light-blue: #d3e7ff;
-$dark-grey: #888888;
-$dark-grey-light: #999999;
-$dark-grey-dark: #555555;
-$success: #33cc00;
-$danger: #dd0000;
-$warning: #FEFEE7;
+//$accent: #0088ff;
+$accent: #0ea5e9;
+//$grey: #eeeeee;
+//$light-blue: #d3e7ff;
+//$dark-grey: #888888;
+//$dark-grey-light: #999999;
+//$dark-grey-dark: #555555;
+//$success: #33cc00;
+//$danger: #dd0000;
+//$warning: #FEFEE7;
 
 $content-dark: #222233;
 $content-light: #ffffff;
+
+$grid: #a1baff;
+$spacing: #b2c0ff;
+$col: #ff7f81;
+
+//$header: #030712; // gray-950;
+//$text: #364153; // gray-700;
+//$hint: #6a7282; // gray-500;
+//$menu-link: #4a5565; // gray-600;
+//$border-menu-link: #4a5565; // gray-950-alpha-25;
+//$border: #eeeee; // gray-950-alpha-5;
 
 /**
  * Цветовая система проекта

@@ -1,2 +1,85 @@
-@use "@core/tokens" as tokens;
+@use "@core/tokens" as token;
+
+
+.micromodule {
+	max-width: 100%;
+	height: token.scale(320);
+	position: relative;
+	border: token.scale(1) solid token.color-base(token.$grid, .47);
+	overflow: hidden;
+	border-radius: token.scale(4);
+
+	.box_blue {
+		background-color: rgb(4 67 248 / 69%);
+		width: token.scale(8);
+		height: token.scale(8);
+		position: absolute;
+		top: token.scale(104);
+		left: token.scale(320);
+
+		&:before {
+			content: "";
+			position: absolute;
+			width: 100vw;
+			height: 300vw;
+			top: token.scale(-320);
+			left: token.scale(-320);
+			background-image:
+				linear-gradient(0deg, token.color-base(token.$grid, .47) 1px, transparent 1px),
+				linear-gradient(90deg, token.color-base(token.$grid, .47) 1px, transparent 1px);
+			background-size: token.scale(8, 8);
+			background-position: 0 0;
+		}
+	}
+	.box_green {
+		background-color: #00dd33b0;
+		width: token.scale(64);
+		height: token.scale(32);
+		position: absolute;
+		top: 13rem;
+		left: 40rem;
+
+		&:before {
+			content: "";
+			position: absolute;
+			width: 100vw;
+			height: 300vw;
+			top: -40rem;
+			left: -40rem;
+			background-image: linear-gradient(0deg, #a1baff78 1px, transparent 1px), linear-gradient(90deg, #a1baff78 1px, transparent 1px);
+			background-size: 1rem 1rem;
+			background-position: 0 0;
+		}
+	}
+	.box_red {
+		background-color: #dd0000b0;
+		width: 68px;
+		height: 36px;
+		position: absolute;
+		top: 13rem;
+		left: 40rem;
+
+		&:before {
+			content: "";
+			position: absolute;
+			width: 100vw;
+			height: 300vw;
+			top: -40rem;
+			left: -40rem;
+			background-image: linear-gradient(0deg, #a1baff78 1px, transparent 1px), linear-gradient(90deg, #a1baff78 1px, transparent 1px);
+			background-size: 1rem 1rem;
+			background-position: 0 0;
+		}
+	}
+}
+
+//.dd {
+//	width: token.scale(token.$scale-56);
+//	height: token.scale(token.$scale-56);
+//	margin-left: token.scale(16);
+//	box-shadow:
+//		token.color-base(#4868B2, .14) token.scale(0, 1, 2, 0),
+//		token.color-base(#666E7D, .1) token.scale(0, 1, 4, 0),
+//		token.color-base(#536A9F, .16) token.scale(0, 1, 4, 0);
+//}
 

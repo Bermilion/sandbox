@@ -1,14 +1,11 @@
-@use "@config/fonts" as font-config;
-@use "@core/colors" as colors;
-@use "@functions/size" as *;
-@use "@functions/font" as *;
+@use "@core/tokens" as token;
 
 .code {
-	font-family: font-config.$monospace-font;
+	font-family: token.$monospace-font;
 	position: relative;
-	padding-left: s(8);
-	color: colors.base(colors.$content-dark);
-	font-weight: f('font-weight', 'medium');
+	padding-left: token.scale(8);
+	color: token.color-base(token.$content-dark);
+	font-weight: token.weight(token.$weight-medium);
 
 	&:before, &:after {
 		content: "`";
@@ -23,15 +20,15 @@
 	}
 
 	&_block {
-		padding: s(24);
-		border-radius: s(12);
+		padding: token.scale(24);
+		border-radius: token.scale(12);
 		margin-right: 0;
 		display: flex;
 		flex-direction: column;
 		white-space: pre;
-		background-color: colors.base(colors.$gray-950);
-		outline: s(1) solid colors.base(colors.$gray-700);
-		color: colors.base(colors.$slate-50);
+		background-color: token.color-dark-50(token.$gray);
+		outline: token.scale(1) solid token.color-dark-20(token.$gray);
+		color: token.color-light-50(token.$slate);
 
 		&:before, &:after {
 			display: none;

@@ -1,0 +1,20 @@
+@use "@core/tokens" as token;
+
+.link {
+	display: block;
+	text-decoration: none;
+	transition: color  .2s ease, border-color .2s ease;
+
+	&_menu {
+		position: relative;
+		left: token.scale(-1);
+		color: token.color-dark-10(token.$gray);
+		padding-left: token.scale(16);
+		border-left: token.scale(1) solid transparent;
+
+		&:hover {
+			color: token.color-dark-50(token.$gray);
+			border-color: token.color-dark-50(token.$gray, .25);
+		}
+	}
+}

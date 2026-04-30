@@ -1,13 +1,12 @@
-@use "@utils/functions/size" as *;
+@use "@core/tokens" as token;
 
 .sidebar {
 	display: flex;
 	flex-direction: column;
-	gap: s(8);
-	padding: s(24);
+	gap: token.scale(8);
+	padding: token.scale(24);
 	background-color: white;
-	border-radius: s(8);
-	align-self: start;
 	position: sticky;
-	top: s(4);
+	top: token.scale(0);
+	border-right: token.scale(1) solid token.color-dark-50(token.$gray, .05);
 }

@@ -1,48 +1,26 @@
 //@use "@fontsource-variable/geologica";
 @use "@fontsource-variable/inter";
 @use "@fontsource-variable/jetbrains-mono";
-//@use "@core/preflight";
-//@use "@core/viewports";
-//@use "@core/colors";
-//@use "@core/rem-clamp";
-//@use "@utils/functions/size" as *;
-//@use "@utils/mixins/font" as *;
-//@use "@utils/classes/margin";
-//@use "@utils/classes/padding";
-//@use "@type/classes";
-//@use "sass:map";
-//@use "@config/fonts" as font-config;
-//
-//@use "@blocks/utils";
-//
-//@use "@components/link";
-
-
-// Стили из самого sandbox
-//@use "layout/layout";
-//@use "layout/wrapper";
-//
-//@use "components/main";
-//@use "components/sidebar";
-//@use "components/viewport";
-//@use "components/highlight";
-//@use "components/example-block";
-//
-//@use "pages/colors-page";
-//@use "pages/dev";
-//
-//@use "components/code";
-//@use "components/figure";
-//@use "components/menu";
-
 @use "@core/reset";
 @use "@core/viewports";
+@use "@core/rem-clamp";
 @use "@type/classes";
 @use "@core/colors";
-@use "@core/tokens";
+@use "@core/tokens" as token;
+@use "@classes/margin";
+@use "@classes/padding";
 
+// Стили из sandbox
+@use "layout/layout";
+@use "components/typography";
+@use "components/main";
+@use "components/sidebar";
+@use "components/menu";
+@use "components/link";
+@use "components/code";
+@use "components/figure";
 @use "pages/doc";
-@use "pages/dev";
+//@use "pages/dev";
 
 @use "@core/variables";
 
@@ -51,13 +29,8 @@ html, body {
 }
 
 .body {
-	font-family: tokens.$base-font;
-	font-size: tokens.scale(16);
-	line-height: tokens.scale(24);
-	font-weight: tokens.weight(400);
-
-	//@include font(16, 24, 'regular');
+	font-family: token.$base-font;
+	font-size: token.scale(16);
+	line-height: token.scale(24);
+	font-weight: token.weight(400);
 }
-
-$spacing: #b2c0ff;
-$col: #ff7f81;

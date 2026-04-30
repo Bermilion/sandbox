@@ -1,11 +1,15 @@
-@use "@core/colors" as colors;
-@use "@core/scale" as scale;
+@use "@core/tokens" as token;
+
+$pattern-fg: token.color-dark-50(token.$gray, .05);
 
 .layout {
 	display: grid;
-	grid-template-columns: scale.scale(240) minmax(auto, scale.scale(800));
-	gap: scale.scale(scale.$scale-4);
-	background-color: colors.base(colors.$grey);
-	padding: scale.scale(scale.$scale-4);
+	grid-template-columns: token.scale(240) minmax(auto, token.scale(800));
+	gap: token.scale(token.$scale-24);
+	background-position: 0 0;
+	background-size: token.scale(8, 8);
+	background-image:
+		repeating-linear-gradient(315deg, $pattern-fg 0,
+		$pattern-fg token.scale(1), transparent 0, transparent 50%);
 	min-height: 100vh;
 }

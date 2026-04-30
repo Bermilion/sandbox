@@ -1,0 +1,12 @@
+@use "@core/tokens" as token;
+
+.hero, .h1, .h2, .h3, .h4, .h5, .h6 {
+	color: token.color-dark-50(token.$gray);
+}
+
+.p, .ul, .ol {
+	color: token.color-dark-20(token.$gray);
+}
+.supheading, .hint {
+	color: token.color-base(token.$gray);
+}
