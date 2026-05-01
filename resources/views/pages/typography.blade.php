@@ -181,22 +181,22 @@
 
 				@slot('code')
 					<div class="line">
-						<span class="color-slate-400"><</span>
-						<span class="color-pink-400">x</span>
-						<span class="color-slate-300">-</span>
-						<span class="color-pink-400">type</span>
-						<span class="color-slate-300">::</span>
-						<span class="color-pink-400">hero</span>
-						<span class="color-slate-400">></span>
+						<span class="color-slate-10"><</span>
+						<span class="color-pink-10">x</span>
+						<span class="color-slate-20">-</span>
+						<span class="color-pink-10">type</span>
+						<span class="color-slate-20">::</span>
+						<span class="color-pink-10">hero</span>
+						<span class="color-slate-10">></span>
 						<span class="color-slate-50">Главный заголовок страницы</span>
-						<span class="color-slate-400"><</span>
-						<span class="color-slate-400">/</span>
-						<span class="color-pink-400">x</span>
-						<span class="color-slate-300">-</span>
-						<span class="color-pink-400">type</span>
-						<span class="color-slate-300">::</span>
-						<span class="color-pink-400">hero</span>
-						<span class="color-slate-400">></span>
+						<span class="color-slate-10"><</span>
+						<span class="color-slate-10">/</span>
+						<span class="color-pink-10">x</span>
+						<span class="color-slate-20">-</span>
+						<span class="color-pink-10">type</span>
+						<span class="color-slate-20">::</span>
+						<span class="color-pink-10">hero</span>
+						<span class="color-slate-10">></span>
 					</div>
 				@endslot
 

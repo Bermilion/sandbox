@@ -3,9 +3,9 @@
 .code {
 	font-family: token.$monospace-font;
 	position: relative;
-	padding-left: token.scale(8);
 	color: token.color-base(token.$content-dark);
 	font-weight: token.weight(token.$weight-medium);
+	padding: token.scale(0, 12);
 
 	&:before, &:after {
 		content: "`";

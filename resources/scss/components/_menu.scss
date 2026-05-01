@@ -6,6 +6,7 @@
 	flex-direction: column;
 	gap: token.scale(8);
 	border-left: token.scale(1) solid token.color-light-20(token.$gray);
+	margin-bottom: token.scale(32);
 
 	&__item {
 		position: relative;

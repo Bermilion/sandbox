@@ -1,4 +1,5 @@
 @use "@core/tokens" as token;
+@use "@core/viewports";
 
 .doc {
 	&__section {
@@ -50,6 +51,33 @@ $liner-gradient: linear-gradient(0deg, token.color-base(token.$grid, .47) 1px, t
 			height: 36px;
 		}
 	}
+}
+
+.viewport {
+	display: flex;
+	flex-direction: column;
+	gap: token.scale(8);
+
+	&__item {
+		display: none;
+		padding: token.scale(8, 20);
+		background-color: token.color-light-40(token.$gray);
+		color: token.color-content(token.color-light-40(token.$gray));
+		border: token.scale(1) solid token.color-base(token.$gray, .15);
+		border-radius: token.scale(4);
+	}
+
+	&_mobile { @include viewports.mobile { display: block; } }
+	&_phone { @include viewports.phone { display: block; } }
+	&_phone-portrait { @include viewports.phone-portrait { display: block; } }
+	&_phone-landscape { @include viewports.phone-landscape { display: block; } }
+	&_tablet { @include viewports.tablet { display: block; } }
+	&_tablet-portrait { @include viewports.tablet-portrait { display: block; } }
+	&_tablet-landscape { @include viewports.tablet-landscape { display: block; } }
+	&_desktop { @include viewports.desktop { display: block; }}
+	&_laptop { @include viewports.laptop { display: block; } }
+	&_wide { @include viewports.wide { display: block; } }
+	&_no-phone { @include viewports.no-phone { display: block; } }
 }
 
 //.dd {
