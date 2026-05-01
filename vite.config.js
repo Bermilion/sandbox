@@ -4,16 +4,9 @@ import {createSvgIconsPlugin} from "vite-plugin-svg-icons";
 import path from 'path';
 import purge from '@erbelion/vite-plugin-laravel-purgecss';
 import { generateDynamicSafelist } from './vite-pugins/vite-plugin-dynamic-safelist.js';
-import { generateColorsSafelist } from './vite-pugins/vite-plugin-colors-safelist.js';
-// import { colorsJsonPlugin } from './vite-pugins/vite-plugin-colors-json.js';
 
 
 const dynamicSafelist = generateDynamicSafelist();
-const colorsSafelist = generateColorsSafelist();
-// console.log('Dynamic safelist patterns:', dynamicSafelist.map(cls => ({
-// 	original: new RegExp(`^${cls}$`),
-// 	escaped: new RegExp(`^${cls.replace(':', '\\\\:')}$`)
-// })));
 
 export default defineConfig({
 	resolve: {
@@ -27,15 +20,10 @@ export default defineConfig({
 			'@mixins': path.resolve(__dirname, 'chunker2i/base/resources/scss/utils/mixins'),
 			'@classes': path.resolve(__dirname, 'chunker2i/base/resources/scss/utils/classes'),
 			'@colors': path.resolve(__dirname, 'chunker2i/base/resources/scss/utils/tailwind-colors'),
-			'@components': path.resolve(__dirname, 'chunker2i/base/resources/scss/components'),
+			'@ui': path.resolve(__dirname, 'chunker2i/base/resources/scss/ui'),
 		}
 	},
 	plugins: [
-		// colorsJsonPlugin({
-		// 	scssPath: 'chunker2i/base/resources/scss/core/_variables.scss',
-		// 	outputPath: 'public/colors.json',
-		// 	watch: true
-		// }),
 		laravel({
 			input: ['resources/scss/app.scss', 'resources/js/app.js'],
 			refresh: true,
@@ -76,7 +64,6 @@ export default defineConfig({
 					// Динамически добавленные классы
 					...dynamicSafelist,
 					...dynamicSafelist.map(cls => cls.replace(':', '\\:')),
-					...colorsSafelist
 				],
 				// Сохранять псевдоэлементы и псевдоклассы
 				deep: [/^:/, /^::/],

@@ -3,12 +3,13 @@
 @endphp
 
 <x-layouts.base-layout title="Страница отладки">
-	<div class="block-scales">
-		@foreach($scales as $scale)
-			<div class="box-scale box-scale_{{ $scale }}"></div>
-		@endforeach
-
-		<div class="box-scale box-scale_dark-blue"></div>
-		<div class="box"></div>
+	<div class="wrapper">
+		<x-base::link href="#" icon="bars" text="Link"/>
+		<x-base::link href="#" icon="bars" icon-right text="Link"/>
+		<x-base::button icon="chevron-left" text="Button"/>
+		<x-base::button icon="thumbs-up" icon-right text="Button"/>
+		<x-base::button icon="chevron-left"/>
+		<x-base::button icon="chevron-left" text="Button" disabled="true" />
+		<x-base::button icon="chevron-left" mod="disabled" text="Button" />
 	</div>
 </x-layouts.base-layout>

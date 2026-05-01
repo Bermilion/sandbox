@@ -1,12 +1,13 @@
 //@use "@fontsource-variable/geologica";
 @use "@fontsource-variable/inter";
 @use "@fontsource-variable/jetbrains-mono";
-@use "@core/reset";
+@use "@core/preflight";
 @use "@core/viewports";
 @use "@core/rem-clamp";
 @use "@type/classes";
 @use "@core/colors";
 @use "@core/tokens" as token;
+@use "@ui/index";
 @use "@classes/margin";
 @use "@classes/padding";
 
@@ -20,6 +21,7 @@
 @use "components/code";
 @use "components/figure";
 @use "pages/doc";
+@use "pages/dev";
 
 @use "@core/variables";
 
