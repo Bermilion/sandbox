@@ -46,5 +46,14 @@
 		.color-sky-20 {
 			color: token.color-light-20(token.$sky);
 		}
+		.color-green-10 {
+			color: token.color-light-10(token.$green);
+		}
+		.color-orange-10 {
+			color: token.color-light-10(token.$orange);
+		}
+		.color-yellow-10 {
+			color: token.color-light-10(token.$yellow);
+		}
 	}
 }

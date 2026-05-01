@@ -1,3 +1,7 @@
+@php
+	$steps = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "950"];
+@endphp
+
 <x-layouts.base-layout title="Документация">
 	<div class="layout">
 		<x-sidebar>
@@ -7,12 +11,14 @@
 				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-clamp">Гибридная адаптация</x-base::link></x-ui.menu-item>
 				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-responsive-design">Адаптивный дизайн</x-base::link></x-ui.menu-item>
 				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-scale">Интервалы</x-base::link></x-ui.menu-item>
-				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-color">Цвет</x-base::link></x-ui.menu-item>
+				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-colors">Цвет</x-base::link></x-ui.menu-item>
+				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-api">Единый API</x-base::link></x-ui.menu-item>
+				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-utils-classes">Утилитарные классы</x-base::link></x-ui.menu-item>
 			</x-ui.menu>
 			<x-type::supheading class="mb-12">Компоненты</x-type::supheading>
 			<x-ui.menu>
 				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-typography">Типографика</x-base::link></x-ui.menu-item>
-				<x-ui.menu-item><x-base::link mod="menu" href="#">Ссылки</x-base::link></x-ui.menu-item>
+				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-link">Ссылка</x-base::link></x-ui.menu-item>
 			</x-ui.menu>
 		</x-sidebar>
 		<x-main>
@@ -182,9 +188,505 @@
 
 			{{--Scale--}}
 			<section id="anchor-scale" class="doc__section">
+				<x-type::h size="2" class="mb-16">Система масштабов</x-type::h>
 
+				<x-type::p class="mb-16">
+					Модуль <x-ui.code>core/_scale.scss</x-ui.code> отвечает за систему spacing и типографики.
+					Базовая единица масштаба — 8px (1rem), что соответствует микромодулю системы.
+				</x-type::p>
+
+				<x-type::h size="3" class="mt-48 mb-24">Функции масштаба</x-type::h>
+
+				<x-type::p class="mb-16">Доступны две основные функции для работы с масштабами:</x-type::p>
+
+				<x-type::p class="mb-8"><x-ui.code>scale()</x-ui.code> — возвращает CSS-переменные:</x-type::p>
+				<x-type::p class="mb-16"><x-ui.code>scale(8, 16)</x-ui.code> → <x-ui.code>var(--scale-8) var(--scale-16)</x-ui.code></x-type::p>
+
+				<x-type::p class="mb-8"><x-ui.code>scale-value()</x-ui.code> — возвращает сырые значения:</x-type::p>
+				<x-type::p class="mb-16"><x-ui.code>scale-value(8, 16)</x-ui.code> → <x-ui.code>1rem 2rem</x-ui.code></x-type::p>
+
+				<x-type::h size="3" class="mt-48 mb-24">Доступные значения</x-type::h>
+
+				<x-type::p class="mb-16">Система поддерживает широкий диапазон значений, кратных микромодулю:</x-type::p>
+
+				<x-type::p class="mb-16">
+					Отрицательные: -104, -96, -88, -80, -72, -64, -56, -48, -40, -32, -24, -20, -16, -12, -8, -4, -2, -1
+				</x-type::p>
+
+				<x-type::p class="mb-16">
+					Положительные: 0, 1, 2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 240, 320, 800
+				</x-type::p>
+
+				<x-type::h size="3" class="mt-48 mb-24">Использование в проекте</x-type::h>
+
+				<x-type::p class="mb-16">
+					Подключение через единый API токенов:
+				</x-type::p>
+
+				<x-ui.figure class="mb-16">
+					<x-type::p>Пример: padding: token.scale(16, 24);</x-type::p>
+
+					@slot('code')
+						<div class="line">
+							<span class="color-pink-10">@</span>
+							<span class="color-pink-10">use </span>
+							<div class="color-slate-10">"</div>
+							<div class="color-green-10">@core</div>
+							<div class="color-slate-10">/</div>
+							<div class="color-green-10">tokens</div>
+							<div class="color-slate-10">" </div>
+							<span  class="color-pink-10"> as </span>
+							<div class="color-green-10">token</div>
+							<div class="color-slate-10">;</div>
+						</div>
+						<div class="line">
+							<span class="color-slate-50">.</span>
+							<div class="color-orange-10">container</div>
+							<span class="color-slate-50"> {</span>
+						</div>
+						<div class="line">
+							<span class="color-slate-50">  </span>
+							<span class="color-sky-20">padding</span>
+							<span class="color-slate-10">:</span>
+							<span class="color-green-10"> token</span>
+							<span class="color-slate-10">.</span>
+							<span class="color-pink-10">scale</span>
+							<span class="color-slate-10">(</span>
+							<span class="color-sky-20">16</span>
+							<span class="color-slate-50">, </span>
+							<span class="color-sky-20">24</span>
+							<span class="color-slate-10">)</span>
+							<span class="color-slate-50">;</span>
+						</div>
+						<div class="line">
+							<span class="color-slate-50">}</span>
+						</div>
+					@endslot
+				</x-ui.figure>
+
+				<x-type::p class="mb-16">
+					После компиляции в CSS:
+				</x-type::p>
+
+				<x-ui.figure class="mb-16">
+					<x-type::p>Результат: padding: var(--scale-16) var(--scale-24);</x-type::p>
+
+					@slot('code')
+						<div class="line">
+							<span class="color-slate-50">.</span>
+							<div class="color-orange-10">container</div>
+							<span class="color-slate-50"> {</span>
+						</div>
+						<div class="line">
+							<span class="color-slate-50">  </span>
+							<span class="color-sky-20">padding</span>
+							<span class="color-slate-10">: </span>
+							<span class="color-yellow-10">var</span>
+							<div class="color-slate-10">(</div>
+							<div class="color-sky-20">--scale-16</div>
+							<div class="color-slate-10">)</div>
+							<div class="color-yellow-10"> var</div>
+							<div class="color-slate-10">(</div>
+							<div class="color-sky-20">--scale-24</div>
+							<div class="color-slate-10">)</div>
+							<div class="color-slate-50">;</div>
+						</div>
+						<div class="line">
+							<span class="color-slate-50">}</span>
+						</div>
+					@endslot
+				</x-ui.figure>
 			</section>
 
+			{{--Colors--}}
+			<section id="anchor-colors" class="doc__section">
+				<x-type::h size="2" class="mb-24">Функции для работы с цветом</x-type::h>
+
+				<x-type::p class="mb-16">
+					Модуль <x-ui.code>core/_colors.scss</x-ui.code> управляет цветовой системой проекта.
+					<strong>Зона ответственности:</strong> преобразование цветов в OKLCH пространство, генерация оттенков,
+					автоматический подбор контрастного цвета текста, поиск ближайшего оттенка в палитре Tailwind
+					и генерация CSS-переменных.
+				</x-type::p>
+
+				<x-type::h size="3" class="mt-48 mb-16">Логика генерации оттенков</x-type::h>
+				<x-type::p class="mb-16">Система использует цветовое пространство OKLCH для более точного восприятия цветов человеком. Процесс генерации оттенков:</x-type::p>
+
+				<div class="colors">
+					<x-type::h size="5">OKLCH:</x-type::h>
+					<x-type::hint>С подстройкой интерполяции через систему цветов tailwind</x-type::hint>
+					<div class="grid">
+						@foreach($steps as $step)
+							<div class="box box_accent-{{ $step }}">
+								{{ $step }}
+							</div>
+						@endforeach
+					</div>
+
+					<x-type::h size="5">OKLCH:</x-type::h>
+					<x-type::hint>Линейная интерполяция</x-type::hint>
+					<div class="grid">
+						@foreach($steps as $step)
+							<div class="box box_oklch-accent-{{ $step }}">
+								{{ $step }}
+							</div>
+						@endforeach
+					</div>
+
+					<x-type::h size="5">HSL:</x-type::h>
+					<x-type::hint>Линейная интерполяция</x-type::hint>
+					<div class="grid">
+						@foreach($steps as $step)
+							<div class="box box_hsl-accent-{{ $step }}">
+								{{ $step }}
+							</div>
+						@endforeach
+					</div>
+				</div>
+
+				<x-type::p class="mb-24">Палитра наглядно показывает что обычное линейное изменение параметра lightness не подходит для серьёзных манипуляций с цветом.</x-type::p>
+
+				<x-type::p class="mb-4"><x-ui.code class="code_inline">Пространство OKLCH</x-ui.code> — все операции выполняются в пространстве OKLCH (Lightness, Chroma, Hue), которое обеспечивает более естественное восприятие цветов по сравнению с RGB/HSL.</x-type::p>
+				<x-type::p class="mb-4"><x-ui.code class="code_inline">Интерполяция оттенков</x-ui.code> — для каждого базового цвета формируется 11 вариантов:</x-type::p>
+				<x-type::ul class="mb-32 ml-24">
+					<x-type::li class="mb-4"><x-ui.code class="code_inline">base</x-ui.code> — исходный цвет (оттенок 500)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code class="code_inline">light-10…light-50</x-ui.code> — светлые оттенки (уровни 400, 300, 200, 100, 50)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code class="code_inline">dark-10…dark-50</x-ui.code> — тёмные оттенки (уровни 600, 700, 800, 900, 950)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code class="code_inline">content</x-ui.code> — контрастный цвет текста (определяется автоматически)</x-type::li>
+				</x-type::ul>
+
+				<x-type::ul mod="disc" class="mb-32">
+					<x-type::li class="mb-4"><x-ui.code>Поиск ближайшей палитры</x-ui.code> — система находит ближайший оттенок в палитре с использованием взвешенного евклидова расстояния в OKLCH (веса: lightness 1.0, hue 1.5, chroma 2.0)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>Интерполяция</x-ui.code> — оттенки вычисляются через параметры интерполяции (lightness, chroma, hue) из карты интерполяции для каждой палитры</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>Определение контента</x-ui.code> — если lightness > 56%, используется тёмный цвет текста; иначе — светлый</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>Поддержка прозрачности</x-ui.code> — все функции принимают параметр $alpha для создания полупрозрачных цветов</x-type::li>
+				</x-type::ul>
+				<x-type::h size="3" class="mb-16">Основные функции</x-type::h>
+				<x-type::ul mod="disc" class="mb-32">
+					<x-type::li class="mb-4"><x-ui.code>base($color, $alpha: 1)</x-ui.code> — получить базовый цвет (оттенок 500)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>light-10($color, $alpha: 1)</x-ui.code> — светлый оттенок (уровень 400)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>light-20($color, $alpha: 1)</x-ui.code> — светлый оттенок (уровень 300)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>light-30($color, $alpha: 1)</x-ui.code> — светлый оттенок (уровень 200)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>light-40($color, $alpha: 1)</x-ui.code> — светлый оттенок (уровень 100)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>light-50($color, $alpha: 1)</x-ui.code> — светлый оттенок (уровень 50)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>dark-10($color, $alpha: 1)</x-ui.code> — тёмный оттенок (уровень 600)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>dark-20($color, $alpha: 1)</x-ui.code> — тёмный оттенок (уровень 700)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>dark-30($color, $alpha: 1)</x-ui.code> — тёмный оттенок (уровень 800)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>dark-40($color, $alpha: 1)</x-ui.code> — тёмный оттенок (уровень 900)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>dark-50($color, $alpha: 1)</x-ui.code> — тёмный оттенок (уровень 950)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>content($color, $alpha: 1)</x-ui.code> — контрастный цвет текста (определяется по lightness)</x-type::li>
+				</x-type::ul>
+				<x-type::h size="3" class="mb-16">CSS-переменные</x-type::h>
+				<x-type::p class="mb-16">Все функции возвращают CSS-переменные в формате <x-ui.code>var(--color-{name})</x-ui.code>. Имена переменных генерируются автоматически:</x-type::p>
+				<x-type::ul mod="disc" class="mb-32">
+					<x-type::li class="mb-4"><x-ui.code>base</x-ui.code> → <x-ui.code>var(--color-{color-name})</x-ui.code></x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>light-10</x-ui.code> → <x-ui.code>var(--color-{color-name}-light-10)</x-ui.code></x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>dark-20</x-ui.code> → <x-ui.code>var(--color-{color-name}-dark-20)</x-ui.code></x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>content</x-ui.code> → <x-ui.code>var(--color-content-dark)</x-ui.code> или <x-ui.code>var(--color-content-light)</x-ui.code></x-type::li>
+					<x-type::li class="mb-4">С alpha < 1: <x-ui.code>var(--color-{color-name}-light-10-alpha-50)</x-ui.code></x-type::li>
+				</x-type::ul>
+
+				<x-type::h size="3" class="mb-16">Сырые значения</x-type::h>
+				<x-type::p class="mb-16">Для получения сырых значений без CSS-переменных используйте функции с суффиксом <x-ui.code>-value</x-ui.code>:</x-type::p>
+				<x-type::ul mod="disc" class="mb-32">
+					<x-type::li class="mb-4"><x-ui.code>base-value($color, $alpha: 1)</x-ui.code> — базовый цвет (OKLCH)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>light-10-value($color, $alpha: 1)</x-ui.code> ... <x-ui.code>light-50-value</x-ui.code> — светлые оттенки</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>dark-10-value($color, $alpha: 1)</x-ui.code> ... <x-ui.code>dark-50-value</x-ui.code> — тёмные оттенки</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>content-value($color, $alpha: 1)</x-ui.code> — контрастный цвет текста (OKLCH)</x-type::li>
+				</x-type::ul>
+				<x-type::hint class="mb-16">Все оттенки генерируются автоматически в пространстве OKLCH на основе базовых цветов из конфигурации. Цвет контента определяется по lightness: для тёмных фонов — светлый текст, для светлых — тёмный. Все функции поддерживают параметр прозрачности $alpha.</x-type::hint>
+			</section>
+
+			{{--API--}}
+			<section id="anchor-api" class="doc__section">
+				<x-type::h size="2" class="mb-24">Единый API для всех функций в scss</x-type::h>
+
+				<x-type::p class="mb-16">
+					Модуль <x-ui.code>core/_tokens.scss</x-ui.code> предоставляет единый API для доступа ко всем функциям системы.
+					Перед началом работы необходимо подключить модуль: <x-ui.code><span>@</span>use "@core/tokens" as token;</x-ui.code>
+				</x-type::p>
+
+				<x-type::h size="3" class="mt-48 mb-24">Доступные функции</x-type::h>
+
+				<x-type::p class="mb-16">Через пространство имён <x-ui.code>token</x-ui.code> доступны следующие функции:</x-type::p>
+
+				<x-type::h size="4" class="mb-16">Масштаб</x-type::h>
+				<x-type::ul mod="disc" class="mb-24">
+					<x-type::li class="mb-4"><x-ui.code>token.scale($values...)</x-ui.code> — возвращает CSS-переменные масштаба</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>token.scale-value($values...)</x-ui.code> — возвращает сырые значения в rem</x-type::li>
+				</x-type::ul>
+
+				<x-type::h size="4" class="mb-16">Цвета (CSS-переменные)</x-type::h>
+				<x-type::ul mod="disc" class="mb-24">
+					<x-type::li class="mb-4"><x-ui.code>token.color-base($color, $alpha: 1)</x-ui.code> — базовый цвет</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>token.color-light-10($color, $alpha: 1)</x-ui.code> ... <x-ui.code>light-50</x-ui.code> — светлые оттенки</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>token.color-dark-10($color, $alpha: 1)</x-ui.code> ... <x-ui.code>dark-50</x-ui.code> — тёмные оттенки</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>token.color-content($color, $alpha: 1)</x-ui.code> — контрастный цвет текста</x-type::li>
+				</x-type::ul>
+
+				<x-type::h size="4" class="mb-16">Цвета (сырые значения)</x-type::h>
+				<x-type::ul mod="disc" class="mb-24">
+					<x-type::li class="mb-4"><x-ui.code>token.color-base-value($color, $alpha: 1)</x-ui.code> — базовый цвет</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>token.color-light-10-value($color, $alpha: 1)</x-ui.code> ... <x-ui.code>light-50-value</x-ui.code> — светлые оттенки</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>token.color-dark-10-value($color, $alpha: 1)</x-ui.code> ... <x-ui.code>dark-50-value</x-ui.code> — тёмные оттенки</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>token.color-content-value($color, $alpha: 1)</x-ui.code> — контрастный цвет текста</x-type::li>
+				</x-type::ul>
+
+				<x-type::h size="4" class="mb-16">Веса шрифтов</x-type::h>
+				<x-type::ul mod="disc" class="mb-32">
+					<x-type::li class="mb-4"><x-ui.code>token.weight($weight)</x-ui.code> — возвращает CSS-переменную веса шрифта</x-type::li>
+				</x-type::ul>
+
+				<x-type::h size="3" class="mt-48 mb-24">Примеры использования</x-type::h>
+
+				<x-type::supheading class="mb-8">Использование цветов</x-type::supheading>
+				<x-ui.figure class="mb-16">
+					<x-type::p>SCSS: background-color: token.color-base(token.$accent);</x-type::p>
+
+					@slot('code')
+						<div class="line">
+							<span class="color-slate-50">.</span>
+							<span class="color-orange-10">button</span>
+							<span class="color-slate-50"> {</span>
+							</div>
+							<div class="line">
+							<span class="color-slate-50">  </span>
+							<span class="color-sky-20">background-color</span>
+							<span class="color-slate-10">:</span>
+							<span class="color-green-10"> token</span>
+							<span class="color-slate-10">.</span>
+							<span class="color-pink-10">color-base</span>
+							<span class="color-slate-10">(</span>
+							<span class="color-green-10">token</span>
+							<span class="color-slate-10">.</span>
+							<span class="color-yellow-10">$accent</span>
+							<span class="color-slate-10">)</span>
+							<span class="color-slate-50">;</span>
+							</div>
+							<div class="line">
+							<span class="color-slate-50">  </span>
+							<span class="color-sky-20">color</span>
+							<span class="color-slate-10">:</span>
+							<span class="color-green-10"> token</span>
+							<span class="color-slate-10">.</span>
+							<span class="color-pink-10">color-content</span>
+							<span class="color-slate-10">(</span>
+							<span class="color-green-10">token</span>
+							<span class="color-slate-10">.</span>
+							<span class="color-yellow-10">$accent</span>
+							<span class="color-slate-10">)</span>
+							<span class="color-slate-50">;</span>
+							</div>
+							<div class="line">
+							<span class="color-slate-50">}</span>
+						</div>
+					@endslot
+				</x-ui.figure>
+
+				<x-type::p class="mb-16">Результат компиляции в CSS:</x-type::p>
+
+				<x-ui.figure class="mb-32">
+					<x-type::p>CSS: background-color: var(--color-accent);</x-type::p>
+
+					@slot('code')
+						<div class="line">
+							<span class="color-slate-50">.</span>
+							<span class="color-orange-10">button</span>
+							<span class="color-slate-50"> {</span>
+							</div>
+							<div class="line">
+							<span class="color-slate-50">  </span>
+							<span class="color-sky-20">background-color</span>
+							<span class="color-slate-10">: </span>
+							<span class="color-yellow-10">var</span>
+							<span class="color-slate-10">(</span>
+							<span class="color-sky-20">--color-accent</span>
+							<span class="color-slate-10">)</span>
+							<span class="color-slate-50">;</span>
+							</div>
+							<div class="line">
+							<span class="color-slate-50">  </span>
+							<span class="color-sky-20">color</span>
+							<span class="color-slate-10">: </span>
+							<span class="color-yellow-10">var</span>
+							<span class="color-slate-10">(</span>
+							<span class="color-sky-20">--color-content-accent</span>
+							<span class="color-slate-10">)</span>
+							<span class="color-slate-50">;</span>
+							</div>
+							<div class="line">
+							<span class="color-slate-50">}</span>
+						</div>
+					@endslot
+				</x-ui.figure>
+
+				<x-type::supheading class="mb-8">Использование масштабов</x-type::supheading>
+				<x-ui.figure class="mb-16">
+					<x-type::p>SCSS: padding: token.scale(16, 24);</x-type::p>
+
+					@slot('code')
+						<div class="line">
+							<span class="color-slate-50">.</span>
+							<span class="color-orange-10">container</span>
+							<span class="color-slate-50"> {</span>
+							</div>
+							<div class="line">
+							<span class="color-slate-50">  </span>
+							<span class="color-sky-20">padding</span>
+							<span class="color-slate-10">:</span>
+							<span class="color-green-10"> token</span>
+							<span class="color-slate-10">.</span>
+							<span class="color-pink-10">scale</span>
+							<span class="color-slate-10">(</span>
+							<span class="color-sky-20">16</span>
+							<span class="color-slate-50">, </span>
+							<span class="color-sky-20">24</span>
+							<span class="color-slate-10">)</span>
+							<span class="color-slate-50">;</span>
+							</div>
+							<div class="line">
+							<span class="color-slate-50">  </span>
+							<span class="color-sky-20">margin</span>
+							<span class="color-slate-10">:</span>
+							<span class="color-green-10"> token</span>
+							<span class="color-slate-10">.</span>
+							<span class="color-pink-10">scale</span>
+							<span class="color-slate-10">(</span>
+							<span class="color-sky-20">8</span>
+							<span class="color-slate-50">, </span>
+							<span class="color-sky-20">0</span>
+							<span class="color-slate-10">)</span>
+							<span class="color-slate-50">;</span>
+							</div>
+							<div class="line">
+							<span class="color-slate-50">}</span>
+						</div>
+					@endslot
+				</x-ui.figure>
+
+				<x-type::p class="mb-16">Результат компиляции в CSS:</x-type::p>
+
+				<x-ui.figure class="mb-32">
+					<x-type::p>CSS: padding: var(--scale-16) var(--scale-24);</x-type::p>
+
+					@slot('code')
+						<div class="line">
+							<span class="color-slate-50">.</span>
+							<span class="color-orange-10">container</span>
+							<span class="color-slate-50"> {</span>
+							</div>
+							<div class="line">
+							<span class="color-slate-50">  </span>
+							<span class="color-sky-20">padding</span>
+							<span class="color-slate-10">: </span>
+							<span class="color-yellow-10">var</span>
+							<span class="color-slate-10">(</span>
+							<span class="color-sky-20">--scale-16</span>
+							<span class="color-slate-10">)</span>
+							<span class="color-yellow-10"> var</span>
+							<span class="color-slate-10">(</span>
+							<span class="color-sky-20">--scale-24</span>
+							<span class="color-slate-10">)</span>
+							<span class="color-slate-50">;</span>
+							</div>
+							<div class="line">
+							<span class="color-slate-50">  </span>
+							<span class="color-sky-20">margin</span>
+							<span class="color-slate-10">: </span>
+							<span class="color-yellow-10">var</span>
+							<span class="color-slate-10">(</span>
+							<span class="color-sky-20">--scale-8</span>
+							<span class="color-slate-10">)</span>
+							<span class="color-yellow-10"> var</span>
+							<span class="color-slate-10">(</span>
+							<span class="color-sky-20">--scale-0</span>
+							<span class="color-slate-10">)</span>
+							<span class="color-slate-50">;</span>
+							</div>
+							<div class="line">
+							<span class="color-slate-50">}</span>
+						</div>
+					@endslot
+				</x-ui.figure>
+
+				<x-type::hint class="mb-16">Все функции API возвращают CSS-переменные, что обеспечивает консистентность значений и возможность динамической смены тем. Для получения сырых значений используйте функции с суффиксом <x-ui.code>-value</x-ui.code>.</x-type::hint>
+			</section>
+
+			{{--Utils classes--}}
+			<section id="anchor-utils-classes" class="doc__section">
+				<x-type::h size="2" class="mb-24">Утилитарные классы spacing</x-type::h>
+
+				<x-type::p class="mb-16">
+					Система генерирует утилитарные классы для <x-ui.code>margin</x-ui.code> и <x-ui.code>padding</x-ui.code>
+					на основе значений масштаба. Классы используют CSS-переменные масштаба и поддерживают адаптивность.
+				</x-type::p>
+
+				<x-type::h size="3" class="mt-48 mb-24">Структура классов</x-type::h>
+
+				<x-type::p class="mb-16">Классы формируются по шаблону: <x-ui.code>[префикс][направление]-[значение]</x-ui.code></x-type::p>
+
+				<x-type::h size="4" class="mb-16">Префиксы свойств</x-type::h>
+				<x-type::ul mod="disc" class="mb-24">
+					<x-type::li class="mb-4"><x-ui.code>m</x-ui.code> — margin</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>p</x-ui.code> — padding</x-type::li>
+				</x-type::ul>
+
+				<x-type::h size="4" class="mb-16">Направления</x-type::h>
+				<x-type::ul mod="disc" class="mb-24">
+					<x-type::li class="mb-4">без направления — все стороны</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>t</x-ui.code> — top (верх)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>r</x-ui.code> — right (право)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>b</x-ui.code> — bottom (низ)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>l</x-ui.code> — left (лево)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>x</x-ui.code> — left + right (по горизонтали)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>y</x-ui.code> — top + bottom (по вертикали)</x-type::li>
+				</x-type::ul>
+
+				<x-type::h size="3" class="mt-48 mb-24">Базовые классы</x-type::h>
+
+				<x-type::p class="mb-16">Примеры классов и соответствующий CSS:</x-type::p>
+
+				<x-type::ul mod="disc" class="mb-16">
+					<x-type::li class="mb-4"><x-ui.code>.m-8</x-ui.code> → <x-ui.code>margin: var(--scale-8)</x-ui.code></x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>.mt-16</x-ui.code> → <x-ui.code>margin-top: var(--scale-16)</x-ui.code></x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>.mx-24</x-ui.code> → <x-ui.code>margin-left: var(--scale-24); margin-right: var(--scale-24)</x-ui.code></x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>.p-32</x-ui.code> → <x-ui.code>padding: var(--scale-32)</x-ui.code></x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>.py-8</x-ui.code> → <x-ui.code>padding-top: var(--scale-8); padding-bottom: var(--scale-8)</x-ui.code></x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>.pr-4</x-ui.code> → <x-ui.code>padding-right: var(--scale-4)</x-ui.code></x-type::li>
+				</x-type::ul>
+
+				<x-type::h size="3" class="mt-48 mb-24">Адаптивные классы</x-type::h>
+
+				<x-type::p class="mb-16">
+					Для каждого viewport генерируются адаптивные версии классов с префиксом <x-ui.code>[device]:</x-ui.code>.
+					Классы применяются только в соответствующем media-query.
+				</x-type::p>
+
+				<x-type::h size="4" class="mb-16">Префиксы устройств</x-type::h>
+				<x-type::ul mod="disc" class="mb-24">
+					<x-type::li class="mb-4"><x-ui.code>pp:</x-ui.code> — phone-portrait (360px-767px)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>pl:</x-ui.code> — phone-landscape (800px-1023px)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>p:</x-ui.code> — phone (все телефоны)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>tp:</x-ui.code> — tablet-portrait (768px-1023px)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>tl:</x-ui.code> — tablet-landscape (1024px-1279px)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>t:</x-ui.code> — tablet (все планшеты)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>m:</x-ui.code> — mobile (phone + tablet)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>l:</x-ui.code> — laptop (1280px-1599px)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>w:</x-ui.code> — wide (1600px+)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>d:</x-ui.code> — desktop (laptop + wide)</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>np:</x-ui.code> — no-phone (все кроме телефонов)</x-type::li>
+				</x-type::ul>
+
+				<x-type::h size="4" class="mb-16">Примеры адаптивных классов</x-type::h>
+				<x-type::ul mod="disc" class="mb-32">
+					<x-type::li class="mb-4"><x-ui.code>.p:m-8</x-ui.code> — margin на телефонах</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>.l:p-16</x-ui.code> — padding на laptop</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>.m:mx-24</x-ui.code> — горизонтальный margin на мобильных</x-type::li>
+					<x-type::li class="mb-4"><x-ui.code>.np:py-32</x-ui.code> — вертикальный padding на всех устройствах кроме телефонов</x-type::li>
+				</x-type::ul>
+
+				<x-type::hint class="mb-16">Генерация выполняется через миксин <x-ui.code>generate-spacing-classes</x-ui.code> на основе значений масштаба из конфигурации. Отрицательные значения масштаба исключаются из генерации.</x-type::hint>
+			</section>
 
 			{{--Typography--}}
 			<section id="anchor-typography" class="doc__section">
@@ -677,6 +1179,11 @@
 					<x-type::li><x-ui.code>x-type::ul</x-ui.code></x-type::li>
 				</x-type::ul>
 				<x-type::p class="mb-64">Атрибут <x-ui.code>mod</x-ui.code> — модификатор стиля.</x-type::p>
+
+			</section>
+
+			{{--Link--}}
+			<section id="anchor-link" class="doc__section">
 
 			</section>
 

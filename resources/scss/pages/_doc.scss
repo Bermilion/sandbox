@@ -1,5 +1,6 @@
 @use "@core/tokens" as token;
 @use "@core/viewports";
+@use "sass:color";
 
 .doc {
 	&__section {
@@ -78,6 +79,90 @@ $liner-gradient: linear-gradient(0deg, token.color-base(token.$grid, .47) 1px, t
 	&_laptop { @include viewports.laptop { display: block; } }
 	&_wide { @include viewports.wide { display: block; } }
 	&_no-phone { @include viewports.no-phone { display: block; } }
+}
+
+.colors {
+	margin-bottom: token.scale(token.$scale-24);
+
+	.grid {
+		align-items: center;
+		display: inline-grid;
+		grid-template-columns: repeat(11, auto);
+		gap: token.scale(token.$scale-8);
+		margin: token.scale(token.$scale-24);
+	}
+
+	.box {
+		width: token.scale(token.$scale-48);
+		height: token.scale(token.$scale-48);
+		border-radius: token.scale(token.$scale-8);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		$accent: token.$oklch-example;
+		$hsl-accent: color.to-space($accent, hsl);
+		$oklch-accent: color.to-space($accent, oklch);
+
+		$shades: (50: 50%, 100: 40%, 200: 30%, 300: 20%, 400: 10%, 500: 0%, 600: -10%, 700: -20%, 800: -30%, 900: -40%, 950: -50%);
+		@each $shade, $value in $shades {
+			&_oklch-accent-#{$shade} {
+				$color: color.adjust($oklch-accent, $lightness: $value);
+				background-color: $color;
+				color: token.color-content($color);
+			}
+			&_hsl-accent-#{$shade} {
+				$color: color.adjust($hsl-accent, $lightness: $value);
+				background-color: $color;
+				color: token.color-content($color);
+			}
+		}
+
+		&_accent-50 {
+			background-color: token.color-light-50($accent);
+			color: token.color-content(token.color-light-50($accent));
+		}
+		&_accent-100 {
+			background-color: token.color-light-40($accent);
+			color: token.color-content(token.color-light-40($accent));
+		}
+		&_accent-200 {
+			background-color: token.color-light-30($accent);
+			color: token.color-content(token.color-light-30($accent));
+		}
+		&_accent-300 {
+			background-color: token.color-light-20($accent);
+			color: token.color-content(token.color-light-20($accent));
+		}
+		&_accent-400 {
+			background-color: token.color-light-10($accent);
+			color: token.color-content(token.color-light-10($accent));
+		}
+		&_accent-500 {
+			background-color: token.color-base($accent);
+			color: token.color-content(token.color-base($accent));
+		}
+		&_accent-600 {
+			background-color: token.color-dark-10($accent);
+			color: token.color-content(token.color-dark-10($accent));
+		}
+		&_accent-700 {
+			background-color: token.color-dark-20($accent);
+			color: token.color-content(token.color-dark-20($accent));
+		}
+		&_accent-800 {
+			background-color: token.color-dark-30($accent);
+			color: token.color-content(token.color-dark-30($accent));
+		}
+		&_accent-900 {
+			background-color: token.color-dark-40($accent);
+			color: token.color-content(token.color-dark-40($accent));
+		}
+		&_accent-950 {
+			background-color: token.color-dark-50($accent);
+			color: token.color-content(token.color-dark-50($accent));
+		}
+	}
 }
 
 //.dd {
