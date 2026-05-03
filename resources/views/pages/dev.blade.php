@@ -4,6 +4,42 @@
 
 <x-layouts.base-layout title="Страница отладки">
 	<div class="wrapper">
+		<div class="viewport viewport_w">Широкий экран</div>
+		<div class="viewport viewport_l">Ноутбук</div>
+		<div class="viewport viewport_tp">Вертикальный планшет</div>
+		<div class="viewport viewport_pp">Вертикальный смартфон</div>
+		<div class="viewport viewport_tl">Горизонтальный планшет</div>
+		<div class="viewport viewport_pl">Горизонтальный смартфон</div>
+	</div>
+{{--	<div class="wrapper_grid">--}}
+{{--		<div class="grid">--}}
+{{--			<div class="grid__item"></div>--}}
+{{--			<div class="grid__item"></div>--}}
+{{--			<div class="grid__item"></div>--}}
+{{--			<div class="grid__item"></div>--}}
+{{--			<div class="grid__item"></div>--}}
+{{--			<div class="grid__item"></div>--}}
+{{--			<div class="grid__item"></div>--}}
+{{--			<div class="grid__item"></div>--}}
+{{--			<div class="grid__item"></div>--}}
+{{--			<div class="grid__item"></div>--}}
+{{--			<div class="grid__item"></div>--}}
+{{--			<div class="grid__item"></div>--}}
+{{--		</div>--}}
+{{--	</div>--}}
+	<div class="wrapper_layout">
+		<div class="grid-cards">
+			<x-card-1/>
+			<x-card-2/>
+			<x-card-1/>
+			<x-card-2/>
+			<x-card-1/>
+			<x-card-2/>
+			<x-card-1/>
+			<x-card-2/>
+		</div>
+	</div>
+	<div class="wrapper">
 		<x-base::link href="#" icon="bars" text="Link"/>
 		<x-base::link href="#" icon="bars" icon-right text="Link"/>
 		<x-base::button icon="chevron-left" text="Button"/>

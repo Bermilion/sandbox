@@ -3,7 +3,8 @@
 @use "@fontsource-variable/jetbrains-mono";
 @use "@core/preflight";
 @use "@core/viewports";
-@use "@core/rem-clamp";
+@use "@core/rem";
+//@use "@core/rem-clamp";
 @use "@type/classes";
 @use "@core/colors";
 @use "@core/tokens" as token;

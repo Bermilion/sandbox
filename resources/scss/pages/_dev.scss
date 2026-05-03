@@ -1,10 +1,374 @@
 @use "@core/tokens" as token;
+@use "@core/viewports";
 
 .wrapper {
-	padding: token.scale(64);
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
+	padding: token.scale(32);
+
+	@include viewports.phone-portrait {
+		padding: token.scale(16);
+	}
+	@include viewports.laptop {
+		padding: token.scale(32, 64);
+	}
+	@include viewports.wide {
+		padding: token.scale(32, 320);
+	}
+
+	&_grid {
+		position: relative;
+		padding: token.scale(0, 16);
+		background-color: token.color-base(token.$grid);
+
+		@include viewports.phone-landscape {
+			padding: token.scale(0, 32);
+		}
+		@include viewports.tablet {
+			padding: token.scale(0, 32);
+		}
+		@include viewports.laptop {
+			padding: token.scale(0, 64);
+		}
+		@include viewports.wide {
+			padding: token.scale(0, 320);
+		}
+
+		&:before, &:after {
+			position: absolute;
+			height: 100%;
+			width: token.scale(16);
+			font-size: token.scale(12);
+			line-height: token.scale(16);
+			font-weight: token.weight(200);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			top: 0;
+
+			@include viewports.phone-landscape {
+				width: token.scale(32);
+			}
+			@include viewports.tablet {
+				width: token.scale(32);
+			}
+			@include viewports.tablet {
+				width: token.scale(32);
+			}
+			@include viewports.laptop {
+				width: token.scale(64);
+			}
+			@include viewports.wide {
+				width: token.scale(320);
+			}
+		}
+		&:before {
+			content: '16';
+			left: 0;
+
+			@include viewports.phone-landscape {
+				content: '32';
+			}
+			@include viewports.tablet {
+				content: '32';
+			}
+			@include viewports.laptop {
+				content: '64';
+			}
+			@include viewports.wide {
+				content: '320';
+			}
+		}
+		&:after {
+			content: '16';
+			right: 0;
+
+			@include viewports.phone-landscape {
+				content: '32';
+			}
+			@include viewports.tablet {
+				content: '32';
+			}
+			@include viewports.laptop {
+				content: '64';
+			}
+			@include viewports.wide {
+				content: '320';
+			}
+		}
+	}
+
+	&_layout {
+		padding: token.scale(32, 16);
+		background-color: token.color-base(token.$bg);
+	}
+
+	&_typography {
+		padding: token.scale(32, 16);
+	}
+}
+
+.viewport {
+	display: none;
+	font-size: token.scale(16);
+	line-height: token.scale(24);
+	font-weight: token.weight(500);
+
+	&_pp { @include viewports.phone-portrait { display: block; } }
+	&_pl { @include viewports.phone-landscape { display: block; } }
+	&_tp { @include viewports.tablet-portrait { display: block; } }
+	&_tl { @include viewports.tablet-landscape { display: block; } }
+	&_l { @include viewports.laptop { display: block; } }
+	&_w { @include viewports.wide { display: block; } }
+}
+
+.grid {
+	background-color: token.color-base(token.$content-light);
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
 	gap: token.scale(16);
 
+	@include viewports.phone-landscape {
+		grid-template-columns: repeat(6, 1fr);
+		gap: token.scale(24);
+	}
+	@include viewports.tablet {
+		grid-template-columns: repeat(6, 1fr);
+		gap: token.scale(24);
+	}
+	@include viewports.desktop {
+		grid-template-columns: repeat(12, 1fr);
+		gap: token.scale(32);
+	}
+
+	&__item {
+		position: relative;
+		background-color: token.color-base(token.$col);
+		height: token.scale(64);
+
+		&:before, &:after {
+			position: absolute;
+			font-size: token.scale(12);
+			line-height: token.scale(16);
+			font-weight: token.weight(200);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			width: token.scale(16);
+
+			@include viewports.phone-landscape {
+				width: token.scale(24);
+			}
+			@include viewports.tablet {
+				width: token.scale(24);
+			}
+			@include viewports.desktop {
+				width: token.scale(32);
+			}
+		}
+
+		&:first-child {
+			&:after {
+				content: '16';
+				right: token.scale(-16);
+
+				@include viewports.phone-landscape {
+					content: '24';
+					right: token.scale(-24);
+				}
+				@include viewports.tablet {
+					content: '24';
+					right: token.scale(-24);
+				}
+				@include viewports.desktop {
+					content: '32';
+					right: token.scale(-32);
+				}
+			}
+		}
+		&:nth-child(4) {
+			&:before {
+				content: '16';
+				left: token.scale(-16);
+
+				@include viewports.phone-landscape {
+					content: '24';
+					left: token.scale(-24);
+				}
+				@include viewports.tablet {
+					content: '24';
+					left: token.scale(-24);
+				}
+				@include viewports.desktop {
+					content: '32';
+					left: token.scale(-32);
+				}
+			}
+		}
+		&:nth-child(6) {
+			&:before {
+				@include viewports.phone-landscape {
+					content: '24';
+					left: token.scale(-24);
+				}
+				@include viewports.tablet {
+					content: '24';
+					left: token.scale(-24);
+				}
+				@include viewports.desktop {
+					content: '32';
+					left: token.scale(-32);
+				}
+			}
+		}
+		&:nth-child(8) {
+			&:before {
+				@include viewports.desktop {
+					content: '32';
+					left: token.scale(-32);
+				}
+			}
+		}
+		&:nth-child(10) {
+			&:before {
+				@include viewports.desktop {
+					content: '32';
+					left: token.scale(-32);
+				}
+			}
+		}
+		&:nth-child(12) {
+			&:before {
+				@include viewports.desktop {
+					content: '32';
+					left: token.scale(-32);
+				}
+			}
+		}
+
+		@include viewports.phone-portrait {
+			&:nth-child(n+5) {
+				display: none;
+			}
+		}
+		@include viewports.phone-landscape {
+			&:nth-child(n+7) {
+				display: none;
+			}
+		}
+		@include viewports.tablet {
+			&:nth-child(n+7) {
+				display: none;
+			}
+		}
+	}
+
+}
+
+.grid-cards {
+	$width: minmax(token.scale(320), 1fr);
+
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: token.scale(16);
+	justify-content: center;
+	max-width: token.scale(1360);
+	margin: 0 auto;
+
+	@include viewports.tablet-portrait {
+		grid-template-columns: repeat(2, $width);
+	}
+	@include viewports.tablet-landscape {
+		grid-template-columns: repeat(3, $width);
+	}
+	@include viewports.laptop {
+		grid-template-columns: repeat(auto-fill, $width);
+	}
+	@include viewports.wide {
+		$width: minmax(auto, token.scale(360));
+		grid-template-columns: repeat(4, $width);
+	}
+}
+
+
+.card {
+	background: token.color-base(token.$content-light);
+	box-shadow: token.scale(0, 1, 1) token.color-base(token.$content-dark, .25);
+	border-radius: token.scale(16);
+	display: flex;
+	flex-direction: column;
+
+	@include viewports.phone-landscape {
+		display: grid;
+		grid-template-columns: token.scale(360) 1fr;
+	}
+
+	&__img {
+		aspect-ratio: 4/3;
+		background-color: token.color-base(token.$gray);
+		border-radius: token.scale(16, 16, 0, 0);
+
+		@include viewports.phone-landscape {
+			border-radius: token.scale(16, 0, 0, 16);
+			height: 100%;
+		}
+	}
+	&__sammary {
+		padding: token.scale(16);
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		height: 100%;
+		position: relative;
+		z-index: 10;
+		background-color: token.color-base(token.$content-light);
+		border-radius: token.scale(0, 0, 16, 16);
+
+		@include viewports.phone-landscape {
+			border-radius: token.scale(0, 16, 16, 0);
+		}
+	}
+	&__title {
+		font-size: token.scale(20);
+		line-height: token.scale(24);
+		font-weight: token.weight(700);
+		margin-bottom: token.scale(8);
+		color: token.color-base(token.$content-dark);
+	}
+	&__text {
+		font-size: token.scale(16);
+		line-height: token.scale(24);
+		font-weight: token.weight(400);
+		color: token.color-light-10(token.$content-dark);
+		flex-grow: 1;
+	}
+	&__hint {
+		font-size: token.scale(12);
+		line-height: token.scale(16);
+		font-weight: token.weight(400);
+		color: token.color-light-40(token.$content-dark);
+		white-space: nowrap;
+	}
+	&__controls {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__services {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		gap: token.scale(8);
+		padding: token.scale(32, 0, 40, 0);
+	}
+	&__service {
+		display: grid;
+		align-items: center;
+		grid-template-columns: token.scale(24) auto;
+		gap: token.scale(8);
+	}
+	&__svg {
+		width: token.scale(24);
+		height: token.scale(24);
+	}
 }
