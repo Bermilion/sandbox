@@ -31,7 +31,7 @@ export default defineConfig({
 			paths: ['resources/views/**/*.blade.php'],
 			safelist: {
 				standard: [
-					/^highlight/, /^highlight_/, /^highlight_*/,
+					/^highlight/, /^highlight_/, /^highlight_*/, /link/, /link_menu/,
 					// Сохранять HTML элементы из _reset.scss
 					'html', 'body', 'div', 'span', 'object', 'iframe', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
 					'p', 'blockquote', 'pre', 'abbr', 'address', 'cite', 'code', 'del', 'dfn', 'em', 'img',

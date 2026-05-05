@@ -48,6 +48,5 @@
 		<x-base::button icon="chevron-left"/>
 		<x-base::button icon="chevron-left" text="Button" disabled="true" />
 		<x-base::button icon="chevron-left" mod="disabled" text="Button" />
-
 	</div>
 </x-layouts.base-layout>
