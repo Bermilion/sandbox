@@ -27,18 +27,22 @@
 {{--			<div class="grid__item"></div>--}}
 {{--		</div>--}}
 {{--	</div>--}}
-	<div class="wrapper_layout">
-		<div class="grid-cards">
-			<x-card-1/>
-			<x-card-2/>
-			<x-card-1/>
-			<x-card-2/>
-			<x-card-1/>
-			<x-card-2/>
-			<x-card-1/>
-			<x-card-2/>
-		</div>
+{{--	<div class="wrapper_layout">--}}
+{{--		<div class="grid-cards">--}}
+{{--			<x-card-1/>--}}
+{{--			<x-card-2/>--}}
+{{--			<x-card-1/>--}}
+{{--			<x-card-2/>--}}
+{{--			<x-card-1/>--}}
+{{--			<x-card-2/>--}}
+{{--			<x-card-1/>--}}
+{{--			<x-card-2/>--}}
+{{--		</div>--}}
+{{--	</div>--}}
+	<div class="wrapper">
+		<div class="box"></div>
 	</div>
+
 	<div class="wrapper">
 		<x-base::link href="#" icon="bars" text="Link"/>
 		<x-base::link href="#" icon="bars" icon-right text="Link"/>
