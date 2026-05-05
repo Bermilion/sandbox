@@ -1,6 +1,5 @@
 import {defineConfig} from 'vite';
 import laravel from 'laravel-vite-plugin';
-import {createSvgIconsPlugin} from "vite-plugin-svg-icons";
 import path from 'path';
 import purge from '@erbelion/vite-plugin-laravel-purgecss';
 import { generateDynamicSafelist } from './vite-pugins/vite-plugin-dynamic-safelist.js';
@@ -27,26 +26,6 @@ export default defineConfig({
 		laravel({
 			input: ['resources/scss/app.scss', 'resources/js/app.js'],
 			refresh: true,
-		}),
-		createSvgIconsPlugin({
-			iconDirs: [path.resolve(process.cwd(), 'resources/icons')],
-			symbolId: 'icon-[name]',
-			svgoOptions: {
-				plugins: [
-					{
-						name: 'removeAttrs',
-						params: {
-							attrs: 'fill',
-						},
-					},
-					{
-						name: 'addAttributesToSVGElement',
-						params: {
-							attributes: [{fill: 'currentColor'}],
-						},
-					},
-				],
-			},
 		}),
 		purge({
 			paths: ['resources/views/**/*.blade.php'],
