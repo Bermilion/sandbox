@@ -49,7 +49,5 @@
 		<x-base::button icon="chevron-left" text="Button" disabled="true" />
 		<x-base::button icon="chevron-left" mod="disabled" text="Button" />
 
-		<x-utils::icon name="route"/>
-
 	</div>
 </x-layouts.base-layout>

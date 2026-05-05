@@ -10,6 +10,7 @@
 </head>
 <body class="body">
 	{{ $slot }}
+	<x-svg-sprite />
 	@vite(['resources/js/app.js'])
 </body>
 </html>
