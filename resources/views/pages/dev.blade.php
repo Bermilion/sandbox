@@ -11,22 +11,22 @@
 		<div class="viewport viewport_tl">Горизонтальный планшет</div>
 		<div class="viewport viewport_pl">Горизонтальный смартфон</div>
 	</div>
-{{--	<div class="wrapper_grid">--}}
-{{--		<div class="grid">--}}
-{{--			<div class="grid__item"></div>--}}
-{{--			<div class="grid__item"></div>--}}
-{{--			<div class="grid__item"></div>--}}
-{{--			<div class="grid__item"></div>--}}
-{{--			<div class="grid__item"></div>--}}
-{{--			<div class="grid__item"></div>--}}
-{{--			<div class="grid__item"></div>--}}
-{{--			<div class="grid__item"></div>--}}
-{{--			<div class="grid__item"></div>--}}
-{{--			<div class="grid__item"></div>--}}
-{{--			<div class="grid__item"></div>--}}
-{{--			<div class="grid__item"></div>--}}
-{{--		</div>--}}
-{{--	</div>--}}
+	<div class="wrapper_grid">
+		<div class="grid">
+			<div class="grid__item"></div>
+			<div class="grid__item"></div>
+			<div class="grid__item"></div>
+			<div class="grid__item"></div>
+			<div class="grid__item"></div>
+			<div class="grid__item"></div>
+			<div class="grid__item"></div>
+			<div class="grid__item"></div>
+			<div class="grid__item"></div>
+			<div class="grid__item"></div>
+			<div class="grid__item"></div>
+			<div class="grid__item"></div>
+		</div>
+	</div>
 {{--	<div class="wrapper_layout">--}}
 {{--		<div class="grid-cards">--}}
 {{--			<x-card-1/>--}}
@@ -39,9 +39,6 @@
 {{--			<x-card-2/>--}}
 {{--		</div>--}}
 {{--	</div>--}}
-	<div class="wrapper">
-		<div class="box"></div>
-	</div>
 
 	<div class="wrapper">
 		<x-base::link href="#" icon="bars" text="Link"/>
@@ -51,5 +48,8 @@
 		<x-base::button icon="chevron-left"/>
 		<x-base::button icon="chevron-left" text="Button" disabled="true" />
 		<x-base::button icon="chevron-left" mod="disabled" text="Button" />
+
+		<x-utils::icon name="route"/>
+
 	</div>
 </x-layouts.base-layout>
