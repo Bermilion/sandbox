@@ -19,6 +19,7 @@
 			<x-ui.menu>
 				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-typography">Типографика</x-base::link></x-ui.menu-item>
 				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-link">Ссылка</x-base::link></x-ui.menu-item>
+				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-button">Кнопка</x-base::link></x-ui.menu-item>
 			</x-ui.menu>
 		</x-sidebar>
 		<x-main>
@@ -1184,7 +1185,178 @@
 
 			{{--Link--}}
 			<section id="anchor-link" class="doc__section">
+				<x-type::h size="2" class="mb-24">Компонент ссылки</x-type::h>
 
+				<x-type::supheading class="mb-8">Пример ссылки</x-type::supheading>
+				<x-ui.figure class="mb-16">
+					<x-type::p class="mb-8">
+						<x-base::link icon="bars">Меню</x-base::link>
+					</x-type::p>
+					<x-type::p>
+						<x-base::link icon="bars" icon-right>Меню</x-base::link>
+					</x-type::p>
+
+					@slot('code')
+						<div class="line">
+							<span class="color-slate-10"><</span>
+							<span class="color-pink-10">x</span>
+							<span class="color-slate-20">-</span>
+							<span class="color-pink-10">base</span>
+							<span class="color-slate-20">::</span>
+							<span class="color-pink-10">link</span>
+							<span class="color-slate-20"> icon</span>
+							<span class="color-slate-10">=</span>
+							<span class="color-sky-20">"bars"</span>
+							<span class="color-slate-10">></span>
+							<span class="color-slate-50">Меню</span>
+							<span class="color-slate-10"><</span>
+							<span class="color-slate-10">/</span>
+							<span class="color-pink-10">x</span>
+							<span class="color-slate-20">-</span>
+							<span class="color-pink-10">base</span>
+							<span class="color-slate-20">::</span>
+							<span class="color-pink-10">link</span>
+							<span class="color-slate-10">></span>
+						</div>
+						<div class="line">
+							<span class="color-slate-10"><</span>
+							<span class="color-pink-10">x</span>
+							<span class="color-slate-20">-</span>
+							<span class="color-pink-10">base</span>
+							<span class="color-slate-20">::</span>
+							<span class="color-pink-10">link</span>
+							<span class="color-slate-20"> icon</span>
+							<span class="color-slate-10">=</span>
+							<span class="color-sky-20">"bars"</span>
+							<span class="color-slate-20"> icon-right</span>
+							<span class="color-slate-10">></span>
+							<span class="color-slate-50">Меню</span>
+							<span class="color-slate-10"><</span>
+							<span class="color-slate-10">/</span>
+							<span class="color-pink-10">x</span>
+							<span class="color-slate-20">-</span>
+							<span class="color-pink-10">base</span>
+							<span class="color-slate-20">::</span>
+							<span class="color-pink-10">link</span>
+							<span class="color-slate-10">></span>
+						</div>
+					@endslot
+
+				</x-ui.figure>
+				<x-type::p class="mb-8">Атрибуты: </x-type::p>
+				<x-type::p class="mb-16"><x-ui.code>mod</x-ui.code> — модификатор стиля.</x-type::p>
+				<x-type::p class="mb-16"><x-ui.code>text</x-ui.code> — текст ссылки (альтернатива слоту).</x-type::p>
+				<x-type::p class="mb-16"><x-ui.code>icon</x-ui.code> — иконка.</x-type::p>
+				<x-type::p class="mb-16"><x-ui.code>icon-right</x-ui.code> — позиционирование иконки относительно текста по умолчанию <x-ui.code>false</x-ui.code>.</x-type::p>
+			</section>
+
+			{{--Button--}}
+			<section id="anchor-button" class="doc__section">
+				<x-type::h size="2" class="mb-24">Компонент кнопки</x-type::h>
+
+				<x-type::supheading class="mb-8">Пример кнопки</x-type::supheading>
+				<x-ui.figure class="mb-16">
+					<x-type::p class="mb-8">
+						<x-base::button text="Кнопка"/>
+					</x-type::p>
+					<x-type::p class="mb-8">
+						<x-base::button icon="chevron-left" text="Кнопка"/>
+					</x-type::p>
+					<x-type::p class="mb-8">
+						<x-base::button icon="thumbs-up" icon-right text="Кнопка"/>
+					</x-type::p>
+					<x-type::p class="mb-8">
+						<x-base::button icon="chevron-left"/>
+					</x-type::p>
+					<x-type::p>
+						<x-base::button icon="chevron-left" text="Кнопка" disabled/>
+					</x-type::p>
+
+					@slot('code')
+						<div class="line">
+							<span class="color-slate-10"><</span>
+							<span class="color-pink-10">x</span>
+							<span class="color-slate-20">-</span>
+							<span class="color-pink-10">base</span>
+							<span class="color-slate-20">::</span>
+							<span class="color-pink-10">button</span>
+							<span class="color-slate-20"> text</span>
+							<span class="color-slate-10">=</span>
+							<span class="color-sky-20">"Кнопка"</span>
+							<span class="color-slate-10">/</span>
+							<span class="color-slate-10">></span>
+						</div>
+						<div class="line">
+							<span class="color-slate-10"><</span>
+							<span class="color-pink-10">x</span>
+							<span class="color-slate-20">-</span>
+							<span class="color-pink-10">base</span>
+							<span class="color-slate-20">::</span>
+							<span class="color-pink-10">button</span>
+							<span class="color-slate-20"> icon</span>
+							<span class="color-slate-10">=</span>
+							<span class="color-sky-20">"chevron-left"</span>
+							<span class="color-slate-20"> text</span>
+							<span class="color-slate-10">=</span>
+							<span class="color-sky-20">"Кнопка"</span>
+							<span class="color-slate-10">/</span>
+							<span class="color-slate-10">></span>
+						</div>
+						<div class="line">
+							<span class="color-slate-10"><</span>
+							<span class="color-pink-10">x</span>
+							<span class="color-slate-20">-</span>
+							<span class="color-pink-10">base</span>
+							<span class="color-slate-20">::</span>
+							<span class="color-pink-10">button</span>
+							<span class="color-slate-20"> icon</span>
+							<span class="color-slate-10">=</span>
+							<span class="color-sky-20">"thumbs-up"</span>
+							<span class="color-slate-20"> icon-right</span>
+							<span class="color-slate-20"> text</span>
+							<span class="color-slate-10">=</span>
+							<span class="color-sky-20">"Кнопка"</span>
+							<span class="color-slate-10">/</span>
+							<span class="color-slate-10">></span>
+						</div>
+						<div class="line">
+							<span class="color-slate-10"><</span>
+							<span class="color-pink-10">x</span>
+							<span class="color-slate-20">-</span>
+							<span class="color-pink-10">base</span>
+							<span class="color-slate-20">::</span>
+							<span class="color-pink-10">button</span>
+							<span class="color-slate-20"> icon</span>
+							<span class="color-slate-10">=</span>
+							<span class="color-sky-20">"chevron-left"</span>
+							<span class="color-slate-10">/</span>
+							<span class="color-slate-10">></span>
+						</div>
+						<div class="line">
+							<span class="color-slate-10"><</span>
+							<span class="color-pink-10">x</span>
+							<span class="color-slate-20">-</span>
+							<span class="color-pink-10">base</span>
+							<span class="color-slate-20">::</span>
+							<span class="color-pink-10">button</span>
+							<span class="color-slate-20"> icon</span>
+							<span class="color-slate-10">=</span>
+							<span class="color-sky-20">"chevron-left"</span>
+							<span class="color-slate-20"> text</span>
+							<span class="color-slate-10">=</span>
+							<span class="color-sky-20">"Кнопка"</span>
+							<span class="color-slate-20"> disabled</span>
+							<span class="color-slate-10">/</span>
+							<span class="color-slate-10">></span>
+						</div>
+					@endslot
+
+				</x-ui.figure>
+				<x-type::p class="mb-8">Атрибуты: </x-type::p>
+				<x-type::p class="mb-16"><x-ui.code>mod</x-ui.code> — модификатор стиля по умолчанию <x-ui.code>button_accent</x-ui.code>.</x-type::p>
+				<x-type::p class="mb-16"><x-ui.code>text</x-ui.code> — текст кнопки (альтернатива слоту).</x-type::p>
+				<x-type::p class="mb-16"><x-ui.code>icon</x-ui.code> — иконка.</x-type::p>
+				<x-type::p class="mb-16"><x-ui.code>icon-right</x-ui.code> — позиционирование иконки относительно текста по умолчанию <x-ui.code>false</x-ui.code>.</x-type::p>
 			</section>
 
 
