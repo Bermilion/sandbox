@@ -274,19 +274,13 @@
 	max-width: token.scale(1360);
 	margin: 0 auto;
 
+	@include viewports.no-phone {
+		grid-template-columns: repeat(auto-fit, $width);
+	}
 	@include viewports.tablet-portrait {
 		grid-template-columns: repeat(2, $width);
 	}
-	@include viewports.tablet-landscape {
-		grid-template-columns: repeat(3, $width);
-	}
-	@include viewports.laptop {
-		grid-template-columns: repeat(auto-fill, $width);
-	}
-	@include viewports.wide {
-		$width: minmax(auto, token.scale(360));
-		grid-template-columns: repeat(4, $width);
-	}
+
 }
 
 .card {
@@ -369,5 +363,54 @@
 	&__svg {
 		width: token.scale(24);
 		height: token.scale(24);
+	}
+}
+
+
+.modal {
+	max-width: token.scale(320);
+	background-color: token.color-base(token.$content-light);
+	border-radius: token.scale(16);
+	padding: token.scale(48, 24, 24, 24);
+	margin: auto auto;
+	position: fixed;
+	opacity: 0;
+	translate: 0 -1em;
+	transition:
+		opacity 250ms ease-out,
+		translate 250ms ease-out,
+		display 250ms ease-out allow-discrete,
+		overlay 250ms ease-out allow-discrete;
+
+	&::backdrop {
+		background-color: token.color-base(token.$content-dark, .0);
+		transition:
+			background-color 250ms ease-out,
+			display 250ms ease-out allow-discrete;
+	}
+
+	&:popover-open {
+		opacity: 1;
+		translate: 0 0;
+
+		&::backdrop {
+			background-color: token.color-base(token.$content-dark, .5);
+		}
+	}
+
+	@starting-style {
+		&:popover-open {
+			opacity: 0;
+			translate: 0 -1em;
+		}
+		&:popover-open::backdrop {
+			background-color: token.color-base(token.$content-dark, .0);
+		}
+	}
+
+	&__button-close {
+		position: absolute;
+		right: token.scale(8);
+		top: token.scale(8);
 	}
 }

@@ -4,6 +4,34 @@
 
 <x-layouts.base-layout title="Страница отладки">
 	<div class="wrapper">
+		<x-base::button text="Открыть модальное окно" popovertarget="modal"/>
+		<dialog popover="auto" id="modal" class="modal">
+			<x-base::button text="×" class="modal__button-close" popovertarget="modal" aria-label="close"/>
+			<x-type::h size="2">I'm <x-ui.code>manual</x-ui.code> Popover 2!</x-type::h>
+			<x-type::p>A <x-ui.code>manual</x-ui.code> popover can <strong>not</strong> be "light dismissed".</x-type::p>
+			<x-type::p>Opening a <x-ui.code>manual</x-ui.code> popover does <strong>not</strong> automatically close any other <x-ui.code>manual</x-ui.code> popovers that were open, but <em>will</em> close any <x-ui.code>auto</x-ui.code> popovers that were open.</x-type::p>
+			<x-type::p>Clicking the <x-ui.code>button</x-ui.code> a second time will close the one it opened.</x-type::p>
+			<x-type::p>Note this popover also has a "close" <x-ui.code>button</x-ui.code>.</x-type::p>
+		</dialog>
+	</div>
+	<div class="wrapper">
+		<details name="foo">
+			<summary>Initially open, clicking others will close this</summary>
+			Content is initially visible, but can be hidden by clicking the summary; only one panel can be open at a time.
+		</details>
+		<details name="foo">
+			<summary>Initially closed, clicking will open this, and close others</summary>
+			Content is initially hidden, but can be revealed by clicking the summary; only one panel can be open at a time.
+		</details>
+		<details name="foo">
+			<summary>Initially closed, clicking will open this, and close others</summary>
+			Content is initially hidden, but can be revealed by clicking the summary; only one panel can be open at a time.
+		</details>
+	</div>
+
+
+
+	<div class="wrapper">
 		<div class="viewport viewport_w">Широкий экран</div>
 		<div class="viewport viewport_l">Ноутбук</div>
 		<div class="viewport viewport_tp">Вертикальный планшет</div>
@@ -27,18 +55,18 @@
 			<div class="grid__item"></div>
 		</div>
 	</div>
-{{--	<div class="wrapper_layout">--}}
-{{--		<div class="grid-cards">--}}
-{{--			<x-card-1/>--}}
-{{--			<x-card-2/>--}}
-{{--			<x-card-1/>--}}
-{{--			<x-card-2/>--}}
-{{--			<x-card-1/>--}}
-{{--			<x-card-2/>--}}
-{{--			<x-card-1/>--}}
-{{--			<x-card-2/>--}}
-{{--		</div>--}}
-{{--	</div>--}}
+	<div class="wrapper_layout">
+		<div class="grid-cards">
+			<x-card-1/>
+			<x-card-2/>
+			<x-card-1/>
+			<x-card-2/>
+			<x-card-1/>
+			<x-card-2/>
+			<x-card-1/>
+			<x-card-2/>
+		</div>
+	</div>
 
 	<div class="wrapper">
 		<x-base::link href="#" icon="bars" text="Link"/>
