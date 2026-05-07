@@ -414,3 +414,11 @@
 		top: token.scale(8);
 	}
 }
+
+.wrapper_buttons {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: token.scale(16);
+	background-color: token.color-light-40(token.$gray);
+}

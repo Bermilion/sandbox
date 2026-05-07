@@ -17,6 +17,7 @@
 			</x-ui.menu>
 			<x-type::supheading class="mb-12">Компоненты</x-type::supheading>
 			<x-ui.menu>
+				<x-ui.menu-item><x-base::link mod="menu" href="/pages/dev">Страница dev</x-base::link></x-ui.menu-item>
 				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-typography">Типографика</x-base::link></x-ui.menu-item>
 				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-link">Ссылка</x-base::link></x-ui.menu-item>
 				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-button">Кнопка</x-base::link></x-ui.menu-item>
