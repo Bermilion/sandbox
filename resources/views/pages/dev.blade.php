@@ -112,7 +112,10 @@
 		<x-chunker::button icon="plus-circle">Button</x-chunker::button>
 		<x-chunker::button icon="chevron-left" disabled>Button</x-chunker::button>
 		<x-chunker::button icon="route" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Построить<br>маршрут</x-chunker::button>
-		<x-chunker::button icon="route" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Построить<br>маршрут</x-chunker::button>
+		<x-chunker::button icon="taxi" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Вызвать<br>такси</x-chunker::button>
+		<x-chunker::button icon="map" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Открыть<br>на карте</x-chunker::button>
+		<x-chunker::button icon="thumbs-up" variant="ghost" size-scale="none" color="gray">1000</x-chunker::button>
+		<x-chunker::button icon="route-solid" variant="ghost" size-scale="none" color="dark" weight="bold" size-font="lg">Мой маршрут</x-chunker::button>
 	</div>
 	<div class="wrapper wrapper_buttons">
 		<x-chunker::button icon="plus-circle" variant="primary" color="success">Button</x-chunker::button>
@@ -150,6 +153,6 @@
 		<x-chunker::button icon="chevron-left" size-scale="sm">Button</x-chunker::button>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button icon="check-circle" size="lg">Button</x-chunker::button>
+		<x-chunker::button icon:trailing="arrow-back-rounded" size-icon="base" size="lg" weight="bold">Выбрать маршрут</x-chunker::button>
 	</div>
 </x-layouts.base-layout>
