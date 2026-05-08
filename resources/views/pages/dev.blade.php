@@ -78,6 +78,7 @@
 {{--		<x-base::button icon="chevron-left" mod="disabled" text="Button" />--}}
 {{--	</div>--}}
 	<div class="wrapper wrapper_buttons">
+		<x-chunker::icon name="spinner" class="animate-spin"/>
 		<x-chunker::button icon="bars" variant="white" square/>
 		<x-chunker::button icon="bars" variant="white" square disabled/>
 		<x-chunker::button icon="bars" square/>
@@ -105,6 +106,7 @@
 		<x-chunker::button icon="play" size="lg" square/>
 	</div>
 	<div class="wrapper wrapper_buttons">
+		<x-chunker::button variant="white" loading>Button</x-chunker::button>
 		<x-chunker::button icon="chevron-left" variant="white">Button</x-chunker::button>
 		<x-chunker::button icon="chevron-left" variant="white" disabled>Button</x-chunker::button>
 	</div>
@@ -153,6 +155,14 @@
 		<x-chunker::button icon="chevron-left" size-scale="sm">Button</x-chunker::button>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button icon:trailing="arrow-back-rounded" size-icon="base" size="lg" weight="bold">Выбрать маршрут</x-chunker::button>
+		<x-chunker::button
+			icon:trailing="arrow-back-rounded"
+			size-icon="base"
+			size="lg"
+			weight="bold"
+			text="Выбрать маршрут"
+		/>
 	</div>
+
+	@livewire('test-loading')
 </x-layouts.base-layout>
