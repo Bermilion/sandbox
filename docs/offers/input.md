@@ -1,470 +1,264 @@
-# Предложение: Компонент Input
+# План разработки компонента Input
 
-Компонент поля ввода Input, реализованный по аналогии с компонентом Button с учётом специфики полей ввода.
+## Общее описание
+
+Компонент Input — поле ввода текста с поддержкой иконок, валидации, состояний и различных вариантов оформления. Реализуется по архитектурным паттернам пакета `chunker2i/base`, аналогично компоненту Button.
 
 ---
 
-## 1. PHP класс: `chunker2i/base/src/View/Components/Input.php`
+## Архитектурные принципы
 
-```php
-<?php namespace Chunker2i\Base\View\Components;
+### 1. Структура компонента
 
-class Input extends AbstractComponent
-{
-    public string $variant;
-    public string $color;
-    public string $size;
-    public ?string $sizeScale;
-    public ?string $sizeFont;
-    public ?string $icon;
-    public ?string $iconTrailing;
-    public ?string $placeholder;
-    public bool $disabled;
-    public bool $readonly;
-    public bool $required;
-    public bool $autofocus;
-    public ?string $type;
-    public ?string $name;
-    public ?string $value;
-    public ?string $error;
-    public bool $clearable;
+| Уровень | Ответственность |
+|---------|-----------------|
+| **PHP класс** | Определение API (props), логика классов, валидация |
+| **Blade шаблон** | Разметка, слоты, интеграция с Laravel/Session |
+| **SCSS** | Визуальное оформление, состояния, анимации |
 
-    public function __construct(
-        string $variant = 'outline',
-        string $color = 'accent',
-        string $size = 'md',
-        ?string $sizeScale = null,
-        ?string $sizeFont = null,
-        ?string $icon = null,
-        ?string $iconTrailing = null,
-        ?string $placeholder = null,
-        ?bool $disabled = null,
-        ?bool $readonly = null,
-        ?bool $required = null,
-        ?bool $autofocus = null,
-        ?string $type = 'text',
-        ?string $name = null,
-        ?string $value = null,
-        ?string $error = null,
-        ?bool $clearable = null
-    ) {
-        parent::__construct();
+### 2. Конвенции именования
 
-        $this->variant = $variant;
-        $this->color = $color;
-        $this->size = $size;
-        $this->sizeScale = $sizeScale ?? $size;
-        $this->sizeFont = $sizeFont ?? $size;
-        $this->icon = $icon;
-        $this->iconTrailing = $iconTrailing;
-        $this->placeholder = $placeholder;
-        $this->disabled = $disabled ?? false;
-        $this->readonly = $readonly ?? false;
-        $this->required = $required ?? false;
-        $this->autofocus = $autofocus ?? false;
-        $this->type = $type;
-        $this->name = $name;
-        $this->value = $value;
-        $this->error = $error;
-        $this->clearable = $clearable ?? false;
-    }
+- Блок: `input`
+- Элементы: `input__label`, `input__container`, `input__icon`
+- Модификаторы: `input_outline`, `input_sm`, `input_error`
 
-    public function render()
-    {
-        return view('chunker::components.input');
-    }
+### 3. Паттерн props (аналогично Button)
 
-    public function classes(): string
-    {
-        $builder = $this->classBuilder
-            ->add('input')
-            ->add("input_{$this->variant}");
+| Prop | Тип | Default | Назначение |
+|------|-----|---------|------------|
+| `variant` | string | `outline` | Визуальный стиль: outline, filled |
+| `color` | string | `accent` | Базовый цвет токена |
+| `size` | string | `md` | Размер отступов и шрифта |
+| `sizeScale` | ?string | `null` | Переопределение размера отступов |
+| `sizeFont` | ?string | `null` | Переопределение размера шрифта |
+| `icon` | ?string | `null` | Иконка слева |
+| `iconTrailing` | ?string | `null` | Иконка справа |
+| `placeholder` | ?string | `null` | Плейсхолдер |
+| `disabled` | bool | `false` | Неактивное состояние |
+| `readonly` | bool | `false` | Только для чтения |
+| `required` | bool | `false` | Обязательное поле |
+| `autofocus` | bool | `false` | Автофокус |
+| `type` | ?string | `text` | HTML-тип поля |
+| `name` | ?string | `null` | Имя поля (для форм) |
+| `value` | ?string | `null` | Значение |
+| `error` | ?string | `null` | Текст ошибки |
+| `clearable` | ?bool | `false` | Кнопка очистки |
 
-        // Цветовой модификатор для ошибок или кастомного цвета
-        if ($this->error || ($this->color !== 'accent' && $this->variant !== 'white')) {
-            $color = $this->error ? 'danger' : $this->color;
-            $builder->add("input_{$this->variant}-{$color}");
-        }
+### 4. Слоты
 
-        // Размеры отступов
-        $builder->addMatch($this->sizeScale, [
-            'sm' => 'input_sm',
-            'md' => '',
-            'lg' => 'input_lg',
-        ]);
+| Слот | Назначение |
+|------|------------|
+| `$label` | Подпись поля с автоматической связью через `for` |
+| `$hint` | Вспомогательный текст под полем |
+| default | Не используется (input — self-closing) |
 
-        // Размеры текста
-        $builder->addMatch($this->sizeFont, [
-            'sm' => 'text_sm',
-            'md' => 'text',
-            'lg' => 'text_lg',
-        ]);
+---
 
-        // Состояния
-        $builder
-            ->addIf($this->disabled, 'input_disabled')
-            ->addIf($this->readonly, 'input_readonly')
-            ->addIf($this->error, 'input_error')
-            ->addIf($this->hasIconLeft(), 'input_has-icon-left')
-            ->addIf($this->hasIconRight(), 'input_has-icon-right');
+## Этапы разработки
 
-        return $builder->toString();
-    }
+### Этап 1: PHP класс компонента
 
-    protected function hasIconLeft(): bool
-    {
-        return filled($this->icon);
-    }
+**Файл:** `chunker2i/base/src/View/Components/Input.php`
 
-    protected function hasIconRight(): bool
-    {
-        return filled($this->iconTrailing) || $this->clearable;
-    }
+**Задачи:**
+1. Создать класс `Input extends AbstractComponent`
+2. Определить публичные свойства с типами
+3. Реализовать конструктор с дефолтными значениями
+4. Реализовать метод `classes()` — генерацию CSS-классов через `ClassBuilder`
+5. Реализовать вспомогательные методы: `hasIconLeft()`, `hasIconRight()`, `iconVariant()`
 
-    protected function iconVariant(): string
-    {
-        return match($this->size) {
-            'sm' => 'micro',
-            default => 'mini',
-        };
-    }
-}
+**Ключевые решения:**
+- Использование `ClassBuilder` для консистентности с Button
+- Автоопределение цвета ошибки (danger при `$error` или ошибках сессии)
+- Поддержка независимых размеров `sizeScale`/`sizeFont` как в Button
+- Иконки адаптируются под размер (micro для sm, mini для md/lg)
+
+**Депенденси:**
+- `AbstractComponent` — базовый класс
+- `ComponentManager`, `ClassBuilder` — через DI
+
+---
+
+### Этап 2: Blade шаблон
+
+**Файл:** `chunker2i/base/resources/views/components/input.blade.php`
+
+**Задачи:**
+1. Создать обертку `.input-wrapper` для flex-расположения label/input/hint
+2. Реализовать условный рендеринг label с индикатором required
+3. Создать контейнер `.input__container` для позиционирования иконок
+4. Реализовать input с пробросом всех HTML-атрибутов
+5. Добавить поддержку иконок (левая/правая) через `<x-chunker::icon>`
+6. Реализовать кнопку очистки для `clearable` полей
+7. Добавить отображение ошибок из props или сессии
+8. Реализовать hint slot
+
+**Ключевые решения:**
+- Автогенерация ID для связи label-input если не указан
+- Извлечение `icon`, `icon:trailing`, `error`, `clearable` из атрибутов в `@php` секции
+- Интеграция с Laravel validation errors: `session("errors.{$name}.0")`
+- Кнопка очистки — inline JS: `onclick="this.previousElementSibling.value = ''; this.previousElementSibling.focus();"`
+- Атрибут `aria-label` для accessibility кнопки очистки
+
+**Структура разметки:**
+```
+.input-wrapper
+  ├── label.input__label (опционально)
+  ├── .input__container
+  │   ├── icon (left, опционально)
+  │   ├── input
+  │   ├── icon (right, опционально)
+  │   └── clear button (опционально)
+  ├── .input__error (опционально)
+  └── .input__hint (опционально)
 ```
 
 ---
 
-## 2. Blade шаблон: `chunker2i/base/resources/views/components/input.blade.php`
+### Этап 3: SCSS стили
 
-```blade
-@php
-    // Извлечение иконок из атрибутов
-    $iconTrailing = $iconTrailing ?? $attributes->get('icon:trailing');
-    $icon = $icon ?? $attributes->get('icon');
-    
-    // Определение состояния ошибки
-    $hasError = $error || $attributes->get('error') || session()->has("errors.{$name}");
-    
-    // Определение необходимости clearable
-    $isClearable = $clearable || $attributes->has('clearable');
-    
-    // Формирование ID для связи label и связанных элементов
-    $inputId = $attributes->get('id') ?? 'input-' . uniqid();
-    
-    // Удаление служебных атрибутов
-    $attributes = $attributes->except(['icon', 'icon:trailing', 'error', 'clearable']);
-@endphp
+**Файл:** `chunker2i/base/resources/scss/ui/base/_input.scss`
 
-<div {{ $attributes->only(['class'])->merge(['class' => 'input-wrapper']) }}>
-    @if(isset($label) && !$label->isEmpty())
-        <label for="{{ $inputId }}" class="input__label">
-            {{ $label }}
-            @if($required)
-                <span class="input__required">*</span>
-            @endif
-        </label>
-    @endif
+**Задачи:**
+1. Создать миксин `input-outline()` для outline варианта
+2. Создать миксин `input-filled()` для filled варианта
+3. Определить базовые стили обертки `.input-wrapper`
+4. Стилизовать `.input__label` с поддержкой `.input__required`
+5. Определить позиционирование `.input__container`
+6. Стилизовать `.input` с вариантами и модификаторами
+7. Добавить стили для иконок (абсолютное позиционирование)
+8. Стилизовать кнопку очистки `.input__clear`
+9. Добавить стили ошибок и hint
 
-    <div class="input__container {{ $hasError ? 'input__container_error' : '' }}">
-        @if($icon)
-            <x-chunker::icon 
-                name="{{ $icon }}" 
-                size="{{ $iconVariant() }}" 
-                class="input__icon input__icon_left" 
-            />
-        @endif
+**Ключевые решения:**
+- Outline вариант: белый фон, цветная рамка, токен-цветная тень при фокусе
+- Filled вариант: полупрозрачный фон, без рамки, меняется при фокусе
+- Состояния disabled/readonly: серый фон, уменьшенная непрозрачность
+- Иконки позиционируются абсолютно внутри `.input__container`
+- Отступы input адаптируются при наличии иконок (`input_has-icon-left/right`)
+- Радиус скругления: `token.$scale-80` (консистентно с Button)
+- Переходы: border-color, box-shadow, background-color по 0.2s
 
-        <input
-            type="{{ $type }}"
-            id="{{ $inputId }}"
-            name="{{ $name }}"
-            value="{{ $value }}"
-            placeholder="{{ $placeholder }}"
-            {{ $disabled ? 'disabled' : '' }}
-            {{ $readonly ? 'readonly' : '' }}
-            {{ $required ? 'required' : '' }}
-            {{ $autofocus ? 'autofocus' : '' }}
-            {{ $attributes->except(['class'])->merge(['class' => $classes()]) }}
-        />
-
-        @if($iconTrailing && !$isClearable)
-            <x-chunker::icon 
-                name="{{ $iconTrailing }}" 
-                size="{{ $iconVariant() }}" 
-                class="input__icon input__icon_right" 
-            />
-        @endif
-
-        @if($isClearable && !$disabled && !$readonly)
-            <button 
-                type="button" 
-                class="input__clear" 
-                onclick="this.previousElementSibling.value = ''; this.previousElementSibling.focus();"
-                aria-label="Очистить поле"
-            >
-                <x-chunker::icon name="x-mark" size="micro" />
-            </button>
-        @endif
-    </div>
-
-    @if($hasError)
-        <span class="input__error">
-            {{ $error ?? session("errors.{$name}.0") }}
-        </span>
-    @endif
-
-    @if(isset($hint) && !$hint->isEmpty())
-        <span class="input__hint">{{ $hint }}</span>
-    @endif
-</div>
-```
+**Цветовые токены:**
+- `token.$accent` — базовый цвет
+- `token.$success`, `token.$danger` — варианты цвета
+- `token.$gray` — плейсхолдер, иконки
+- `token.$content-light`, `token.$content-dark` — фон/текст
 
 ---
 
-## 3. SCSS стили: `chunker2i/base/resources/scss/ui/base/_input.scss`
+### Этап 4: Регистрация в сборке
 
+**Файл:** `chunker2i/base/resources/scss/ui/_index.scss`
+
+**Изменение:**
 ```scss
-@use "@core/tokens" as token;
-
-// Миксин для outline варианта (основной)
-@mixin input-outline($color, $text: null) {
-    $_text: token.color-base($color);
-    $_bg: token.color-base(token.$content-light);
-    $_border: token.color-base($color, .3);
-    $_border-focus: token.color-base($color);
-    $_placeholder: token.color-base(token.$gray);
-
-    background-color: $_bg;
-    color: $_text;
-    border: token.scale(1) solid $_border;
-
-    &::placeholder {
-        color: $_placeholder;
-    }
-
-    &:hover:not(:disabled):not([readonly]) {
-        border-color: token.color-light-10($color);
-    }
-
-    &:focus {
-        outline: none;
-        border-color: $_border-focus;
-        box-shadow: 0 0 0 token.scale(2) token.color-base($color, .15);
-    }
-
-    &:disabled,
-    &[readonly] {
-        background-color: token.color-light-50(token.$gray);
-        color: token.color-dark-20(token.$gray);
-        cursor: not-allowed;
-    }
-}
-
-// Миксин для filled варианта
-@mixin input-filled($color, $text: null) {
-    $_text: token.color-base($color);
-    $_bg: token.color-base($color, .08);
-    $_border: transparent;
-    $_border-focus: token.color-base($color);
-
-    background-color: $_bg;
-    color: $_text;
-    border: token.scale(1) solid $_border;
-
-    &:hover:not(:disabled):not([readonly]) {
-        background-color: token.color-base($color, .12);
-    }
-
-    &:focus {
-        outline: none;
-        background-color: token.color-base(token.$content-light);
-        border-color: $_border-focus;
-        box-shadow: 0 0 0 token.scale(2) token.color-base($color, .15);
-    }
-
-    &:disabled,
-    &[readonly] {
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
-}
-
-// Базовые стили
-.input-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: token.scale(token.$scale-4);
-    width: 100%;
-}
-
-.input__label {
-    font-size: token.scale(token.$scale-12);
-    color: token.color-base(token.$content-dark);
-    font-weight: token.weight-medium();
-
-    .input__required {
-        color: token.color-base(token.$danger);
-        margin-left: token.scale(token.$scale-2);
-    }
-}
-
-.input__container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-
-    &_error {
-        .input {
-            border-color: token.color-base(token.$danger);
-            
-            &:focus {
-                box-shadow: 0 0 0 token.scale(2) token.color-base(token.$danger, .15);
-            }
-        }
-    }
-}
-
-.input {
-    width: 100%;
-    border-radius: token.scale(token.$scale-80);
-    transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
-    font-family: inherit;
-
-    padding: token.scale(token.$scale-8) token.scale(token.$scale-12);
-
-    &_sm {
-        padding: token.scale(token.$scale-4) token.scale(token.$scale-8);
-    }
-
-    &_lg {
-        padding: token.scale(token.$scale-12) token.scale(token.$scale-16);
-    }
-
-    &.input_has-icon-left {
-        padding-left: token.scale(token.$scale-32);
-    }
-
-    &.input_has-icon-right {
-        padding-right: token.scale(token.$scale-32);
-    }
-
-    &_outline {
-        @include input-outline(token.$accent);
-    }
-
-    &_outline-success {
-        @include input-outline(token.$success);
-    }
-
-    &_outline-danger {
-        @include input-outline(token.$danger);
-    }
-
-    &_filled {
-        @include input-filled(token.$accent);
-    }
-
-    &_filled-success {
-        @include input-filled(token.$success);
-    }
-
-    &_filled-danger {
-        @include input-filled(token.$danger);
-    }
-}
-
-.input__icon {
-    position: absolute;
-    color: token.color-base(token.$gray);
-    pointer-events: none;
-
-    &_left {
-        left: token.scale(token.$scale-12);
-    }
-
-    &_right {
-        right: token.scale(token.$scale-12);
-    }
-}
-
-.input__clear {
-    position: absolute;
-    right: token.scale(token.$scale-8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: token.scale(token.$scale-4);
-    border: none;
-    background: transparent;
-    color: token.color-base(token.$gray);
-    cursor: pointer;
-    border-radius: token.scale(token.$scale-40);
-    transition: color .2s ease, background-color .2s ease;
-
-    &:hover {
-        color: token.color-base(token.$content-dark);
-        background-color: token.color-base(token.$gray, .1);
-    }
-}
-
-.input__error {
-    font-size: token.scale(token.$scale-12);
-    color: token.color-base(token.$danger);
-}
-
-.input__hint {
-    font-size: token.scale(token.$scale-12);
-    color: token.color-base(token.$gray);
-}
+@use "base/input";  // добавить после button
 ```
 
----
-
-## 4. Регистрация в `ui/_index.scss`
-
-```scss
-@use "utils/spinner";
-@use "base/link";
-@use "base/button";
-@use "base/input";  // <-- добавить
-@use "utils/icon";
-```
+**Проверка:**
+- Убедиться что Vite плагины корректно обрабатывают `@use "@core/tokens"`
+- Проверить генерацию safelist для классов размеров
 
 ---
 
-## Ключевые особенности Input vs Button
+### Этап 5: Тестирование в песочнице
 
-| Особенность | Button | Input |
-|-------------|--------|-------|
-| **Базовый элемент** | `<button>` или `<a>` | `<input>` внутри wrapper |
-| **Состояния** | `loading`, `disabled` | `disabled`, `readonly`, `required`, `error` |
-| **Иконки** | Слева/справа внутри кнопки | Абсолютное позиционирование внутри контейнера |
-| **Валидация** | Нет | Интеграция с ошибками Laravel/Session |
-| **Лейбл** | Через `$slot` или `text` | Отдельный `$label` slot |
-| **Clearable** | Нет | Кнопка очистки для типов text/search |
-| **Типы** | semantic (button/link) | HTML input types (text, email, password...) |
+**Файл тестов:** `sandbox/resources/views/pages/dev.blade.php`
+
+**Сценарии тестирования:**
+
+| Сценарий | Проверка |
+|----------|----------|
+| Базовый input | Рендер, стили outline/accent |
+| С лейблом | Связь label-input, required-индикатор |
+| Размеры (sm, md, lg) | Пропорции, padding, шрифт |
+| С иконками | Позиционирование, размеры иконок |
+| Clearable | Появление кнопки, работа очистки |
+| Состояния (disabled, readonly) | Визуальное оформление, поведение |
+| Ошибки | Цвет рамки, сообщение, интеграция с сессией |
+| Варианты (outline/filled) | Визуальные различия, hover/focus |
+| Цвета (accent, success, danger) | Корректное применение токенов |
+
+**Интеграция с Livewire:**
+- Проверка `wire:model` синхронизации
+- Поведение clearable с Livewire
 
 ---
 
-## Примеры использования
+## Сравнение с архитектурой Button
+
+| Аспект | Button | Input |
+|--------|--------|-------|
+| **Базовый элемент** | `<button>` / `<a>` / `<div>` | `<input>` внутри wrapper |
+| **Контейнер** | Нет (единый элемент) | `.input-wrapper` + `.input__container` |
+| **Иконки** | Inline flex | Абсолютное позиционирование |
+| **Состояния** | `loading`, `active` | `error`, `readonly`, `required` |
+| **Валидация** | Нет | Интеграция с Laravel errors |
+| **Слоты** | `$slot`, `text` prop | `$label`, `$hint` |
+| **Clearable** | Нет | Кнопка очистки |
+| **Размеры иконок** | `sizeIcon` prop | `iconVariant()` метод |
+
+---
+
+## Примеры использования (итоговый API)
 
 ```blade
 {{-- Базовое использование --}}
 <x-chunker::input name="email" type="email" placeholder="Введите email" />
 
-{{-- С лейблом --}}
+{{-- С лейблом и обязательностью --}}
 <x-chunker::input name="name" label="Имя" required />
 
-{{-- С иконкой --}}
+{{-- С иконкой слева --}}
 <x-chunker::input name="search" icon="magnifying-glass" placeholder="Поиск..." />
 
-{{-- С ошибкой --}}
+{{-- С ошибкой из валидации --}}
 <x-chunker::input name="email" :error="$errors->first('email')" />
 
-{{-- Clearable поле --}}
+{{-- Clearable поле для поиска --}}
 <x-chunker::input name="query" clearable icon="magnifying-glass" />
 
 {{-- Размеры --}}
 <x-chunker::input size="sm" placeholder="Small" />
 <x-chunker::input size="lg" placeholder="Large" />
+
+{{-- Варианты оформления --}}
+<x-chunker::input variant="filled" color="success" />
+<x-chunker::input variant="outline" color="danger" />
+
+{{-- С хинтом --}}
+<x-chunker::input name="password" type="password" label="Пароль">
+    <x-slot:hint>Минимум 8 символов</x-slot:hint>
+</x-chunker::input>
+
+{{-- Livewire --}}
+<x-chunker::input wire:model="search" clearable />
 ```
+
+---
+
+## Зависимости и требования
+
+### От пакета base:
+- `AbstractComponent` — наследование
+- `ClassBuilder` — генерация классов
+- `Icon` компонент — рендеринг иконок
+- Токенизация SCSS (`@core/tokens`)
+
+### От песочницы:
+- Laravel Blade для тестирования
+- Livewire (опционально) для проверки reactivity
+- SCSS сборка через Vite
+
+---
+
+## Критерии завершения
+
+- [ ] PHP класс Input реализован и наследует AbstractComponent
+- [ ] Blade шаблон создает корректную HTML-структуру
+- [ ] SCSS стили покрывают все варианты и состояния
+- [ ] Компонент зарегистрирован в `ui/_index.scss`
+- [ ] Все примеры использования работают в песочнице
+- [ ] Интеграция с Laravel validation работает
+- [ ] Clearable функционал работает корректно
