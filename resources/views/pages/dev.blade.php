@@ -89,12 +89,16 @@
 		<x-chunker::button icon="bars" color="success" disabled/>
 		<x-chunker::button icon="bars" color="danger"/>
 		<x-chunker::button icon="bars" color="danger" disabled/>
+	</div>
+	<div class="wrapper wrapper_buttons">
 		<x-chunker::button icon="bars" variant="outline"/>
 		<x-chunker::button icon="bars" variant="outline" disabled/>
 		<x-chunker::button icon="bars" variant="outline" color="success"/>
 		<x-chunker::button icon="bars" variant="outline" color="success" disabled/>
 		<x-chunker::button icon="bars" variant="outline" color="danger"/>
 		<x-chunker::button icon="bars" variant="outline" color="danger" disabled/>
+	</div>
+	<div class="wrapper wrapper_buttons">
 		<x-chunker::button icon="bars" variant="ghost"/>
 		<x-chunker::button icon="bars" variant="ghost" square disabled/>
 		<x-chunker::button icon="bars" variant="ghost" color="success"/>
