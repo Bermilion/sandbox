@@ -3,17 +3,19 @@
 @endphp
 
 <x-layouts.base-layout title="Страница отладки">
-{{--	<div class="wrapper">--}}
-{{--		<x-base::button text="Открыть модальное окно" popovertarget="modal"/>--}}
-{{--		<dialog popover="auto" id="modal" class="modal">--}}
-{{--			<x-base::button text="×" class="modal__button-close" popovertarget="modal" aria-label="close"/>--}}
-{{--			<x-type::h size="2">I'm <x-ui.code>manual</x-ui.code> Popover 2!</x-type::h>--}}
-{{--			<x-type::p>A <x-ui.code>manual</x-ui.code> popover can <strong>not</strong> be "light dismissed".</x-type::p>--}}
-{{--			<x-type::p>Opening a <x-ui.code>manual</x-ui.code> popover does <strong>not</strong> automatically close any other <x-ui.code>manual</x-ui.code> popovers that were open, but <em>will</em> close any <x-ui.code>auto</x-ui.code> popovers that were open.</x-type::p>--}}
-{{--			<x-type::p>Clicking the <x-ui.code>button</x-ui.code> a second time will close the one it opened.</x-type::p>--}}
-{{--			<x-type::p>Note this popover also has a "close" <x-ui.code>button</x-ui.code>.</x-type::p>--}}
-{{--		</dialog>--}}
-{{--	</div>--}}
+	<div class="wrapper">
+		<x-base::button text="Открыть модальное окно" popovertarget="modal"/>
+		<dialog popover="auto" id="modal" class="modal">
+			<div class="modal__button-close">
+				<x-chunker::button icon="times" size="sm" size-icon="lg" size-scale="none" popovertarget="modal" aria-label="close"/>
+			</div>
+			<x-type::h size="2">I'm <x-ui.code>manual</x-ui.code> Popover 2!</x-type::h>
+			<x-type::p>A <x-ui.code>manual</x-ui.code> popover can <strong>not</strong> be "light dismissed".</x-type::p>
+			<x-type::p>Opening a <x-ui.code>manual</x-ui.code> popover does <strong>not</strong> automatically close any other <x-ui.code>manual</x-ui.code> popovers that were open, but <em>will</em> close any <x-ui.code>auto</x-ui.code> popovers that were open.</x-type::p>
+			<x-type::p>Clicking the <x-ui.code>button</x-ui.code> a second time will close the one it opened.</x-type::p>
+			<x-type::p>Note this popover also has a "close" <x-ui.code>button</x-ui.code>.</x-type::p>
+		</dialog>
+	</div>
 {{--	<div class="wrapper">--}}
 {{--		<details name="foo">--}}
 {{--			<summary>Initially open, clicking others will close this</summary>--}}
@@ -79,26 +81,26 @@
 {{--	</div>--}}
 	<div class="wrapper wrapper_buttons">
 		<x-chunker::icon name="spinner" class="animate-spin"/>
-		<x-chunker::button icon="bars" variant="white" square/>
-		<x-chunker::button icon="bars" variant="white" square disabled/>
-		<x-chunker::button icon="bars" square/>
-		<x-chunker::button icon="bars" square disabled/>
-		<x-chunker::button icon="bars" color="success" square/>
-		<x-chunker::button icon="bars" color="success" square disabled/>
-		<x-chunker::button icon="bars" color="danger" square/>
-		<x-chunker::button icon="bars" color="danger" square disabled/>
-		<x-chunker::button icon="bars" variant="outline" square/>
-		<x-chunker::button icon="bars" variant="outline" square disabled/>
-		<x-chunker::button icon="bars" variant="outline" color="success" square/>
-		<x-chunker::button icon="bars" variant="outline" color="success" square disabled/>
-		<x-chunker::button icon="bars" variant="outline" color="danger" square/>
-		<x-chunker::button icon="bars" variant="outline" color="danger" square disabled/>
-		<x-chunker::button icon="bars" variant="ghost" square/>
+		<x-chunker::button icon="bars" variant="white"/>
+		<x-chunker::button icon="bars" variant="white" disabled/>
+		<x-chunker::button icon="bars"/>
+		<x-chunker::button icon="bars" disabled/>
+		<x-chunker::button icon="bars" color="success"/>
+		<x-chunker::button icon="bars" color="success" disabled/>
+		<x-chunker::button icon="bars" color="danger"/>
+		<x-chunker::button icon="bars" color="danger" disabled/>
+		<x-chunker::button icon="bars" variant="outline"/>
+		<x-chunker::button icon="bars" variant="outline" disabled/>
+		<x-chunker::button icon="bars" variant="outline" color="success"/>
+		<x-chunker::button icon="bars" variant="outline" color="success" disabled/>
+		<x-chunker::button icon="bars" variant="outline" color="danger"/>
+		<x-chunker::button icon="bars" variant="outline" color="danger" disabled/>
+		<x-chunker::button icon="bars" variant="ghost"/>
 		<x-chunker::button icon="bars" variant="ghost" square disabled/>
-		<x-chunker::button icon="bars" variant="ghost" color="success" square/>
-		<x-chunker::button icon="bars" variant="ghost" color="success" square disabled/>
-		<x-chunker::button icon="bars" variant="ghost" color="danger" square/>
-		<x-chunker::button icon="bars" variant="ghost" color="danger" square disabled/>
+		<x-chunker::button icon="bars" variant="ghost" color="success"/>
+		<x-chunker::button icon="bars" variant="ghost" color="success" disabled/>
+		<x-chunker::button icon="bars" variant="ghost" color="danger"/>
+		<x-chunker::button icon="bars" variant="ghost" color="danger" disabled/>
 	</div>
 	<div class="wrapper wrapper_buttons">
 		<x-chunker::button icon="play" size="sm" square/>
@@ -106,6 +108,7 @@
 		<x-chunker::button icon="play" size="lg" square/>
 	</div>
 	<div class="wrapper wrapper_buttons">
+		<x-chunker::button loading>Button</x-chunker::button>
 		<x-chunker::button variant="white" loading>Button</x-chunker::button>
 		<x-chunker::button icon="chevron-left" variant="white">Button</x-chunker::button>
 		<x-chunker::button icon="chevron-left" variant="white" disabled>Button</x-chunker::button>
@@ -157,7 +160,7 @@
 	<div class="wrapper wrapper_buttons">
 		<x-chunker::button
 			icon:trailing="arrow-back-rounded"
-			size-icon="base"
+			size-icon="md"
 			size="lg"
 			weight="bold"
 			text="Выбрать маршрут"
