@@ -108,6 +108,7 @@
 		<x-chunker::button icon="play" size="lg" square/>
 	</div>
 	<div class="wrapper wrapper_buttons">
+		<x-chunker::button active>Button</x-chunker::button>
 		<x-chunker::button loading>Button</x-chunker::button>
 		<x-chunker::button variant="white" loading>Button</x-chunker::button>
 		<x-chunker::button icon="chevron-left" variant="white">Button</x-chunker::button>
