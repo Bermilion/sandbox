@@ -25,19 +25,19 @@ class TestLoading extends Component
     <p>Статус: {{ $status }}</p>
 
     {{-- Кнопка с автозагрузкой (loading=true + wire:click) --}}
-    <x-chunker::button wire:click="save" loading icon="check">
+    <x-base::button wire:click="save" loading icon="check">
         Сохранить (auto loading)
-    </x-chunker::button>
+    </x-base::button>
 
     {{-- Кнопка с явным loading --}}
-    <x-chunker::button wire:click="quickAction" loading>
+    <x-base::button wire:click="quickAction" loading>
         Быстрое действие
-    </x-chunker::button>
+    </x-base::button>
 
     {{-- Кнопка без loading --}}
-    <x-chunker::button wire:click="quickAction">
+    <x-base::button wire:click="quickAction">
         Без индикатора
-    </x-chunker::button>
+    </x-base::button>
 </div>
 BLADE;
     }

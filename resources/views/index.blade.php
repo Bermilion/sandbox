@@ -7,20 +7,20 @@
 		<x-sidebar>
 			<x-type::supheading class="mb-12">Основная концепция</x-type::supheading>
 			<x-ui.menu>
-				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-micromodule">Микромодуль</x-base::link></x-ui.menu-item>
-				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-clamp">Гибридная адаптация</x-base::link></x-ui.menu-item>
-				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-responsive-design">Адаптивный дизайн</x-base::link></x-ui.menu-item>
-				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-scale">Интервалы</x-base::link></x-ui.menu-item>
-				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-colors">Цвет</x-base::link></x-ui.menu-item>
-				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-api">Единый API</x-base::link></x-ui.menu-item>
-				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-utils-classes">Утилитарные классы</x-base::link></x-ui.menu-item>
+				<x-ui.menu-item><x-base::button variant="ghost" color="gray" href="#anchor-micromodule" text="Микромодуль" square /></x-ui.menu-item>
+				<x-ui.menu-item><x-base::button variant="ghost" color="gray" href="#anchor-clamp" text="Гибридная адаптация" square /></x-ui.menu-item>
+				<x-ui.menu-item><x-base::button variant="ghost" color="gray" href="#anchor-responsive-design" text="Адаптивный дизайн" square /></x-ui.menu-item>
+				<x-ui.menu-item><x-base::button variant="ghost" color="gray" href="#anchor-scale" text="Интервалы" square /></x-ui.menu-item>
+				<x-ui.menu-item><x-base::button variant="ghost" color="gray" href="#anchor-colors" text="Цвет" square /></x-ui.menu-item>
+				<x-ui.menu-item><x-base::button variant="ghost" color="gray" href="#anchor-api" text="Единый API" square /></x-ui.menu-item>
+				<x-ui.menu-item><x-base::button variant="ghost" color="gray" href="#anchor-utils-classes" text="Утилитарные классы" square /></x-ui.menu-item>
 			</x-ui.menu>
 			<x-type::supheading class="mb-12">Компоненты</x-type::supheading>
 			<x-ui.menu>
-				<x-ui.menu-item><x-base::link mod="menu" href="/pages/dev">Страница dev</x-base::link></x-ui.menu-item>
-				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-typography">Типографика</x-base::link></x-ui.menu-item>
-				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-link">Ссылка</x-base::link></x-ui.menu-item>
-				<x-ui.menu-item><x-base::link mod="menu" href="#anchor-button">Кнопка</x-base::link></x-ui.menu-item>
+				<x-ui.menu-item><x-base::button variant="ghost" color="gray" href="/pages/dev" text="Страница dev" square /></x-ui.menu-item>
+				<x-ui.menu-item><x-base::button variant="ghost" color="gray" href="#anchor-typography" text="Типографика" square /></x-ui.menu-item>
+				<x-ui.menu-item><x-base::button variant="ghost" color="gray" href="#anchor-link" text="Ссылка" square /></x-ui.menu-item>
+				<x-ui.menu-item><x-base::button variant="ghost" color="gray" href="#anchor-button" text="Кнопка" square /></x-ui.menu-item>
 			</x-ui.menu>
 		</x-sidebar>
 		<x-main>

@@ -7,7 +7,7 @@
 		<x-base::button text="Открыть модальное окно" popovertarget="modal"/>
 		<dialog popover="auto" id="modal" class="modal">
 			<div class="modal__button-close">
-				<x-chunker::button icon="times" size="sm" size-icon="lg" size-scale="none" popovertarget="modal" aria-label="close"/>
+				<x-base::button icon="times" size="sm" size-icon="lg" size-scale="none" popovertarget="modal" aria-label="close"/>
 			</div>
 			<x-type::h size="2">I'm <x-ui.code>manual</x-ui.code> Popover 2!</x-type::h>
 			<x-type::p>A <x-ui.code>manual</x-ui.code> popover can <strong>not</strong> be "light dismissed".</x-type::p>
@@ -80,90 +80,90 @@
 {{--		<x-base::button icon="chevron-left" mod="disabled" text="Button" />--}}
 {{--	</div>--}}
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::icon name="spinner" class="animate-spin"/>
-		<x-chunker::button icon="bars" variant="white"/>
-		<x-chunker::button icon="bars" variant="white" disabled/>
-		<x-chunker::button icon="bars"/>
-		<x-chunker::button icon="bars" disabled/>
-		<x-chunker::button icon="bars" color="success"/>
-		<x-chunker::button icon="bars" color="success" disabled/>
-		<x-chunker::button icon="bars" color="danger"/>
-		<x-chunker::button icon="bars" color="danger" disabled/>
+		<x-utils::icon name="spinner" class="animate-spin"/>
+		<x-base::button icon="bars" variant="white"/>
+		<x-base::button icon="bars" variant="white" disabled/>
+		<x-base::button icon="bars"/>
+		<x-base::button icon="bars" disabled/>
+		<x-base::button icon="bars" color="success"/>
+		<x-base::button icon="bars" color="success" disabled/>
+		<x-base::button icon="bars" color="danger"/>
+		<x-base::button icon="bars" color="danger" disabled/>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button icon="bars" variant="outline"/>
-		<x-chunker::button icon="bars" variant="outline" disabled/>
-		<x-chunker::button icon="bars" variant="outline" color="success"/>
-		<x-chunker::button icon="bars" variant="outline" color="success" disabled/>
-		<x-chunker::button icon="bars" variant="outline" color="danger"/>
-		<x-chunker::button icon="bars" variant="outline" color="danger" disabled/>
+		<x-base::button icon="bars" variant="outline"/>
+		<x-base::button icon="bars" variant="outline" disabled/>
+		<x-base::button icon="bars" variant="outline" color="success"/>
+		<x-base::button icon="bars" variant="outline" color="success" disabled/>
+		<x-base::button icon="bars" variant="outline" color="danger"/>
+		<x-base::button icon="bars" variant="outline" color="danger" disabled/>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button icon="bars" variant="ghost"/>
-		<x-chunker::button icon="bars" variant="ghost" square disabled/>
-		<x-chunker::button icon="bars" variant="ghost" color="success"/>
-		<x-chunker::button icon="bars" variant="ghost" color="success" disabled/>
-		<x-chunker::button icon="bars" variant="ghost" color="danger"/>
-		<x-chunker::button icon="bars" variant="ghost" color="danger" disabled/>
+		<x-base::button icon="bars" variant="ghost"/>
+		<x-base::button icon="bars" variant="ghost" square disabled/>
+		<x-base::button icon="bars" variant="ghost" color="success"/>
+		<x-base::button icon="bars" variant="ghost" color="success" disabled/>
+		<x-base::button icon="bars" variant="ghost" color="danger"/>
+		<x-base::button icon="bars" variant="ghost" color="danger" disabled/>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button icon="play" size="sm" square/>
-		<x-chunker::button icon="play" square/>
-		<x-chunker::button icon="play" size="lg" square/>
+		<x-base::button icon="play" size="sm" square/>
+		<x-base::button icon="play" square/>
+		<x-base::button icon="play" size="lg" square/>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button active>Button</x-chunker::button>
-		<x-chunker::button loading>Button</x-chunker::button>
-		<x-chunker::button variant="white" loading>Button</x-chunker::button>
-		<x-chunker::button icon="chevron-left" variant="white">Button</x-chunker::button>
-		<x-chunker::button icon="chevron-left" variant="white" disabled>Button</x-chunker::button>
+		<x-base::button active>Button</x-base::button>
+		<x-base::button loading>Button</x-base::button>
+		<x-base::button variant="white" loading>Button</x-base::button>
+		<x-base::button icon="chevron-left" variant="white">Button</x-base::button>
+		<x-base::button icon="chevron-left" variant="white" disabled>Button</x-base::button>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button icon="plus-circle">Button</x-chunker::button>
-		<x-chunker::button icon="chevron-left" disabled>Button</x-chunker::button>
-		<x-chunker::button icon="route" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Построить<br>маршрут</x-chunker::button>
-		<x-chunker::button icon="taxi" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Вызвать<br>такси</x-chunker::button>
-		<x-chunker::button icon="map" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Открыть<br>на карте</x-chunker::button>
-		<x-chunker::button icon="thumbs-up" variant="ghost" size-scale="none" color="gray">1000</x-chunker::button>
-		<x-chunker::button icon="route-solid" variant="ghost" size-scale="none" color="dark" weight="bold" size-font="lg">Мой маршрут</x-chunker::button>
+		<x-base::button icon="plus-circle">Button</x-base::button>
+		<x-base::button icon="chevron-left" disabled>Button</x-base::button>
+		<x-base::button icon="route" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Построить<br>маршрут</x-base::button>
+		<x-base::button icon="taxi" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Вызвать<br>такси</x-base::button>
+		<x-base::button icon="map" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Открыть<br>на карте</x-base::button>
+		<x-base::button icon="thumbs-up" variant="ghost" size-scale="none" color="gray">1000</x-base::button>
+		<x-base::button icon="route-solid" variant="ghost" size-scale="none" color="dark" weight="bold" size-font="lg">Мой маршрут</x-base::button>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button icon="plus-circle" variant="primary" color="success">Button</x-chunker::button>
-		<x-chunker::button icon="chevron-left" variant="primary" color="success" disabled>Button</x-chunker::button>
+		<x-base::button icon="plus-circle" variant="primary" color="success">Button</x-base::button>
+		<x-base::button icon="chevron-left" variant="primary" color="success" disabled>Button</x-base::button>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button icon="plus-circle" variant="primary" color="danger">Button</x-chunker::button>
-		<x-chunker::button icon="chevron-left" variant="primary" color="danger" disabled>Button</x-chunker::button>
+		<x-base::button icon="plus-circle" variant="primary" color="danger">Button</x-base::button>
+		<x-base::button icon="chevron-left" variant="primary" color="danger" disabled>Button</x-base::button>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button icon="plus-circle" variant="outline">Button</x-chunker::button>
-		<x-chunker::button icon="plus-circle" variant="outline" disabled>Button</x-chunker::button>
+		<x-base::button icon="plus-circle" variant="outline">Button</x-base::button>
+		<x-base::button icon="plus-circle" variant="outline" disabled>Button</x-base::button>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button icon="plus-circle" variant="outline" color="success">Button</x-chunker::button>
-		<x-chunker::button icon="plus-circle" variant="outline" color="success" disabled>Button</x-chunker::button>
+		<x-base::button icon="plus-circle" variant="outline" color="success">Button</x-base::button>
+		<x-base::button icon="plus-circle" variant="outline" color="success" disabled>Button</x-base::button>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button icon="plus-circle" variant="outline" color="danger">Button</x-chunker::button>
-		<x-chunker::button icon="plus-circle" variant="outline" color="danger" disabled>Button</x-chunker::button>
+		<x-base::button icon="plus-circle" variant="outline" color="danger">Button</x-base::button>
+		<x-base::button icon="plus-circle" variant="outline" color="danger" disabled>Button</x-base::button>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button icon="plus-circle" variant="ghost">Button</x-chunker::button>
-		<x-chunker::button icon="plus-circle" variant="ghost" disabled>Button</x-chunker::button>
+		<x-base::button icon="plus-circle" variant="ghost">Button</x-base::button>
+		<x-base::button icon="plus-circle" variant="ghost" disabled>Button</x-base::button>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button icon="plus-circle" variant="ghost" color="success">Button</x-chunker::button>
-		<x-chunker::button icon="plus-circle" variant="ghost" color="success" disabled>Button</x-chunker::button>
+		<x-base::button icon="plus-circle" variant="ghost" color="success">Button</x-base::button>
+		<x-base::button icon="plus-circle" variant="ghost" color="success" disabled>Button</x-base::button>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button icon="plus-circle" variant="ghost" color="danger">Button</x-chunker::button>
-		<x-chunker::button icon="plus-circle" variant="ghost" color="danger" disabled>Button</x-chunker::button>
+		<x-base::button icon="plus-circle" variant="ghost" color="danger">Button</x-base::button>
+		<x-base::button icon="plus-circle" variant="ghost" color="danger" disabled>Button</x-base::button>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button icon="chevron-left" size-scale="sm">Button</x-chunker::button>
+		<x-base::button icon="chevron-left" size-scale="sm">Button</x-base::button>
 	</div>
 	<div class="wrapper wrapper_buttons">
-		<x-chunker::button
+		<x-base::button
 			icon:trailing="arrow-back-rounded"
 			size-icon="md"
 			size="lg"
