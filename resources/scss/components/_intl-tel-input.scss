@@ -1,0 +1,53 @@
+@use "@core/tokens" as token;
+
+:root {
+	--iti-flag-width: #{token.scale(20)};
+	--iti-hover-color: rgba(0, 0, 0, 0.05);
+	--iti-border-color: #{token.color-base(token.$borders)};
+	--iti-country-selector-bg: white;
+	--iti-icon-color: #{token.color-base(token.$green)};
+	--iti-spacer-horizontal: #{token.scale(12)};
+	--iti-flag-height: calc(var(--iti-flag-width) * 3 / 4);
+	--iti-globe-icon-size: #{token.scale(16)};
+	--iti-clear-icon-size: #{token.scale(16)};
+	--iti-border-width: #{token.scale(1)};
+	--iti-arrow-size: #{token.scale(4)};
+	--iti-arrow-width: #{token.scale(1)};
+	--iti-arrow-padding: #{token.scale(4)};
+	--iti-mobile-popup-margin: #{token.scale(32)};
+	--iti-strict-reject-flash-color: rgba(255, 0, 0, 0.12);
+}
+
+@import "@node_modules/intl-tel-input/dist/css/intlTelInput.css";
+
+.iti__search-input, .iti__country {
+	padding-top: token.scale(8);
+	padding-bottom: token.scale(8);
+}
+.iti__search-input {
+	border-radius: token.scale(4);
+}
+.iti__country-selector {
+	border-radius: token.scale(4);
+}
+.iti__search-input-wrapper {
+	border-bottom: token.scale(1) solid var(--iti-border-color);
+}
+.iti__tel-input {
+	padding: token.scale(8, 12);
+	border-radius: token.scale(8);
+	border: token.scale(1) solid token.color-base(token.$borders);
+}
+.iti__selected-country, .iti__search-input, .iti__tel-input  {
+	&:focus-visible {
+		//outline-offset: token.scale(4);
+		outline-color: token.color-base(token.$accent, 0.6);
+	}
+}
+.iti__search-icon-svg {
+	stroke: token.color-base(token.$dark-gary-dark);
+}
+.iti__arrow {
+	border-color: token.color-base(token.$dark-gary-dark);
+}
+
