@@ -4,16 +4,45 @@
 
 <x-layouts.base-layout title="Страница отладки">
 	<div class="wrapper">
-		<x-base::button text="Открыть модальное окно" popovertarget="modal"/>
-		<dialog popover="auto" id="modal" class="modal">
+		<x-base::button text="Открыть модальное окно" popovertarget="modal-price"/>
+		<dialog popover="auto" id="modal-price" class="modal">
 			<div class="modal__button-close">
-				<x-base::button icon="times" size="sm" size-icon="lg" size-scale="none" popovertarget="modal" aria-label="close"/>
+				<x-base::button variant="ghost" icon="times" size="sm" size-icon="lg" size-scale="none" popovertarget="modal-price" aria-label="close"/>
 			</div>
-			<x-type::h size="2">I'm <x-ui.code>manual</x-ui.code> Popover 2!</x-type::h>
-			<x-type::p>A <x-ui.code>manual</x-ui.code> popover can <strong>not</strong> be "light dismissed".</x-type::p>
-			<x-type::p>Opening a <x-ui.code>manual</x-ui.code> popover does <strong>not</strong> automatically close any other <x-ui.code>manual</x-ui.code> popovers that were open, but <em>will</em> close any <x-ui.code>auto</x-ui.code> popovers that were open.</x-type::p>
-			<x-type::p>Clicking the <x-ui.code>button</x-ui.code> a second time will close the one it opened.</x-type::p>
-			<x-type::p>Note this popover also has a "close" <x-ui.code>button</x-ui.code>.</x-type::p>
+			<x-type::h size="2" class="mb-16">Выберите тариф</x-type::h>
+			<x-type::p class="mb-24">Доступ на 24 часа с момента покупки</x-type::p>
+			<div class="modal__plan-grid">
+				<x-price-card title="Один маршрут" price="300"/>
+				<x-price-card title="Три маршрута" price="500" active/>
+				<x-price-card title="Безлимит" price="700"/>
+			</div>
+		</dialog>
+
+		<dialog popover="auto" id="modal-form" class="modal">
+			<div class="modal__button-close">
+				<x-base::button variant="ghost" icon="times" size="sm" size-icon="lg" size-scale="none" popovertarget="modal-form" aria-label="close"/>
+			</div>
+			<x-type::h size="2" class="mb-16">Введите контакты</x-type::h>
+			<x-type::p class="mb-24">Чек и ссылка на маршрут придут на указанный вами телефон или почту</x-type::p>
+			<form action="" class="modal__form">
+				<select name="plan" id="plan">
+					<option value="300">300</option>
+					<option value="500">500</option>
+					<option value="700">700</option>
+				</select>
+				<input
+					type="tel"
+					id="phone"
+					name="phone"
+					class="form-control iti__tel-input"
+					title="Введите свой номер телефона"
+					data-intl-tel-input-id="0"
+					autocomplete="tel"
+					inputmode="tel"
+					placeholder="912 345-67-89"
+				>
+				<x-base::button type="submit" text="Перейти к оплате" icon:trailing="arrow-back-rounded"/>
+			</form>
 		</dialog>
 	</div>
 {{--	<div class="wrapper">--}}

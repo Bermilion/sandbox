@@ -368,7 +368,7 @@
 
 
 .modal {
-	max-width: token.scale(320);
+	max-width: token.scale(1216);
 	background-color: token.color-base(token.$content-light);
 	border-radius: token.scale(16);
 	padding: token.scale(48, 24, 24, 24);
@@ -381,6 +381,18 @@
 		translate 250ms ease-out,
 		display 250ms ease-out allow-discrete,
 		overlay 250ms ease-out allow-discrete;
+
+	&__plan-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: token.scale(16);
+	}
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: token.scale(16);
+		align-items: center;
+	}
 
 	&::backdrop {
 		background-color: token.color-base(token.$content-dark, .0);
@@ -421,4 +433,19 @@
 	align-items: flex-start;
 	gap: token.scale(16);
 	background-color: token.color-light-40(token.$gray);
+}
+
+.price-card {
+	border-radius: token.scale(24);
+	border: token.scale(2) solid token.color-base(token.$content-dark, .25);
+	padding: token.scale(40, 24);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: token.scale(16);
+
+	&_active {
+		border: token.scale(2) solid token.color-base(token.$accent);
+		box-shadow: token.scale(0, 4, 12) rgba(0, 136, 255, 0.15), token.scale(0, 32, 72) rgba(0, 136, 255, 0.15);
+	}
 }

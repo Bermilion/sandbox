@@ -20,6 +20,7 @@ export default defineConfig({
 			'@classes': path.resolve(__dirname, 'chunker2i/base/resources/scss/utils/classes'),
 			'@colors': path.resolve(__dirname, 'chunker2i/base/resources/scss/utils/tailwind-colors'),
 			'@ui': path.resolve(__dirname, 'chunker2i/base/resources/scss/ui'),
+			'@node_modules': path.resolve(__dirname, 'node_modules'),
 		}
 	},
 	plugins: [
