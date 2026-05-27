@@ -381,6 +381,7 @@
 		translate 250ms ease-out,
 		display 250ms ease-out allow-discrete,
 		overlay 250ms ease-out allow-discrete;
+	overflow: visible;
 
 	&__plan-grid {
 		display: grid;

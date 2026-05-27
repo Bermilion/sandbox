@@ -2,7 +2,7 @@
 	$scales = [1, 2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 240, 320, 800];
 @endphp
 
-<x-layouts.base-layout title="Страница отладки">
+<x-layouts.base-layout title="Страница отладки" xmlns:x-base="http://www.w3.org/1999/html">
 	<div class="wrapper">
 		<x-base::button text="Открыть модальное окно" popovertarget="modal-price"/>
 		<dialog popover="auto" id="modal-price" class="modal">
@@ -44,6 +44,12 @@
 				<x-base::button type="submit" text="Перейти к оплате" icon:trailing="arrow-back-rounded"/>
 			</form>
 		</dialog>
+	</div>
+
+	<!-- Cookie Banner -->
+	<div id="cookieBanner" class="cookie-banner hidden">
+		<x-type::p>Сайт использует <a href="#"  target="_blank">cookie-файлы</a>, чтобы сделать ваше пребывание на нём максимально удобным</x-type::p>
+		<x-base::button id="acceptCookies" text="Принять" class="cookie-banner__button"/>
 	</div>
 {{--	<div class="wrapper">--}}
 {{--		<details name="foo">--}}
@@ -108,98 +114,98 @@
 {{--		<x-base::button icon="chevron-left" text="Button" disabled="true" />--}}
 {{--		<x-base::button icon="chevron-left" mod="disabled" text="Button" />--}}
 {{--	</div>--}}
-	<div class="wrapper wrapper_buttons">
-		<x-utils::icon name="spinner" class="animate-spin"/>
-		<x-base::button icon="bars" variant="white"/>
-		<x-base::button icon="bars" variant="white" disabled/>
-		<x-base::button icon="bars"/>
-		<x-base::button icon="bars" disabled/>
-		<x-base::button icon="bars" color="success"/>
-		<x-base::button icon="bars" color="success" disabled/>
-		<x-base::button icon="bars" color="danger"/>
-		<x-base::button icon="bars" color="danger" disabled/>
-	</div>
-	<div class="wrapper wrapper_buttons">
-		<x-base::button icon="bars" variant="outline"/>
-		<x-base::button icon="bars" variant="outline" disabled/>
-		<x-base::button icon="bars" variant="outline" color="success"/>
-		<x-base::button icon="bars" variant="outline" color="success" disabled/>
-		<x-base::button icon="bars" variant="outline" color="danger"/>
-		<x-base::button icon="bars" variant="outline" color="danger" disabled/>
-	</div>
-	<div class="wrapper wrapper_buttons">
-		<x-base::button icon="bars" variant="ghost"/>
-		<x-base::button icon="bars" variant="ghost" square disabled/>
-		<x-base::button icon="bars" variant="ghost" color="success"/>
-		<x-base::button icon="bars" variant="ghost" color="success" disabled/>
-		<x-base::button icon="bars" variant="ghost" color="danger"/>
-		<x-base::button icon="bars" variant="ghost" color="danger" disabled/>
-	</div>
-	<div class="wrapper wrapper_buttons">
-		<x-base::button icon="play" size="sm" square/>
-		<x-base::button icon="play" square/>
-		<x-base::button icon="play" size="lg" square/>
-	</div>
-	<div class="wrapper wrapper_buttons">
-		<x-base::button active>Button</x-base::button>
-		<x-base::button loading>Button</x-base::button>
-		<x-base::button variant="white" loading>Button</x-base::button>
-		<x-base::button icon="chevron-left" variant="white">Button</x-base::button>
-		<x-base::button icon="chevron-left" variant="white" disabled>Button</x-base::button>
-	</div>
-	<div class="wrapper wrapper_buttons">
-		<x-base::button icon="plus-circle">Button</x-base::button>
-		<x-base::button icon="chevron-left" disabled>Button</x-base::button>
-		<x-base::button icon="route" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Построить<br>маршрут</x-base::button>
-		<x-base::button icon="taxi" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Вызвать<br>такси</x-base::button>
-		<x-base::button icon="map" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Открыть<br>на карте</x-base::button>
-		<x-base::button icon="thumbs-up" variant="ghost" size-scale="none" color="gray">1000</x-base::button>
-		<x-base::button icon="route-solid" variant="ghost" size-scale="none" color="dark" weight="bold" size-font="lg">Мой маршрут</x-base::button>
-	</div>
-	<div class="wrapper wrapper_buttons">
-		<x-base::button icon="plus-circle" variant="primary" color="success">Button</x-base::button>
-		<x-base::button icon="chevron-left" variant="primary" color="success" disabled>Button</x-base::button>
-	</div>
-	<div class="wrapper wrapper_buttons">
-		<x-base::button icon="plus-circle" variant="primary" color="danger">Button</x-base::button>
-		<x-base::button icon="chevron-left" variant="primary" color="danger" disabled>Button</x-base::button>
-	</div>
-	<div class="wrapper wrapper_buttons">
-		<x-base::button icon="plus-circle" variant="outline">Button</x-base::button>
-		<x-base::button icon="plus-circle" variant="outline" disabled>Button</x-base::button>
-	</div>
-	<div class="wrapper wrapper_buttons">
-		<x-base::button icon="plus-circle" variant="outline" color="success">Button</x-base::button>
-		<x-base::button icon="plus-circle" variant="outline" color="success" disabled>Button</x-base::button>
-	</div>
-	<div class="wrapper wrapper_buttons">
-		<x-base::button icon="plus-circle" variant="outline" color="danger">Button</x-base::button>
-		<x-base::button icon="plus-circle" variant="outline" color="danger" disabled>Button</x-base::button>
-	</div>
-	<div class="wrapper wrapper_buttons">
-		<x-base::button icon="plus-circle" variant="ghost">Button</x-base::button>
-		<x-base::button icon="plus-circle" variant="ghost" disabled>Button</x-base::button>
-	</div>
-	<div class="wrapper wrapper_buttons">
-		<x-base::button icon="plus-circle" variant="ghost" color="success">Button</x-base::button>
-		<x-base::button icon="plus-circle" variant="ghost" color="success" disabled>Button</x-base::button>
-	</div>
-	<div class="wrapper wrapper_buttons">
-		<x-base::button icon="plus-circle" variant="ghost" color="danger">Button</x-base::button>
-		<x-base::button icon="plus-circle" variant="ghost" color="danger" disabled>Button</x-base::button>
-	</div>
-	<div class="wrapper wrapper_buttons">
-		<x-base::button icon="chevron-left" size-scale="sm">Button</x-base::button>
-	</div>
-	<div class="wrapper wrapper_buttons">
-		<x-base::button
-			icon:trailing="arrow-back-rounded"
-			size-icon="md"
-			size="lg"
-			weight="bold"
-			text="Выбрать маршрут"
-		/>
-	</div>
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-utils::icon name="spinner" class="animate-spin"/>--}}
+{{--		<x-base::button icon="bars" variant="white"/>--}}
+{{--		<x-base::button icon="bars" variant="white" disabled/>--}}
+{{--		<x-base::button icon="bars"/>--}}
+{{--		<x-base::button icon="bars" disabled/>--}}
+{{--		<x-base::button icon="bars" color="success"/>--}}
+{{--		<x-base::button icon="bars" color="success" disabled/>--}}
+{{--		<x-base::button icon="bars" color="danger"/>--}}
+{{--		<x-base::button icon="bars" color="danger" disabled/>--}}
+{{--	</div>--}}
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-base::button icon="bars" variant="outline"/>--}}
+{{--		<x-base::button icon="bars" variant="outline" disabled/>--}}
+{{--		<x-base::button icon="bars" variant="outline" color="success"/>--}}
+{{--		<x-base::button icon="bars" variant="outline" color="success" disabled/>--}}
+{{--		<x-base::button icon="bars" variant="outline" color="danger"/>--}}
+{{--		<x-base::button icon="bars" variant="outline" color="danger" disabled/>--}}
+{{--	</div>--}}
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-base::button icon="bars" variant="ghost"/>--}}
+{{--		<x-base::button icon="bars" variant="ghost" square disabled/>--}}
+{{--		<x-base::button icon="bars" variant="ghost" color="success"/>--}}
+{{--		<x-base::button icon="bars" variant="ghost" color="success" disabled/>--}}
+{{--		<x-base::button icon="bars" variant="ghost" color="danger"/>--}}
+{{--		<x-base::button icon="bars" variant="ghost" color="danger" disabled/>--}}
+{{--	</div>--}}
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-base::button icon="play" size="sm" square/>--}}
+{{--		<x-base::button icon="play" square/>--}}
+{{--		<x-base::button icon="play" size="lg" square/>--}}
+{{--	</div>--}}
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-base::button active>Button</x-base::button>--}}
+{{--		<x-base::button loading>Button</x-base::button>--}}
+{{--		<x-base::button variant="white" loading>Button</x-base::button>--}}
+{{--		<x-base::button icon="chevron-left" variant="white">Button</x-base::button>--}}
+{{--		<x-base::button icon="chevron-left" variant="white" disabled>Button</x-base::button>--}}
+{{--	</div>--}}
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-base::button icon="plus-circle">Button</x-base::button>--}}
+{{--		<x-base::button icon="chevron-left" disabled>Button</x-base::button>--}}
+{{--		<x-base::button icon="route" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Построить<br>маршрут</x-base::button>--}}
+{{--		<x-base::button icon="taxi" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Вызвать<br>такси</x-base::button>--}}
+{{--		<x-base::button icon="map" href="#" variant="ghost" size-scale="none" size-font="sm" color="gray">Открыть<br>на карте</x-base::button>--}}
+{{--		<x-base::button icon="thumbs-up" variant="ghost" size-scale="none" color="gray">1000</x-base::button>--}}
+{{--		<x-base::button icon="route-solid" variant="ghost" size-scale="none" color="dark" weight="bold" size-font="lg">Мой маршрут</x-base::button>--}}
+{{--	</div>--}}
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-base::button icon="plus-circle" variant="primary" color="success">Button</x-base::button>--}}
+{{--		<x-base::button icon="chevron-left" variant="primary" color="success" disabled>Button</x-base::button>--}}
+{{--	</div>--}}
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-base::button icon="plus-circle" variant="primary" color="danger">Button</x-base::button>--}}
+{{--		<x-base::button icon="chevron-left" variant="primary" color="danger" disabled>Button</x-base::button>--}}
+{{--	</div>--}}
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-base::button icon="plus-circle" variant="outline">Button</x-base::button>--}}
+{{--		<x-base::button icon="plus-circle" variant="outline" disabled>Button</x-base::button>--}}
+{{--	</div>--}}
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-base::button icon="plus-circle" variant="outline" color="success">Button</x-base::button>--}}
+{{--		<x-base::button icon="plus-circle" variant="outline" color="success" disabled>Button</x-base::button>--}}
+{{--	</div>--}}
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-base::button icon="plus-circle" variant="outline" color="danger">Button</x-base::button>--}}
+{{--		<x-base::button icon="plus-circle" variant="outline" color="danger" disabled>Button</x-base::button>--}}
+{{--	</div>--}}
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-base::button icon="plus-circle" variant="ghost">Button</x-base::button>--}}
+{{--		<x-base::button icon="plus-circle" variant="ghost" disabled>Button</x-base::button>--}}
+{{--	</div>--}}
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-base::button icon="plus-circle" variant="ghost" color="success">Button</x-base::button>--}}
+{{--		<x-base::button icon="plus-circle" variant="ghost" color="success" disabled>Button</x-base::button>--}}
+{{--	</div>--}}
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-base::button icon="plus-circle" variant="ghost" color="danger">Button</x-base::button>--}}
+{{--		<x-base::button icon="plus-circle" variant="ghost" color="danger" disabled>Button</x-base::button>--}}
+{{--	</div>--}}
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-base::button icon="chevron-left" size-scale="sm">Button</x-base::button>--}}
+{{--	</div>--}}
+{{--	<div class="wrapper wrapper_buttons">--}}
+{{--		<x-base::button--}}
+{{--			icon:trailing="arrow-back-rounded"--}}
+{{--			size-icon="md"--}}
+{{--			size="lg"--}}
+{{--			weight="bold"--}}
+{{--			text="Выбрать маршрут"--}}
+{{--		/>--}}
+{{--	</div>--}}
 
-	@livewire('test-loading')
+{{--	@livewire('test-loading')--}}
 </x-layouts.base-layout>

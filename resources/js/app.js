@@ -34,6 +34,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	});
 
+	const cookieBanner = document.getElementById("cookieBanner");
+	const acceptButton = document.getElementById("acceptCookies");
+
+	// Проверяем, есть ли уже согласие
+	if (!localStorage.getItem("cookiesAccepted")) {
+		cookieBanner.classList.remove("hidden");
+	}
+
+	acceptButton.addEventListener("click", function () {
+		localStorage.setItem("cookiesAccepted", "true");
+		cookieBanner.classList.add("hidden");
+	});
+
 });
 
 

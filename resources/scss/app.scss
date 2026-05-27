@@ -17,8 +17,6 @@
 @use "@classes/size";
 @use "@classes/weight";
 
-@use "@node_modules/intl-tel-input/dist/css/intlTelInput";
-
 // Стили из sandbox
 @use "layout/layout";
 @use "components/typography";
@@ -27,6 +25,8 @@
 @use "components/menu";
 @use "components/code";
 @use "components/figure";
+@use "components/intl-tel-input";
+@use "components/cookie";
 @use "pages/doc";
 @use "pages/dev";
 
@@ -41,8 +41,4 @@ html, body {
 	font-size: token.scale(16);
 	line-height: token.scale(24);
 	font-weight: token.weight(400);
-}
-
-:root {
-	--iti-flag-width: 2.5rem;
 }

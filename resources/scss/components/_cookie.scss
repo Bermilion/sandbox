@@ -1,0 +1,59 @@
+@use "@core/tokens" as token;
+@use "@core/viewports";
+
+.cookie-banner {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding: token.scale(16);
+	gap: token.scale(16);
+	max-width: token.scale(328);
+	background: token.color-base(token.$content-light);
+	box-shadow: token.scale(0, 4, 16) token.color-base(token.$blak, .1);
+	border-radius: token.scale(16);
+	z-index: 10000;
+	bottom: token.scale(20);
+	right: token.scale(16);
+
+	@include viewports.phone-portrait {
+		max-width: calc(100% - 4rem);
+	}
+	@include viewports.desktop {
+		width: token.scale(464);
+		bottom: token.scale(24);
+		right: token.scale(24);
+	}
+
+	.p {
+		font-style: normal;
+		font-weight: 400;
+		font-size: token.scale(16);
+		line-height: token.scale(24);
+		color: token.color-base(token.$dark-gary-dark);
+	}
+
+	a {
+		color: token.color-base(token.$accent);
+
+		&:hover {
+			color: token.color-dark-10(token.$accent);
+		}
+	}
+
+	&__button {
+		padding: token.scale(8, 64);
+
+		@include viewports.mobile {
+			width: 100%;
+			justify-content: center;
+		}
+	}
+
+	&.hidden {
+		opacity: 0;
+		pointer-events: none;
+		display: none;
+	}
+}
