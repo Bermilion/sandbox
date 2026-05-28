@@ -15,6 +15,7 @@
 	border-radius: token.scale(16);
 	z-index: 10000;
 	bottom: token.scale(20);
+	left: auto;
 	right: token.scale(16);
 
 	@include viewports.phone-portrait {

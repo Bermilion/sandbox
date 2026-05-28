@@ -47,10 +47,10 @@
 	</div>
 
 	<!-- Cookie Banner -->
-	<div id="cookieBanner" class="cookie-banner hidden">
+	<dialog id="cookieBanner" class="cookie-banner hidden">
 		<x-type::p>Сайт использует <a href="#"  target="_blank">cookie-файлы</a>, чтобы сделать ваше пребывание на нём максимально удобным</x-type::p>
 		<x-base::button id="acceptCookies" text="Принять" class="cookie-banner__button"/>
-	</div>
+	</dialog>
 {{--	<div class="wrapper">--}}
 {{--		<details name="foo">--}}
 {{--			<summary>Initially open, clicking others will close this</summary>--}}
